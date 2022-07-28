@@ -18,9 +18,9 @@ export default function Home() {
 
       <main className={styles.main}>
 
-        <h1 className={styles.title}>
+        <p className={styles.title}>
           Join us in <a href="#">{SITE_NAME}</a> to work on the world's most advanced AI-powered code editor.
-        </h1>
+        </p>
 
         <p className={styles.description}>
           Get started by browsing our <a href="#">open positions</a>

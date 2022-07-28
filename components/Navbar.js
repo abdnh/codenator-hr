@@ -12,16 +12,27 @@ export default function NavBar() {
                 <Navbar.Brand href="#home"><Image src="/favicon.svg" width={48} height={48}></Image></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav >
-                        <Nav.Link href="#about">About</Nav.Link>
+                    <Nav>
+                        <Nav.Link href="#home">Home</Nav.Link>
                         <Nav.Link href="#jobs">Jobs</Nav.Link>
-                        <Nav.Link href="#apply">Apply</Nav.Link>
+                        <Nav.Link href="#profile">Profile</Nav.Link>
+                        <Nav.Link href="#about">About</Nav.Link>
                     </Nav>
                     <Nav className="ms-md-auto">
-                        <Nav.Link>{SITE_NAME}</Nav.Link>
+                        <Nav.Link id="site-button" style={{ border: "dashed 2px #fff" }}>{SITE_NAME}</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
+            <style global jsx>
+                {`
+                    #site-button {
+                        background-color: #5094f7;
+                    }
+                    #site-button:hover {
+                        background-color: #319eff;
+                    }
+                `}
+            </style>
         </Navbar>
     );
 }

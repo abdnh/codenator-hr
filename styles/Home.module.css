@@ -39,6 +39,7 @@
   margin-top: 1.5em;
   line-height: 1.15;
   font-size: 4rem;
+  max-width: 80vw;
 }
 
 .title,
@@ -112,13 +113,16 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
   .card,
   .footer {
     border-color: #222;
   }
+
   .code {
     background: #111;
   }
+
   .logo img {
     filter: invert(1);
   }
