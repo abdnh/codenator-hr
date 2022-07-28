@@ -1,7 +1,10 @@
 import '../styles/globals.css'
+import '../styles/bootstrap.scss'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+import SSRProvider from 'react-bootstrap/SSRProvider';
+
+function App({ Component, pageProps }) {
+  return <SSRProvider><Component {...pageProps} /></SSRProvider>
 }
 
-export default MyApp
+export default App
