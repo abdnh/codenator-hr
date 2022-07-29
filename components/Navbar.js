@@ -19,17 +19,25 @@ export default function NavBar() {
                         <Nav.Link href="#about">About</Nav.Link>
                     </Nav>
                     <Nav className="ms-md-auto">
-                        <Nav.Link id="site-button" style={{ border: "outset 2px #fff" }}>{SITE_NAME}</Nav.Link>
+                        <Nav.Link id="site-button">{SITE_NAME}</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
             <style global jsx>
                 {`
                     #site-button {
-                        background-color: #5094f7;
+                        background-color: #398AFF;
+                        border: outset 2px #fff;
+                        border-radius: 0.5rem;
+                        outline: none;
+                        width: 8rem;
+                        text-align: center;
+                        box-shadow: 1px 1px 3px black;
+                        color: white;
                     }
                     #site-button:hover {
-                        background-color: #319eff;
+                        color: black;
+                        box-shadow: 1px 1px 3px white;
                     }
                 `}
             </style>
