@@ -26,7 +26,7 @@ export default function Login() {
                     Log in
                 </Button>
                 <div className="fs-6 text-start mt-2">
-                    Don't have an account? <Link href="/signup">Sign up</Link>
+                    Don&apos;t have an account? <Link href="/signup">Sign up</Link>
                 </div>
             </CustomForm>
 
