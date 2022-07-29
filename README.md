@@ -1,2 +1,1 @@
-Human Resources Site. WIP.
-
+Human resources site for Codenator — my imaginary code editor.
