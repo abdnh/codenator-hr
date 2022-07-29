@@ -10,7 +10,12 @@ export default function CTASection(props) {
         </p>
 
         <p className={styles.description}>
-            Get started by browsing our <a href="#">open positions</a>
+            We develop an editor tool loved by millions of professional software engineers: {SITE_NAME},
+            which consists of a code editor, AI pair programmer, and a comprehensive ecosystem of language tooling.
         </p>
+
+        {/* <p className={styles.description}>
+            Get started by browsing our <a href="#">open positions</a>
+        </p> */}
     </div>
 }

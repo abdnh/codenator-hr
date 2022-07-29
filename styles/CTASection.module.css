@@ -10,12 +10,12 @@
   margin-top: 1.5em;
   line-height: 1.15;
   font-size: 4rem;
-  max-width: 80vw;
 }
 
 .title,
 .description {
   text-align: center;
+  max-width: 80vw;
 }
 
 .description {
