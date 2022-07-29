@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Navbar from "../components/Navbar";
+import CTASection from "../components/CTASection";
+
 
 import { SITE_NAME, MOTTO } from "../lib/common";
 
@@ -18,13 +20,7 @@ export default function Home() {
 
       <main className={styles.main}>
 
-        <p className={styles.title}>
-          Join us in <a href="#">{SITE_NAME}</a> to work on the world's most advanced AI-powered code editor.
-        </p>
-
-        <p className={styles.description}>
-          Get started by browsing our <a href="#">open positions</a>
-        </p>
+        <CTASection />
 
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh mauris cursus mattis molestie a iaculis at erat. Sodales ut etiam sit amet nisl. Vitae justo eget magna fermentum iaculis eu. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Vel risus commodo viverra maecenas accumsan lacus vel facilisis. Cras semper auctor neque vitae tempus quam pellentesque nec. Aliquet risus feugiat in ante metus. Ut faucibus pulvinar elementum integer enim neque volutpat ac tincidunt. Dignissim diam quis enim lobortis scelerisque fermentum. Nunc pulvinar sapien et ligula ullamcorper. Quis viverra nibh cras pulvinar. Orci phasellus egestas tellus rutrum.
