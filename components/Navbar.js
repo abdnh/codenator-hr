@@ -9,7 +9,7 @@ export default function NavBar() {
     return (
         <Navbar bg="light" expand="md" fixed="top">
             <Container>
-                <Navbar.Brand href="#home"><Image src="/favicon.svg" width={48} height={48}></Image></Navbar.Brand>
+                <Navbar.Brand href="#home"><Image src="/favicon.svg" width={48} height={48} alt="site logo"></Image></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>

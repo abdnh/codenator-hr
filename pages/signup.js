@@ -11,7 +11,7 @@ export default function Signup(props) {
     return (
         <MainLayout subtitle="Sign up">
             {/* TODO: a different icon */}
-            <Image src="/favicon.svg" width="64" height="64"></Image>
+            <Image src="/favicon.svg" width="64" height="64" alt="site logo"></Image>
             <h2>Sign up</h2>
             <CustomForm>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
