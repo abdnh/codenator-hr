@@ -19,7 +19,7 @@ export default function NavBar() {
                         <Nav.Link href="#about">About</Nav.Link>
                     </Nav>
                     <Nav className="ms-md-auto">
-                        <Nav.Link id="site-button" style={{ border: "dashed 2px #fff" }}>{SITE_NAME}</Nav.Link>
+                        <Nav.Link id="site-button" style={{ border: "outset 2px #fff" }}>{SITE_NAME}</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
