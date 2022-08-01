@@ -4,10 +4,13 @@ import Navbar from "../components/Navbar";
 import { SITE_NAME } from "../lib/common";
 
 
-export default function MainLayout({ subtitle, children }) {
+export default function MainLayout({ subtitle, children, navbar }) {
     let title = `${SITE_NAME} HR`;
     if (subtitle) {
         title += ` - ${subtitle}`;
+    }
+    if (navbar === undefined) {
+        navbar = true;
     }
 
     return (
@@ -17,7 +20,7 @@ export default function MainLayout({ subtitle, children }) {
                 <meta name="description" content={title} />
                 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
             </Head>
-            <Navbar />
+            {navbar && <Navbar />}
             <main className={styles.main}>
                 {children}
             </main>

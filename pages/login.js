@@ -1,26 +1,25 @@
 import Link from "next/link"
-import Image from "next/image"
-import MainLayout from '../layouts/MainLayout'
-import CustomForm from '../layouts/CustomForm'
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+import AccessTabs from '../layouts/AccessTabs'
+import EntryLayout from "../layouts/EntryLayout";
+
+
 export default function Login() {
     return (
-        <MainLayout subtitle="Login">
-            {/* TODO: a different icon */}
-            <Image src="/favicon.svg" width="64" height="64" alt="site logo"></Image>
-            <h2>Log in</h2>
-            <CustomForm>
+        <EntryLayout activeTab="login">
+            <AccessTabs activeTab="login">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email" placeholder="Email address" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
+                    <div className="fs-6 text-start mt-2">
+                        <Link href="/forgot_password">Forgot password?</Link>
+                    </div>
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Log in
@@ -28,8 +27,7 @@ export default function Login() {
                 <div className="fs-6 text-start mt-2">
                     Don&apos;t have an account? <Link href="/signup">Sign up</Link>
                 </div>
-            </CustomForm>
-
-        </MainLayout>
+            </AccessTabs>
+        </EntryLayout>
     );
 }

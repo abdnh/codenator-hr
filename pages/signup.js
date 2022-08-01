@@ -1,36 +1,37 @@
 import Link from "next/link"
-import Image from "next/image"
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-
-import MainLayout from '../layouts/MainLayout'
-import CustomForm from '../layouts/CustomForm'
+import AccessTabs from '../layouts/AccessTabs'
+import EntryLayout from "../layouts/EntryLayout";
 
 export default function Signup(props) {
     return (
-        <MainLayout subtitle="Sign up">
-            {/* TODO: a different icon */}
-            <Image src="/favicon.svg" width="64" height="64" alt="site logo"></Image>
-            <h2>Sign up</h2>
-            <CustomForm>
+        <EntryLayout activeTab="signup">
+            <AccessTabs activeTab="signup">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" />
+                    <Form.Control type="email" placeholder="Email address" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicTOS">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="tos" />
+                        <label class="form-check-label" htmlFor="tos">
+                            I agree to the <Link href="/tos">terms of service</Link>
+                        </label>
+                    </div>
+                </Form.Group>
+
                 <Button variant="primary" type="submit">
                     Sign in
                 </Button>
                 <div className="fs-6 text-start mt-2">
                     Already have an account? <Link href="/login">Log in</Link>
                 </div>
-            </CustomForm>
-        </MainLayout>
-
+            </AccessTabs>
+        </EntryLayout>
     )
 }
