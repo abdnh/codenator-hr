@@ -1,46 +1,32 @@
 import { SITE_NAME } from "../lib/common";
 
-import Image from "next/image";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import NavLink from "./NavLink";
+import Button from "./Button";
+import styles from "../styles/Navbar.module.scss";
 
 export default function NavBar() {
     return (
-        <Navbar bg="light" expand="md" fixed="top">
-            <Container>
-                <Navbar.Brand href="#home"><Image src="/favicon.svg" width={48} height={48} alt="site logo"></Image></Navbar.Brand>
+        <Navbar className={styles.navbar} bg="light" expand="lg" fixed="top">
+            <Container className={styles.container}>
+                <Navbar.Brand className={styles.brand} href="#home">
+                    <img src="/favicon.svg" width={48} height={48} alt="site logo"></img>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav>
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#jobs">Jobs</Nav.Link>
-                        <Nav.Link href="#profile">Profile</Nav.Link>
-                        <Nav.Link href="#about">About</Nav.Link>
+                <Navbar.Collapse className={styles.collapse}>
+                    <Nav className={styles.nav}>
+                        <NavLink href="#home">Home</NavLink>
+                        <NavLink href="#jobs">Jobs</NavLink>
+                        <NavLink href="#profile">Profile</NavLink>
+                        <NavLink href="#about">About</NavLink>
                     </Nav>
-                    <Nav className="ms-md-auto">
-                        <Nav.Link id="site-button">{SITE_NAME}</Nav.Link>
+                    <Nav className={styles.nav}>
+                        <NavLink><Button>{SITE_NAME}</Button></NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
-            <style global jsx>
-                {`
-                    #site-button {
-                        background-color: #398AFF;
-                        border: outset 2px #fff;
-                        border-radius: 0.5rem;
-                        outline: none;
-                        width: 8rem;
-                        text-align: center;
-                        box-shadow: 1px 1px 3px black;
-                        color: white;
-                    }
-                    #site-button:hover {
-                        color: black;
-                        box-shadow: 1px 1px 3px white;
-                    }
-                `}
-            </style>
         </Navbar>
     );
 }
