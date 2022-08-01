@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import styles from '../styles/MainLayout.module.css';
+import styles from '../styles/MainLayout.module.scss';
 import Navbar from "../components/Navbar";
 import { SITE_NAME } from "../lib/common";
 

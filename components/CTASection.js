@@ -1,4 +1,4 @@
-import styles from "../styles/CTASection.module.css"
+import styles from "../styles/CTASection.module.scss"
 
 import { SITE_NAME } from "../lib/common";
 
