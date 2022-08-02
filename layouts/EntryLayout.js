@@ -1,10 +1,8 @@
-import OnboardingPanel from "../components/OnboardingPanel";
 import MainLayout from "./MainLayout";
 
 export default function EntryLayout({ children, activeTab }) {
     return <MainLayout subtitle={activeTab} navbar={false}>
         <div id="entrylayout">
-            <OnboardingPanel></OnboardingPanel>
             {children}
             <style global jsx>
                 {

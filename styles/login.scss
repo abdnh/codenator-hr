@@ -1,0 +1,61 @@
+$ac: #ABC9FF;
+$ko: #0078AA;
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.Hesap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 60%;
+    margin: 50px auto;
+
+    Form {
+        width: 80%;
+        font-size: 20px;
+        position: relative;
+        input {
+            border: 0;
+            background: $ko;
+            border-bottom: 1px solid #fff;
+            display: block;
+        }
+        input:focus,
+        input:valid{
+        border-bottom-color: rgb(255, 255, 255);
+        }
+        label {
+           // position: absolute;
+            display: inline-block;
+            font-size: 18px;
+            min-width: 5px;
+            transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          }
+             input:focus + label ,
+             input:valid + label {
+             transform: translateY(-30px);
+             }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            margin: 50px 0 30px;
+            width: 370px;
+            height: 40px;
+            color: #ffffff;
+            border: none;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

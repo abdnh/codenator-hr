@@ -1,6 +1,4 @@
-import '../styles/globals.scss'
-import '../styles/bootstrap.scss'
-
+import '../styles/globals.scss';
 import SSRProvider from 'react-bootstrap/SSRProvider';
 
 function App({ Component, pageProps }) {

@@ -1,6 +1,3 @@
-import Link from "next/link"
-
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import AccessTabs from '../layouts/AccessTabs'
 import EntryLayout from "../layouts/EntryLayout";
@@ -9,27 +6,20 @@ export default function Signup(props) {
     return (
         <EntryLayout activeTab="signup">
             <AccessTabs activeTab="signup">
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Control type="email" placeholder="Email address" />
-                </Form.Group>
+            <div className="Hesap">
+                    <Form className="form">
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Control type="password" placeholder="Password" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicTOS">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="tos" />
-                        <label class="form-check-label" htmlFor="tos">
-                            I agree to the <Link href="/tos">terms of service</Link>
-                        </label>
-                    </div>
-                </Form.Group>
+                        <label className="label">Kullanıcı Adı</label>
+                        <input type="text" className="input" id="Name" />
 
-                <Button variant="primary" type="submit">
-                    Sign in
-                </Button>
-                <div className="fs-6 text-start mt-2">
-                    Already have an account? <Link href="/login">Log in</Link>
+                        <label for="exampleInputEmail1" className="label">Eposta</label>
+                        <input type="email" className="input" aria-describedby="emailHelp" />
+
+                        <label for="exampleInputPassword1" className="label">Şifre</label>
+                        <input type="password" className="input" />
+
+                        <button className="btn">Giriş Yap</button>
+                    </Form>
                 </div>
             </AccessTabs>
         </EntryLayout>

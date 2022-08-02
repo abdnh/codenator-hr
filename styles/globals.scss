@@ -1,35 +1,15 @@
-:root {
-  --link-color: #0070f3;
-}
-
+@import "./login.scss";
+@import "./bootstrap.scss";
+@import "./AccessTabs.scss";
 html,
 body {
   padding: 0;
   margin: 0;
+  background:#fff;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-body {
-  background-color: #f3fafc !important;
-}
-
-a {
-  color: var(--link-color);
-  text-decoration: none;
-}
-
 * {
   box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-
-  body {
-    color: white;
-    background: black;
-  }
 }
