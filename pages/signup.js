@@ -7,8 +7,6 @@ export default function Signup(props) {
         <EntryLayout activeTab="signup">
             <AccessTabs activeTab="signup">
             <div className="Hesap">
-                    <Form className="form">
-
                         <label className="label">Kullanıcı Adı</label>
                         <input type="text" className="input" id="Name" />
 
@@ -19,7 +17,6 @@ export default function Signup(props) {
                         <input type="password" className="input" />
 
                         <button className="btn">Giriş Yap</button>
-                    </Form>
                 </div>
             </AccessTabs>
         </EntryLayout>

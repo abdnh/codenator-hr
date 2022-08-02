@@ -8,8 +8,6 @@ export default function Login() {
         <EntryLayout activeTab="login">
             <AccessTabs activeTab="login">
                 <div className="Hesap">
-                    <Form className="form">
-
                         <label for="exampleInputEmail1" className="label">Eposta</label>
                         <input type="email" className="input" aria-describedby="emailHelp" />
 
@@ -18,7 +16,6 @@ export default function Login() {
 
                         <button className="btn">Giriş Yap</button>
                         <a>Bilgilerinizi mi unutunuz?</a>
-                    </Form>
                 </div>
             </AccessTabs>
         </EntryLayout>
