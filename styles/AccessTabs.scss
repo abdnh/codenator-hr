@@ -1,12 +1,6 @@
 $ac:#ABC9FF;
 $ko:#0078AA;
-*{
-    padding: 0;
-    margin: 0;
-}
-.row{
-    padding: 0;
-}
+
 .access{
     .container{
         width: 70%;
@@ -51,9 +45,12 @@ $ko:#0078AA;
         .icon{
             display: flex;
             justify-content: space-around;
-            margin: 50px 33vh 0 33vh;
-            font-size: 100px;
-            line-height: 10px;
+            margin: 50px 25vh 0 25vh;
+            
+            button{
+                background: $ko;
+                border: none;
+            }
         }
     }
 }
