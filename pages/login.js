@@ -8,14 +8,18 @@ export default function Login() {
         <EntryLayout activeTab="login">
             <AccessTabs activeTab="login">
                 <div className="Hesap">
-                        <label for="exampleInputEmail1" className="label">Eposta</label>
-                        <input type="email" className="input" aria-describedby="emailHelp" />
+                    <Form.Group>
+                        <Form.Label className="label">Eposta</Form.Label>
+                        <Form.Control type="email" className="input" aria-describedby="emailHelp" />
+                    </Form.Group>
 
-                        <label for="exampleInputPassword1" className="label">Şifre</label>
-                        <input type="password"  className="input" />
+                    <Form.Group>
+                        <Form.Label className="label">Şifre</Form.Label>
+                        <Form.Control type="password" className="input" />
+                    </Form.Group>
 
-                        <button className="btn">Giriş Yap</button>
-                        <a>Bilgilerinizi mi unutunuz?</a>
+                    <button className="btn">Giriş Yap</button>
+                    <a>Bilgilerinizi mi unutunuz?</a>
                 </div>
             </AccessTabs>
         </EntryLayout>

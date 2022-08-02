@@ -6,17 +6,23 @@ export default function Signup(props) {
     return (
         <EntryLayout activeTab="signup">
             <AccessTabs activeTab="signup">
-            <div className="Hesap">
-                        <label className="label">Kullanıcı Adı</label>
-                        <input type="text" className="input" id="Name" />
+                <div className="Hesap">
+                    <Form.Group>
+                        <Form.Label className="label">Kullanıcı Adı</Form.Label>
+                        <Form.Control type="text" className="input" id="Name" />
+                    </Form.Group>
 
-                        <label for="exampleInputEmail1" className="label">Eposta</label>
-                        <input type="email" className="input" aria-describedby="emailHelp" />
+                    <Form.Group>
+                        <Form.Label for="exampleInputEmail1" className="label">Eposta</Form.Label>
+                        <Form.Control type="email" className="input" aria-describedby="emailHelp" />
+                    </Form.Group>
 
-                        <label for="exampleInputPassword1" className="label">Şifre</label>
-                        <input type="password" className="input" />
+                    <Form.Group>
+                        <Form.Label for="exampleInputPassword1" className="label">Şifre</Form.Label>
+                        <Form.Control type="password" className="input" />
+                    </Form.Group>
 
-                        <button className="btn">Giriş Yap</button>
+                    <button className="btn">Giriş Yap</button>
                 </div>
             </AccessTabs>
         </EntryLayout>
