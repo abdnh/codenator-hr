@@ -1,5 +1,4 @@
-$ac:#ABC9FF;
-$ko:#0078AA;
+@use 'vars';
 
 .access{
     .container{
@@ -7,7 +6,7 @@ $ko:#0078AA;
     }
     margin:  auto;
     .left{
-        background: $ac;
+        background: vars.$ac;
         height: 80vh;
         display: flex;
         justify-content:center;
@@ -28,7 +27,7 @@ $ko:#0078AA;
         }
     }
     .right{
-        background: $ko;
+        background: vars.$ko;
         height: 80vh;
         width: 50%;
         display: flex;
@@ -48,7 +47,7 @@ $ko:#0078AA;
             margin: 50px 25vh 0 25vh;
             
             button{
-                background: $ko;
+                background: vars.$ko;
                 border: none;
             }
         }

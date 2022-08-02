@@ -1,5 +1,4 @@
-$ac: #ABC9FF;
-$ko: #0078AA;
+@use 'vars';
 
 * {
     padding: 0;
@@ -20,7 +19,7 @@ $ko: #0078AA;
         position: relative;
         input {
             border: 0;
-            background: $ko;
+            background: vars.$ko;
             border-bottom: 1px solid #fff;
             display: block;
         }
