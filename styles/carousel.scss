@@ -1,12 +1,21 @@
 [class^="carousel-control-"] {
   background-color: #6ca8ff85;
 }
+.carousel-control-next,
+.carousel-control-prev {
+  background: linear-gradient(90deg, #735eff26 0%, #6ca8ff6b 91.57%) !important;
+}
 .carousel-caption {
   color: black;
 }
 .carousel-item {
   height: 32rem;
 }
-.carousel-indicators button {
-  background-color: #0b5ed7 !important;
+
+.carousel-control-next-icon {
+  background-image: url("/arrow-right.svg");
+}
+
+.carousel-control-prev-icon {
+  background-image: url("/arrow-left.svg");
 }
