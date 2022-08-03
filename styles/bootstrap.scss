@@ -1,3 +1,4 @@
+@use "vars";
 @import "~bootstrap/scss/bootstrap";
 @import "carousel.scss";
 
@@ -8,12 +9,12 @@
 
 .navbar {
   min-height: 75px;
-  background-color: #6ca8ff !important;
+  background-color: vars.$color1 !important;
   color: #fff;
 }
 .navbar-brand {
   padding-bottom: 0;
 }
-.row{
+.row {
   padding: 0;
 }

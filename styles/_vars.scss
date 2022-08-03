@@ -7,3 +7,7 @@ $black25: rgba($black, 25%);
 $black10: rgba($black, 10%);
 $black5: rgba($black, 5%);
 $bg1: #f3fafc;
+$color1: #6ca8ff;
+$color2: #735eff;
+$gradient1: linear-gradient(90deg, $color2 0%, $color1 91.57%);
+$gradient2: linear-gradient(180deg, #6ca8ff 0%, #735eff 100%);

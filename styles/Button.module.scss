@@ -1,3 +1,5 @@
+@use 'vars';
+
 .button {
   background-color: #735eff;
   border: none;
@@ -18,7 +20,7 @@
 }
 
 .button.secondary {
-  background: linear-gradient(90deg, #735eff 0%, #6ca8ff 91.57%);
+  background: vars.$gradient1;
   min-height: 42px;
 }
 
