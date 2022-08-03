@@ -1,6 +1,9 @@
 $ac:#ABC9FF;
-$ko:#0078AA;
-
+$ko:#5584AC;
+//0078AA 
+//7A4069
+//495C83
+//748DA6
 .access{
     .container{
         width: 70%;
@@ -28,6 +31,7 @@ $ko:#0078AA;
         }
     }
     .right{
+        padding: 0;
         background: $ko;
         height: 80vh;
         width: 50%;
@@ -44,11 +48,11 @@ $ko:#0078AA;
         }
         .icon{
             display: flex;
-            justify-content: space-around;
-            margin: 50px 25vh 0 25vh;
-            
+            width: 50%;
+            margin-left: 25%;
             button{
                 background: $ko;
+                width: 30%;
                 border: none;
             }
         }

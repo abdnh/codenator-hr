@@ -19,7 +19,7 @@ export default function AccessTabs({ children, activeTab }) {
             <Container>
                 <Row>
                     <Col xs={5} className="left">
-                        <img src="img1.svg" alt="" width={200} height={180}/>
+                        <img className="d-none d-xl-block d-xxl-block"  src="/svg/img1.svg" alt="" width={200} height={180}/>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
                     </Col>
                     <Col xs={6} className="right">
@@ -33,12 +33,12 @@ export default function AccessTabs({ children, activeTab }) {
                                 </Nav.Item> 
                                 
                             </Nav>
-                            <div className="icon">
-                                    <FacebookIcon/>
-                                    <GoogleIcon/>
-                            </div>
-                            
                             {children} 
+                            <div className="icon">
+                                  <button><img src="/svg/facebook.svg" alt="" width={60} height={60}/></button>
+                                  <button><img src="/svg/google.svg" alt="" width={60} height={60}/></button>
+                                  <button><img src="/svg/github.svg" alt="" width={50} height={50}/></button>
+                            </div>
                         </Form>
                     </Col>
                 </Row>
