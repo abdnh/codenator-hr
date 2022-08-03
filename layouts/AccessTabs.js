@@ -33,9 +33,9 @@ export default function AccessTabs({ children, activeTab }) {
                             </Nav>
                             {children} 
                             <div className="icon">
-                                  <button><img src="/svg/facebook.svg" alt="" width={60} height={60}/></button>
-                                  <button><img src="/svg/google.svg" alt="" width={60} height={60}/></button>
-                                  <button><img src="/svg/github.svg" alt="" width={50} height={50}/></button>
+                                  <button><img src="/svg/facebook.svg" alt="" width={30} height={30}/></button>
+                                  <button><img src="/svg/google.svg" alt="" width={40} height={40}/></button>
+                                  <button><img src="/svg/github.svg" alt="" width={30} height={30}/></button>
                             </div>
                         </Form>
                     </Col>

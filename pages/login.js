@@ -7,8 +7,7 @@ export default function Login() {
         <EntryLayout activeTab="login">
             <AccessTabs activeTab="login">
                 <div class="login">
-                    <h2>Hesabınıza Giriş Yapınız</h2>
-                    <form>
+                        <h2>Hesabınıza Giriş Yapınız</h2>
                         <div class="user-box">
                             <input type="email" className="input" placeholder=''  id="exampleInputEmail1" aria-describedby="emailHelp" />
                             <label for="exampleInputEmail1" className="label">Eposta</label>
@@ -19,7 +18,6 @@ export default function Login() {
                         </div>
                         <button className="bttn">Giriş Yap</button>
                         <a href="#" className="text">Bilgilerinizi mi unutunuz?</a>
-                    </form>
                 </div>
             </AccessTabs>
         </EntryLayout>
