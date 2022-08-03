@@ -1,12 +1,6 @@
 @use "vars";
 
 .footer {
-  margin-inline: 64px;
-  max-width: 80vw;
-  background-color: vars.$bg1;
-}
-
-.footer {
   .title,
   .description,
   .banner {
