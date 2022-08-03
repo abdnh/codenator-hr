@@ -9,11 +9,11 @@ export default function Login() {
                 <div class="login">
                         <h2>Hesabınıza Giriş Yapınız</h2>
                         <div class="user-box">
-                            <input type="email" className="input" placeholder=''  id="exampleInputEmail1" aria-describedby="emailHelp" />
+                            <input type="email" className="input" placeholder=''  id="exampleInputEmail1" aria-describedby="emailHelp" required/>
                             <label for="exampleInputEmail1" className="label">Eposta</label>
                         </div>
                         <div class="user-box">
-                            <input type="password" className="input" id="exampleInputPassword1"/>
+                            <input type="password" className="input" id="exampleInputPassword1" required/>
                             <label for="exampleInputPassword1" className="label">Şifre</label>
                         </div>
                         <button className="bttn">Giriş Yap</button>
