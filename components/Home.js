@@ -1,3 +1,5 @@
+import Container from 'react-bootstrap/Container';
+
 import CTASection from "./CTASection";
 import OpenPositionsPreview from "./OpenPositionsPreview";
 import InternshipsPreview from "./InternshipsPreview";
@@ -8,9 +10,11 @@ import styles from "../styles/Home.module.scss";
 export default function Home() {
     return (
         <div className={styles.home}>
-            <CTASection />
-            <OpenPositionsPreview />
-            <InternshipsPreview />
+            <Container>
+                <CTASection />
+                <OpenPositionsPreview />
+                <InternshipsPreview />
+            </Container>
             {/* TODO: maybe faqs and contact sections */}
             <HomeFooter />
         </div>

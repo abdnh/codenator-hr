@@ -1,7 +1,7 @@
-import MainLayout from "./MainLayout";
+import ContainerLayout from "./ContainerLayout";
 
 export default function EntryLayout({ children, activeTab }) {
-    return <MainLayout subtitle={activeTab} navbar={false}>
+    return <ContainerLayout subtitle={activeTab}>
         <div id="entrylayout">
             {children}
             <style global jsx>
@@ -27,5 +27,5 @@ export default function EntryLayout({ children, activeTab }) {
             </style>
         </div>
 
-    </MainLayout>
+    </ContainerLayout>
 }
