@@ -1,3 +1,4 @@
+import Container from 'react-bootstrap/Container';
 import Head from 'next/head';
 import styles from '../styles/MainLayout.module.scss';
 import Navbar from "../components/Navbar";
@@ -14,7 +15,7 @@ export default function MainLayout({ subtitle, children, navbar }) {
     }
 
     return (
-        <div className={styles.container}>
+        <Container className={styles.container}>
             <Head>
                 <title>{title}</title>
                 <meta name="description" content={title} />
@@ -24,6 +25,10 @@ export default function MainLayout({ subtitle, children, navbar }) {
             <main className={styles.main}>
                 {children}
             </main>
-        </div>
+            <style global jsx>{
+            `
+            `
+            }</style>
+        </Container>
     )
 }

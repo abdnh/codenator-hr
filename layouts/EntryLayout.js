@@ -7,6 +7,9 @@ export default function EntryLayout({ children, activeTab }) {
             <style global jsx>
                 {
                     `
+            body {
+                background-color: white;
+            }
             #entrylayout {
                 min-width: 95%;
                 display: flex;

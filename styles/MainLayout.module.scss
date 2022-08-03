@@ -1,4 +1,4 @@
-@use 'vars';
+@use "vars";
 
 .container {
   padding: 0;
@@ -12,6 +12,4 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // FIXME: override this in login/signup screens if needed
-  background-color: vars.$bg1;
 }
