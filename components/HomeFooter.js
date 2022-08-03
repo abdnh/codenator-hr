@@ -16,16 +16,16 @@ function FooterColumn({ header, items }) {
 
 export default function HomeFooter() {
 
-    return <div className={styles.sitemap}>
+    return <div className={styles.footer}>
         <p className={styles.title}>
             Got you interested?<br />
             Start by completing your <a href="/profile">profile</a>.
         </p>
-        <Container fluid className={styles.container}>
+        <Container fluid className={styles.linkscontainer}>
             <Col className={`${styles.banner} ${styles.col}`}><a href="#">Codenator</a></Col>
             <FooterColumn header="Support" items={['Docs', 'Contact us']} />
             <FooterColumn header="Company" items={['About', 'Blog']} />
         </Container>
-        <Container fluid className={styles.footer}></Container>
+        <Container fluid className={styles.copyrightBar}></Container>
     </div>
 }

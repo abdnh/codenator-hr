@@ -11,5 +11,6 @@ $color1: #6ca8ff;
 $color2: #735eff;
 $gradient1: linear-gradient(90deg, $color2 0%, $color1 91.57%);
 $gradient2: linear-gradient(180deg, #6ca8ff 0%, #735eff 100%);
+$gradient3: linear-gradient(180deg, $bg1 0%, rgba(201, 243, 255, 0.06) 50%);
 $font1: "RobotoSlab-Regular";
 $font1-bold: "RobotoSlab-Bold";

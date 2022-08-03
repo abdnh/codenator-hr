@@ -1,12 +1,12 @@
 @use "vars";
 
-.sitemap {
+.footer {
   margin-inline: 64px;
   max-width: 80vw;
   background-color: vars.$bg1;
 }
 
-.sitemap {
+.footer {
   .title,
   .description,
   .banner {
@@ -70,10 +70,11 @@
     font-size: 16px;
   }
 
-  .container {
+  .linkscontainer {
     margin-top: 256px;
     display: flex;
     margin-bottom: 16px;
+    background: vars.$gradient3;
 
     a {
       text-decoration: none;
@@ -81,7 +82,7 @@
     }
   }
 
-  .footer {
+  .copyrightBar {
     background: vars.$gradient2;
     min-height: 48px;
   }
