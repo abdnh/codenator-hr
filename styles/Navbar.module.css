@@ -1,0 +1,18 @@
+.container {
+  margin-inline: 16px;
+}
+
+.navbar {
+  justify-content: center;
+  min-height: 75px;
+  background: linear-gradient(90deg, #735eff 0%, #6ca8ff 91.57%) !important;
+  color: #fff;
+}
+
+.collapse {
+  justify-content: center;
+}
+
+.nav {
+  align-items: center;
+}/*# sourceMappingURL=Navbar.module.css.map */

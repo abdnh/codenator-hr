@@ -1,0 +1,24 @@
+[class^=carousel-control-] {
+  background-color: rgba(108, 168, 255, 0.5215686275);
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  background: linear-gradient(90deg, rgba(115, 94, 255, 0.1490196078) 0%, rgba(108, 168, 255, 0.4196078431) 91.57%) !important;
+}
+
+.carousel-caption {
+  color: black;
+}
+
+.carousel-item {
+  height: 32rem;
+}
+
+.carousel-control-next-icon {
+  background-image: url("/arrow-right.svg");
+}
+
+.carousel-control-prev-icon {
+  background-image: url("/arrow-left.svg");
+}/*# sourceMappingURL=carousel.css.map */

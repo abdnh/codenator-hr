@@ -1,0 +1,54 @@
+.access {
+  margin: auto;
+}
+.access .container {
+  width: 70%;
+}
+.access .left {
+  background: #abc9ff;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 50px 0 50px 0;
+}
+.access .left img {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: -10px;
+}
+.access .left p {
+  color: white;
+  width: 80%;
+  height: 40px;
+  align-items: center;
+  margin-top: 10px;
+}
+.access .right {
+  padding: 0;
+  background: #0078aa;
+  height: 80vh;
+  width: 50%;
+  display: flex;
+  margin: 50px 0 50px 0;
+}
+.access .right Form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.access .right .btn {
+  width: 100%;
+  border-radius: none;
+}
+.access .right .icon {
+  display: flex;
+  width: 50%;
+  margin-left: 25%;
+}
+.access .right .icon button {
+  background: #0078aa;
+  width: 30%;
+  border: none;
+}/*# sourceMappingURL=AccessTabs.css.map */

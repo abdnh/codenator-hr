@@ -4,8 +4,6 @@ import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import GoogleIcon from '@mui/icons-material/Google';
 
 export default function AccessTabs({ children, activeTab }) {
 
@@ -33,13 +31,6 @@ export default function AccessTabs({ children, activeTab }) {
                                 </Nav.Item> 
                                 
                             </Nav>
-<<<<<<< HEAD
-=======
-                            <div className="icon">
-                                    <FacebookIcon/>
-                                    <GoogleIcon/>
-                            </div>
->>>>>>> d4891d5b7a5ea035a0ff50770089724b8438118c
                             {children} 
                             <div className="icon">
                                   <button><img src="/svg/facebook.svg" alt="" width={60} height={60}/></button>
