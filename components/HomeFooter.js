@@ -1,8 +1,18 @@
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styles from "../styles/HomeFooter.module.scss"
 
+
+function FooterColumn({ header, items }) {
+    return <Col className={styles.col}>
+        <p className={styles.colheader}>{header}</p>
+        <ul className={styles.itemlist}>
+            {
+                items.map(item => <li className={styles.colitem}><a href="">{item}</a></li>)
+            }
+        </ul>
+    </Col>
+}
 
 export default function HomeFooter() {
 
@@ -12,32 +22,10 @@ export default function HomeFooter() {
             Start by completing your <a href="/profile">profile</a>.
         </p>
         <Container fluid className={styles.container}>
-            <Row>
-                <Col className={styles.banner}>Codenator</Col>
-                <Col className={styles.header}>Support</Col>
-                <Col className={styles.header}>Company</Col>
-            </Row>
-            <Row>
-                <Col></Col>
-                <Col>Docs</Col>
-                <Col>About</Col>
-            </Row>
-            <Row>
-                <Col>Contact us</Col>
-                <Col>Blog</Col>
-                <Col></Col>
-            </Row>
-            <Row>
-                <Col></Col>
-                <Col></Col>
-                <Col>Careers</Col>
-            </Row>
-            <Container fluid className={styles.footer}></Container>
+            <Col className={`${styles.banner} ${styles.col}`}>Codenator</Col>
+            <FooterColumn header="Support" items={['Docs', 'Contact us']} />
+            <FooterColumn header="Company" items={['About', 'Blog']} />
         </Container>
-        <style global jsx>{`
-        .col {
-            color: #202224a7;
-        }
-        `}</style>
+        <Container fluid className={styles.footer}></Container>
     </div>
 }

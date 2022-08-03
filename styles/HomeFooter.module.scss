@@ -10,7 +10,7 @@
   .title,
   .description,
   .banner {
-    font-family: "RobotoSlab-Regular", sans-serif;
+    font-family: vars.$font1, sans-serif;
   }
   h1,
   h2,
@@ -18,7 +18,7 @@
   h4,
   h5,
   h6 {
-    font-family: "RobotoSlab-Bold", sans-serif;
+    font-family: vars.$font1-bold, sans-serif;
   }
 
   h1::before,
@@ -72,10 +72,43 @@
 
   .container {
     margin-top: 256px;
+    display: flex;
+    margin-bottom: 16px;
+
+    a {
+      text-decoration: none;
+      color: vars.$black75;
+    }
   }
 
   .footer {
     background: vars.$gradient2;
     min-height: 48px;
+  }
+  .row {
+    align-items: left;
+    text-align: left;
+    padding-bottom: 24px;
+  }
+  .col {
+    color: vars.$black75;
+  }
+
+  .col.banner {
+    color: vars.$black;
+  }
+
+  .itemlist {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .colheader {
+    color: vars.$black75;
+    font-weight: bold;
+  }
+
+  .colitem {
+    margin-bottom: 8px;
   }
 }
