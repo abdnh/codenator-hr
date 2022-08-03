@@ -9,7 +9,7 @@
 .home {
   .title,
   .description {
-    font-family: "RobotoSlab-Regular", sans-serif;
+    font-family: vars.$font1, sans-serif;
   }
   h1 {
     font-size: 90px;
@@ -43,7 +43,7 @@
   h6 {
     color: vars.$black;
     text-align: left;
-    font-family: "RobotoSlab-Bold", sans-serif;
+    font-family: vars.$font1-bold, sans-serif;
   }
   h1::before,
   h2::before,
