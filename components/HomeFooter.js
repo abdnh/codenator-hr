@@ -22,7 +22,7 @@ export default function HomeFooter() {
             Start by completing your <a href="/profile">profile</a>.
         </p>
         <Container fluid className={styles.container}>
-            <Col className={`${styles.banner} ${styles.col}`}>Codenator</Col>
+            <Col className={`${styles.banner} ${styles.col}`}><a href="#">Codenator</a></Col>
             <FooterColumn header="Support" items={['Docs', 'Contact us']} />
             <FooterColumn header="Company" items={['About', 'Blog']} />
         </Container>
