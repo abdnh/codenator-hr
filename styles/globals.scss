@@ -1,4 +1,4 @@
-@use 'vars';
+@use "vars";
 
 @import "./login.scss";
 @import "./bootstrap.scss";
@@ -8,11 +8,11 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background:#fff;
+  background: #fff;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -42,7 +42,22 @@ h6 {
   font-size: 16px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: vars.$black;
+  text-align: left;
+}
 
-h1, h2, h3, h4, h5, h6 {
-  color: #202224;
+@font-face {
+  font-family: "RobotoSlab-Regular";
+  src: url("/fonts/RobotoSlab-Regular.ttf");
+}
+
+@font-face {
+  font-family: "RobotoSlab-Bold";
+  src: url("/fonts/RobotoSlab-Bold.ttf");
 }

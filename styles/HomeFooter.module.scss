@@ -1,14 +1,15 @@
 @use "vars";
 
-.home {
+.sitemap {
   margin-inline: 64px;
   max-width: 80vw;
   background-color: #f3fafc;
 }
 
-.home {
+.sitemap {
   .title,
-  .description {
+  .description,
+  .banner {
     font-family: "RobotoSlab-Regular", sans-serif;
   }
   h1,
@@ -55,5 +56,26 @@
     margin-block: 4rem;
     line-height: 1.5;
     font-size: 1.5rem;
+  }
+
+  .banner {
+    font-weight: bold;
+    color: vars.$black;
+    font-size: 32px;
+  }
+
+  .header {
+    font-weight: bold;
+    color: vars.$black;
+    font-size: 16px;
+  }
+
+  .container {
+    margin-top: 256px;
+  }
+
+  .footer {
+    background: linear-gradient(90deg, #735eff 0%, #6ca8ff 91.57%);
+    min-height: 48px;
   }
 }
