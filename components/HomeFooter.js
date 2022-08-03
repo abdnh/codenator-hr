@@ -10,7 +10,7 @@ function FooterColumn({ header, items }) {
         <p className={styles.colheader}>{header}</p>
         <ul className={styles.itemlist}>
             {
-                items.map(item => <li className={styles.colitem}><a href="">{item}</a></li>)
+                items.map(item => <li className={styles.colitem} key={item}><a href="">{item}</a></li>)
             }
         </ul>
     </Col>
