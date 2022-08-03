@@ -16,3 +16,10 @@
 .button:active {
   box-shadow: 3px 3px 7px #335ebe;
 }
+
+.button.secondary {
+  background: linear-gradient(90deg, #735eff 0%, #6ca8ff 91.57%);
+  min-height: 42px;
+}
+
+// TODO: secondary styles for hover and active

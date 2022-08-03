@@ -1,3 +1,5 @@
+@use "vars";
+
 @import "./login.scss";
 @import "./bootstrap.scss";
 @import "./AccessTabs.scss";
@@ -6,13 +8,57 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background:#fff;
+  background: #fff;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+// TODO: move to home
+h1 {
+  font-size: 90px;
+}
+
+h2 {
+  font-size: 64px;
+}
+
+h3 {
+  font-size: 45px;
+}
+
+h4 {
+  font-size: 32px;
+}
+
+h5 {
+  font-size: 22px;
+}
+
+h6 {
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: vars.$black;
+  text-align: left;
+}
+
+@font-face {
+  font-family: "RobotoSlab-Regular";
+  src: url("/fonts/RobotoSlab-Regular.ttf");
+}
+
+@font-face {
+  font-family: "RobotoSlab-Bold";
+  src: url("/fonts/RobotoSlab-Bold.ttf");
+}

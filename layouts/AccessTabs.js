@@ -23,7 +23,7 @@ export default function AccessTabs({ children, activeTab }) {
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
                     </Col>
                     <Col xs={6} className="right">
-                        <Form>
+                        <Form className="form">
                             <Nav  fill variant="tabs" defaultActiveKey={activeTab} onSelect={handleTabSelect}>
                                 <Nav.Item>
                                     <Nav.Link className="btn" eventKey="login">Login</Nav.Link>
@@ -33,6 +33,13 @@ export default function AccessTabs({ children, activeTab }) {
                                 </Nav.Item> 
                                 
                             </Nav>
+<<<<<<< HEAD
+=======
+                            <div className="icon">
+                                    <FacebookIcon/>
+                                    <GoogleIcon/>
+                            </div>
+>>>>>>> d4891d5b7a5ea035a0ff50770089724b8438118c
                             {children} 
                             <div className="icon">
                                   <button><img src="/svg/facebook.svg" alt="" width={60} height={60}/></button>

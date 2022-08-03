@@ -1,4 +1,3 @@
-import Form from 'react-bootstrap/Form';
 import AccessTabs from '../layouts/AccessTabs';
 import EntryLayout from "../layouts/EntryLayout";
 

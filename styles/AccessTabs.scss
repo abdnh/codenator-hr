@@ -1,16 +1,12 @@
-$ac:#ABC9FF;
-$ko:#5584AC;
-//0078AA 
-//7A4069
-//495C83
-//748DA6
+@use 'vars';
+
 .access{
     .container{
         width: 70%;
     }
     margin:  auto;
     .left{
-        background: $ac;
+        background: vars.$ac;
         height: 80vh;
         display: flex;
         justify-content:center;
@@ -32,7 +28,7 @@ $ko:#5584AC;
     }
     .right{
         padding: 0;
-        background: $ko;
+        background: vars.$ko;
         height: 80vh;
         width: 50%;
         display: flex;
@@ -51,7 +47,7 @@ $ko:#5584AC;
             width: 50%;
             margin-left: 25%;
             button{
-                background: $ko;
+                background: vars.$ko;
                 width: 30%;
                 border: none;
             }

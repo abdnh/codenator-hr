@@ -2,6 +2,7 @@
 
 import Carousel from 'react-bootstrap/Carousel';
 import styles from "../styles/OpenPositionsPreview.module.scss";
+import Button from "./Button";
 
 // TODO: use <Image>
 function CarouselImage({ src, width, height, alt }) {
@@ -15,55 +16,56 @@ function CarouselImage({ src, width, height, alt }) {
 }
 
 
-export default function OpenPositionsPreview(props) {
-    return (
-        <>
+export default function OpenPositionsPreview() {
+    return <div className={styles.positionsPreview}>
+        <div className={styles.header}>
             <h3>Open Positions</h3>
-            <Carousel interval={null} id="open-positions-preview">
-                <Carousel.Item>
-                    <CarouselImage
-                        className="d-block w-25"
-                        width="100px"
-                        height="100px"
-                        src="/placeholder.svg"
-                        alt="First slide"
-                    />
-                    <Carousel.Caption>
-                        <h3>Quality Control Engineer</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <CarouselImage
-                        className="d-block w-25"
-                        width="100px"
-                        height="100px"
-                        src="/bug.svg"
-                        alt="Second slide"
-                    />
+            <Button buttonStyle="secondary">More</Button>
+        </div>
+        <Carousel interval={null} className={styles.carousel}>
+            <Carousel.Item>
+                <CarouselImage
+                    className="d-block w-25"
+                    width="100px"
+                    height="100px"
+                    src="/placeholder.svg"
+                    alt="First slide"
+                />
+                <Carousel.Caption>
+                    <h3>Quality Control Engineer</h3>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+                <CarouselImage
+                    className="d-block w-25"
+                    width="100px"
+                    height="100px"
+                    src="/bug.svg"
+                    alt="Second slide"
+                />
 
-                    <Carousel.Caption>
-                        <h3>Test engineer</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <CarouselImage
-                        className="d-block w-25"
-                        width="100px"
-                        height="100px"
-                        src="/db.svg"
-                        alt="Third slide"
-                    />
+                <Carousel.Caption>
+                    <h3>Test engineer</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+                <CarouselImage
+                    className="d-block w-25"
+                    width="100px"
+                    height="100px"
+                    src="/db.svg"
+                    alt="Third slide"
+                />
 
-                    <Carousel.Caption>
-                        <h3>Database engineer</h3>
-                        <p>
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                        </p>
-                    </Carousel.Caption>
-                </Carousel.Item>
-            </Carousel>
-        </>
-    );
+                <Carousel.Caption>
+                    <h3>Database engineer</h3>
+                    <p>
+                        Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                    </p>
+                </Carousel.Caption>
+            </Carousel.Item>
+        </Carousel>
+    </div>
 }
