@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import classNames from 'classnames';
 
 import styles from "../styles/CTASection.module.scss";
 import homeStyles from "../styles/Home.module.scss"
@@ -12,7 +13,7 @@ function RowImage(props) {
 }
 
 function BenefitCard({ src }) {
-    return <Col className={styles.col}>
+    return <Col className={classNames(styles.col, 'col-12', 'col-md-6')}>
         <RowImage className={styles.colChild} src={src}></RowImage>
         <div className={styles.colChild}>
             <h4 className={styles.cardHeader}>Foo</h4>
@@ -24,17 +25,19 @@ function BenefitCard({ src }) {
 export default function CTASection(props) {
 
     return <div>
-        <p className={homeStyles.title}>
-            Join us in <a href="#">{SITE_NAME}</a> to work on the world&apos;s most advanced AI-powered code editor.
-        </p>
+        <div className="col-md-10 mx-auto text-md-center">
+            <p className={classNames(homeStyles.title, 'fs-1')}>
+                Join us in <a href="#">{SITE_NAME}</a> to work on the world&apos;s most advanced AI-powered code editor.
+            </p>
+            <p className={`${homeStyles.description} text-muted mb-4 mb-md-6 fs-5`}>
+                We develop an editor tool loved by millions of professional software engineers: {SITE_NAME},
+                which consists of a code editor, AI pair programmer, and a comprehensive ecosystem of language tooling.
+            </p>
+            <div className={classNames(styles.openingsNavbar, 'mb-5', 'text-md-center')}>
+                <a href="#jobs" className='fs-6 me-5'>Open positions</a>
+                <a href="#internships" className='fs-6 me-5'>Internships</a>
+            </div>
 
-        <p className={homeStyles.description}>
-            We develop an editor tool loved by millions of professional software engineers: {SITE_NAME},
-            which consists of a code editor, AI pair programmer, and a comprehensive ecosystem of language tooling.
-        </p>
-        <div className={styles.openingsNavbar}>
-            <a href="#jobs">Open positions</a>
-            <a href="#internships">Internships</a>
         </div>
 
         <Container fluid>

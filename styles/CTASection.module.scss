@@ -14,16 +14,9 @@
 }
 
 .openingsNavbar {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-
   a {
-    margin-right: 32px;
-    margin-bottom: 64px;
-    font-size: 36px;
+    display: inline-block;
     text-decoration: none;
     color: #2d8fff;
   }
-
 }
