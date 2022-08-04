@@ -18,7 +18,7 @@ function CarouselImage({ src, width, height, alt }) {
 
 export default function OpenPositionsPreview() {
     return <div className={styles.positionsPreview}>
-        <div className={styles.header}>
+        <div className="headerbar">
             <h3 className="homesection-header">Open Positions</h3>
             <Button buttonStyle="secondary">More</Button>
         </div>

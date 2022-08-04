@@ -2,11 +2,9 @@ import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Button from "./Button";
 
-import styles from "../styles/InternshipsPreview.module.scss";
-
 export default function InternshipsPreview() {
     return <div>
-        <div className={styles.header}>
+        <div className="headerbar">
             <h3 className="homesection-header">Internships</h3>
             <Button buttonStyle="secondary">More</Button>
         </div>

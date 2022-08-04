@@ -1,18 +1,26 @@
 @use "vars";
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  &.homesection-header {
-    color: vars.$black;
-    text-align: left;
-    font-family: vars.$font1-bold, sans-serif;
-  }
-  &.homesection-header::before {
-    content: "# ";
-    color: vars.$black50;
+.headerbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    &.homesection-header {
+      color: vars.$black;
+      text-align: left;
+      font-family: vars.$font1-bold, sans-serif;
+    }
+    &.homesection-header::before {
+      content: "# ";
+      color: vars.$black50;
+    }
   }
 }
