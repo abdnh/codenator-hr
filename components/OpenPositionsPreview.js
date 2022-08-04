@@ -24,7 +24,7 @@ export default function OpenPositionsPreview() {
             <h3 className="homesection-header">Open Positions</h3>
             <Button buttonStyle="secondary">More</Button>
         </div>
-        <Carousel interval={null} className={styles.carousel}>
+        <Carousel className={styles.carousel}>
             <Carousel.Item>
                 <CarouselImage
                     className="d-block w-25"
