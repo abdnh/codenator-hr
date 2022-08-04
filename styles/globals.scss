@@ -4,6 +4,8 @@
 @import "./bootstrap.scss";
 @import "./AccessTabs.scss";
 @import "./signup.scss";
+@import "./utils.scss";
+
 html,
 body {
   padding: 0;
@@ -18,8 +20,6 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
-
-// TODO: move to home
 
 @font-face {
   font-family: "RobotoSlab-Regular";

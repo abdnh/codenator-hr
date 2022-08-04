@@ -19,7 +19,7 @@ function CarouselImage({ src, width, height, alt }) {
 export default function OpenPositionsPreview() {
     return <div className={styles.positionsPreview}>
         <div className={styles.header}>
-            <h3>Open Positions</h3>
+            <h3 className="homesection-header">Open Positions</h3>
             <Button buttonStyle="secondary">More</Button>
         </div>
         <Carousel interval={null} className={styles.carousel}>

@@ -7,7 +7,7 @@ import styles from "../styles/InternshipsPreview.module.scss";
 export default function InternshipsPreview() {
     return <div>
         <div className={styles.header}>
-            <h3>Internships</h3>
+            <h3 className="homesection-header">Internships</h3>
             <Button buttonStyle="secondary">More</Button>
         </div>
         <CardGroup>

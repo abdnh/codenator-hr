@@ -35,26 +35,6 @@
     font-size: 16px;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: vars.$black;
-    text-align: left;
-    font-family: vars.$font1-bold, sans-serif;
-  }
-  h1::before,
-  h2::before,
-  h3::before,
-  h4::before,
-  h5::before,
-  h6::before {
-    content: "# ";
-    color: vars.$black50;
-  }
-
   .title a:hover,
   .title a:focus,
   .title a:active {
@@ -80,8 +60,5 @@
     margin-block: 4rem;
     line-height: 1.5;
     font-size: 1.5rem;
-  }
-  .cardHeader {
-    line-height: 46px;
   }
 }
