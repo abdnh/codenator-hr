@@ -2,8 +2,11 @@ import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Button from "./Button";
 
+
 export default function InternshipsPreview() {
     return <div>
+        {/* Used to ensure the whole section is visible when scrolling to this fragment */}
+        <div id="internships" style={{ height: '62px' }}></div>
         <div className="headerbar">
             <h3 className="homesection-header">Internships</h3>
             <Button buttonStyle="secondary">More</Button>

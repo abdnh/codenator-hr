@@ -32,6 +32,10 @@ export default function CTASection(props) {
             We develop an editor tool loved by millions of professional software engineers: {SITE_NAME},
             which consists of a code editor, AI pair programmer, and a comprehensive ecosystem of language tooling.
         </p>
+        <div className={styles.openingsNavbar}>
+            <a href="#jobs">Open positions</a>
+            <a href="#internships">Internships</a>
+        </div>
 
         <Container fluid>
             <Row>
