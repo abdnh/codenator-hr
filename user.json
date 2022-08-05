@@ -1,0 +1,9 @@
+{
+    "user":[
+        {
+            "name":"admin",
+            "email":"admin@gmail.com",
+            "sifre":1234
+        }
+    ]
+}

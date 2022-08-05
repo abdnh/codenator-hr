@@ -1,12 +1,11 @@
-import { MOTTO } from "../lib/common";
-import MainLayout from '../layouts/MainLayout';
+import React from 'react';
+import Layout from '../../layouts/admin/layout/layout';
+import Navbarl from '../../layouts/admin/layout/navbar';
 
-import { default as HomeComponent } from "../components/Home";
-
-export default function Home() {
+export default function Admin() {
   return (
-    <MainLayout subtitle={MOTTO}>
-      <HomeComponent />
-    </MainLayout>
+    <Layout>
+      <Navbarl/>
+    </Layout>
   )
 }
