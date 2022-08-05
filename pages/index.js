@@ -24,14 +24,14 @@ export default function Home() {
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
 
-        {/* <!-- Libraries Stylesheet --> */}
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
         <link href="lib/animate/animate.min.css" rel="stylesheet" />
 
-        {/* <!-- Customized Bootstrap Stylesheet --> */}
+        {/*
+        This is customized Bootstrap CSS
+        TODO: remove this and fix any potential issues (e.g. navbar) and maybe figure out the differences from vanilla Bootstrap
+        */}
         <link href="css/bootstrap.min.css" rel="stylesheet" />
-
-        <link href="css/style.css" rel="stylesheet" />
 
       </Head>
 
@@ -46,14 +46,14 @@ export default function Home() {
       <div className="container-fluid bg-dark px-5 d-none d-lg-block">
         <div className="row gx-0">
           <div className="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-            <div className="d-inline-flex align-items-center" /*style="height: 45px;"*/>
+            <div className="d-inline-flex align-items-center" style={{ 'height': '45px' }}>
               <small className="me-3 text-light"><i className="fa fa-map-marker-alt me-2"></i>123 Street, Istanbul, Turkey</small>
               <small className="me-3 text-light"><i className="fa fa-phone-alt me-2"></i>+012 345 6789</small>
               <small className="text-light"><i className="fa fa-envelope-open me-2"></i>info@codenator.com</small>
             </div>
           </div>
           <div className="col-lg-4 text-center text-lg-end">
-            <div className="d-inline-flex align-items-center" /*style="height: 45px;"*/>
+            <div className="d-inline-flex align-items-center" style={{ 'height': '45px' }}>
               <a className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i className="fab fa-twitter fw-normal"></i></a>
               <a className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i className="fab fa-facebook-f fw-normal"></i></a>
               <a className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i className="fab fa-linkedin-in fw-normal"></i></a>
@@ -68,8 +68,7 @@ export default function Home() {
       {/* <!-- Navbar & Carousel Start --> */}
       <div className="container-fluid position-relative p-0">
         <nav className="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-          <a href="index.html" className="navbar-brand p-0">
-            {/* <h1 className="m-0"><i className="me-2"></i><img src="/favicon.svg" width="64" height="64" /></h1> */}
+          <a href="" className="navbar-brand p-0">
             <h1 className="m-0"><i className="me-2"></i>      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-braces-asterisk" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M1.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C2.25 2 1.49 2.759 1.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6ZM14.886 7.9v.164c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456v-1.3c-1.114 0-1.49-.362-1.49-1.456V4.352C14.51 2.759 13.75 2 12.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6ZM7.5 11.5V9.207l-1.621 1.621-.707-.707L6.792 8.5H4.5v-1h2.293L5.172 5.879l.707-.707L7.5 6.792V4.5h1v2.293l1.621-1.621.707.707L9.208 7.5H11.5v1H9.207l1.621 1.621-.707.707L8.5 9.208V11.5h-1Z" />
             </svg></h1>
@@ -81,27 +80,12 @@ export default function Home() {
           </button>
           <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto py-0">
-              <a href="index.html" className="nav-item nav-link active">Home</a>
-              <a href="about.html" className="nav-item nav-link">About</a>
-              <a href="service.html" className="nav-item nav-link">Services</a>
-              <div className="nav-item dropdown">
-                <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Blog</a>
-                <div className="dropdown-menu m-0">
-                  <a href="blog.html" className="dropdown-item">Blog Grid</a>
-                  <a href="detail.html" className="dropdown-item">Blog Detail</a>
-                </div>
-              </div>
-              <div className="nav-item dropdown">
-                <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                <div className="dropdown-menu m-0">
-                  <a href="price.html" className="dropdown-item">Pricing Plan</a>
-                  <a href="feature.html" className="dropdown-item">Our features</a>
-                  <a href="team.html" className="dropdown-item">Team Members</a>
-                  <a href="testimonial.html" className="dropdown-item">Testimonial</a>
-                  <a href="quote.html" className="dropdown-item">Free Quote</a>
-                </div>
-              </div>
-              <a href="contact.html" className="nav-item nav-link">Contact</a>
+              <a href="" className="nav-item nav-link active">Home</a>
+              <a href="#about" className="nav-item nav-link">About</a>
+              <a href="#jobs" className="nav-item nav-link">Jobs</a>
+              <a href="#internships" className="nav-item nav-link">Internships</a>
+              <a href="#blog" className="nav-item nav-link">Blog</a>
+              <a href="#contact" className="nav-item nav-link">Contact</a>
             </div>
             <button type="button" className="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i className="fa fa-search"></i></button>
             <a href="#" className="btn btn-primary py-2 px-4 ms-3">Codenator</a>
@@ -113,7 +97,7 @@ export default function Home() {
             <div className="carousel-item active">
               <img className="w-100" src="img/carousel-1.gif" alt="Image" />
               <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                <div className="p-3" /*style="max-width: 900px;"*/>
+                <div className="p-3" style={{ 'max-width': '900px' }}>
                   <h5 className="text-white text-uppercase mb-3 animated slideInDown">Codenator HR</h5>
                   <h1 className="display-5 text-white mb-md-4 animated zoomIn">Embark on the endgame of editor wars with Codenator</h1>
                   <a href="quote.html" className="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Join Us</a>
@@ -170,7 +154,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            {/* TODO: change or remove this section */}
             <div class="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
               <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style={{ height: '150px' }}>
                 <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style={{ width: '60px', height: '60px' }}>
