@@ -27,12 +27,6 @@ export default function Home() {
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
         <link href="lib/animate/animate.min.css" rel="stylesheet" />
 
-        {/*
-        This is customized Bootstrap CSS
-        TODO: remove this and fix any potential issues (e.g. navbar) and maybe figure out the differences from vanilla Bootstrap
-        */}
-        <link href="css/bootstrap.min.css" rel="stylesheet" />
-
       </Head>
 
       {/* <!-- Spinner Start --> */}
