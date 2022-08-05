@@ -313,7 +313,7 @@ export default function Home() {
       </div>
       {/* <!-- Features Start --> */}
 
-      {/* <!-- Service Start --> */}
+      {/* <!-- Jobs Start --> */}
       {/* TODO: change icons */}
       <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
@@ -386,31 +386,71 @@ export default function Home() {
               <a href="#">
                 <div class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
                   <h3 class="text-white mb-3">And more</h3>
-                  {/* <h3 class="text-white mb-3">Call Us For Quote</h3>
-                <p class="text-white mb-3">Clita ipsum magna kasd rebum at ipsum amet dolor justo dolor est magna stet eirmod</p>
-                <h2 class="text-white mb-0">+012 345 6789</h2>
-                 */}
                 </div>
               </a>
             </div>
           </div>
         </div>
       </div>
-      {/* <!-- Service End --> */}
+      {/* <!-- Jobs End --> */}
 
 
       {/* <!-- FAQs Start --> */}
+      {/* TODO: add FAQs accordion */}
       <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
           <div class="row g-5">
             <div class="col-lg-7">
               <div class="section-title position-relative pb-3 mb-5">
-                <h5 class="fw-bold text-primary text-uppercase">Ask A Question</h5>
-                <h1 class="mb-0">Have A Question? Please Feel Free to Contact Us</h1>
+                <h5 class="fw-bold text-primary text-uppercase">Frequently Asked Questions</h5>
+                <h1 class="mb-0">Get informed about all important details before applying</h1>
               </div>
               <p class="mb-4">Eirmod sed tempor lorem ut dolores. Aliquyam sit sadipscing kasd ipsum. Dolor ea et dolore et at sea ea at dolor, justo ipsum duo rebum sea invidunt voluptua. Eos vero eos vero ea et dolore eirmod et. Dolores diam duo invidunt lorem. Elitr ut dolores magna sit. Sea dolore sanctus sed et. Takimata takimata sanctus sed.</p>
+
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Question #1
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Question body
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Question #2
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Question body
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Question #3
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Question body
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="col-lg-5">
+              <div class="section-title position-relative pb-3 mb-5">
+                <h5 class="fw-bold text-secondary text-uppercase">Ask Your Question</h5>
+                <h1 class="mb-0">Have A Question? Feel Free to Contact Us</h1>
+              </div>
               <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
                 <form>
                   <div class="row g-3">
@@ -433,7 +473,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* <!-- Quote End --> */}
+      {/* <!-- FAQs End --> */}
 
 
       {/* <!-- Testimonial Start --> */}
@@ -499,7 +539,7 @@ export default function Home() {
       {/* <!-- Testimonial End --> */}
 
 
-      {/* <!-- Team Start --> */}
+      {/* <!-- Employees Start --> */}
       <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
           <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ 'max-width': '600px' }}>
@@ -561,7 +601,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* <!-- Team End --> */}
+      {/* <!-- Employees End --> */}
 
 
       {/* <!-- Blog Start --> */}
@@ -711,7 +751,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div class="container-fluid text-white" /*style="background: #061429;"*/>
+      <div class="container-fluid text-white" style={{ 'background': '#061429' }}>
         <div class="container text-center">
           <div class="row justify-content-end">
             <div class="col-lg-8 col-md-6">
