@@ -1,18 +1,19 @@
+import Head from "next/head";
 import Script from "next/script";
 
 export default function Home() {
 
   return (
     <>
-      <head>
-        <meta charset="utf-8" />
-        <title>Embark on the endgame of editor wars with Codenator</title>
+      <Head>
+        <meta charSet="utf-8" />
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <meta content="Free HTML Templates" name="keywords" />
         <meta content="Free HTML Templates" name="description" />
+        <title>Codenator HR - Embark on the endgame of editor wars with Codenator</title>
 
         {/* <!-- Favicon --> */}
-        <link href="/favicon.svg" rel="icon" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
         {/* <!-- Google Web Fonts --> */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,17 +29,17 @@ export default function Home() {
         <link href="lib/animate/animate.min.css" rel="stylesheet" />
 
         {/* <!-- Customized Bootstrap Stylesheet --> */}
-        {/* <link href="css/bootstrap.min.css" rel="stylesheet"/> */}
+        <link href="css/bootstrap.min.css" rel="stylesheet" />
 
-        {/* <!-- Template Stylesheet --> */}
         <link href="css/style.css" rel="stylesheet" />
-      </head>
+
+      </Head>
 
       {/* <!-- Spinner Start --> */}
       <div id="spinner" className="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div className="spinner"></div>
       </div>
-      {/* <!-- Spinner End --> */}
+      {/* <!-- Spinner End -->
 
 
       {/* <!-- Topbar Start --> */}
@@ -120,28 +121,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            {/* <div className="carousel-item">
-              <img className="w-100" src="img/carousel-2.gif" alt="Image" />
-              <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                <div className="p-3" style="max-width: 900px;">
-                  <h5 className="text-white text-uppercase mb-3 animated slideInDown">Creative & Innovative</h5>
-                  <h1 className="display-1 text-white mb-md-4 animated zoomIn">Creative & Innovative Digital Solution</h1>
-                  <a href="quote.html" className="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Free Quote</a>
-                  <a href="" className="btn btn-outline-light py-md-3 px-md-5 animated slideInRight">Contact Us</a>
-                </div>
-              </div>
-            </div> */}
           </div>
-          {/* <button className="carousel-control-prev" type="button" data-bs-target="#header-carousel"
-            data-bs-slide="prev">
-            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Previous</span>
-          </button>
-          <button className="carousel-control-next" type="button" data-bs-target="#header-carousel"
-            data-bs-slide="next">
-            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-            <span className="visually-hidden">Next</span>
-          </button> */}
         </div>
       </div>
       {/* <!-- Navbar & Carousel End --> */}
@@ -182,10 +162,6 @@ export default function Home() {
             <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
               <div class="bg-light shadow d-flex align-items-center justify-content-center p-4" style={{ height: '150px' }}>
                 <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2" style={{ width: '60px', height: '60px' }}>
-                  {/* TODO: change icon */}
-                  {/* <i class="fa fa-check text-white"></i> */}
-                  {/* <i class="fa-regular fa-briefcase"></i> */}
-                  {/* <i class="fa-solid fa-briefcase"></i> */}
                   <i class="bi bi-briefcase"></i>
                 </div>
                 <div class="ps-4">
@@ -198,7 +174,6 @@ export default function Home() {
             <div class="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
               <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style={{ height: '150px' }}>
                 <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style={{ width: '60px', height: '60px' }}>
-                  {/* <i class="fa fa-award text-primary"></i> */}
                   <i class="far fa-building"></i>
                 </div>
                 <div class="ps-4">
@@ -232,15 +207,6 @@ export default function Home() {
                   <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Continuously improved</h5>
                 </div>
               </div>
-              {/* <div class="d-flex align-items-center mb-4 wow fadeIn" data-wow-delay="0.6s">
-                <div class="bg-primary d-flex align-items-center justify-content-center rounded" style={{'width': '60px', 'height': '60px'}}>
-                  <i class="fa fa-phone-alt text-white"></i>
-                </div>
-                <div class="ps-4">
-                  <h5 class="mb-2">Call to ask any question</h5>
-                  <h4 class="text-primary mb-0">+012 345 6789</h4>
-                </div>
-              </div> */}
               <a href="#" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Download Codenator</a>
             </div>
             <div class="col-lg-5" style={{ 'min-height': '500px' }}>
@@ -257,9 +223,8 @@ export default function Home() {
       {/* <!-- Features Start --> */}
       <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
-          <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" /*style="max-width: 600px;"*/>
+          <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ 'max-width': '600px' }}>
             <h5 class="fw-bold text-primary text-uppercase">Why work with us</h5>
-            {/* <h1 class="mb-0">Explore the benefits of joining us</h1> */}
           </div>
           <div class="d-sm-flex flex-wrap gutter-md-spacious mt-md-6 mb-5">
             <div class="d-sm-inline-flex col-md-6 mb-5 ">
@@ -367,51 +332,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-          {/*
-                        <div class="row g-5">
-            <div class="col-lg-4">
-<div class="row g-5">
-                <div class="col-12 wow zoomIn" data-wow-delay="0.2s">
-                  <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style={{'width': '60px', 'height': '60px'}}>
-                    <i class="fa fa-cubes text-white"></i>
-                  </div>
-                  <h4>Keep growing</h4>
-                  <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
-                </div>
-                <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
-                  <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style={{'width': '60px', 'height': '60px'}}>
-                    <i class="fa fa-award text-white"></i>
-                  </div>
-                  <h4>Learn and teach</h4>
-                  <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4  wow zoomIn" data-wow-delay="0.9s" style={{ 'min-height': '350px' }}>
-              <div class="position-relative h-100">
-                <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.1s" src="img/feature.jpg" style={{'object-fit': 'cover'}} />
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="row g-5">
-                <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
-                  <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style={{ 'width': '60px', 'height': '60px' }}>
-                    <i class="fa fa-users-cog text-white"></i>
-                  </div>
-                  <h4>Global diverse culture</h4>
-                  <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
-                </div>
-                <div class="col-12 wow zoomIn" data-wow-delay="0.8s">
-                  <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style={{ 'width': '60px', 'height': '60px' }}>
-                    <i class="fa fa-phone-alt text-white"></i>
-                  </div>
-                  <h4>Make impact</h4>
-                  <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
-                </div>
-              </div>
-            </div>
-          </div>
-           */}
         </div>
       </div>
       {/* <!-- Features Start --> */}
@@ -502,78 +422,7 @@ export default function Home() {
       {/* <!-- Service End --> */}
 
 
-      {/* <!-- Pricing Plan Start --> */}
-      {/* <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
-          <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{'max-width': '600px'}}>
-            <h5 class="fw-bold text-primary text-uppercase">Pricing Plans</h5>
-            <h1 class="mb-0">We are Offering Competitive Prices for Our Clients</h1>
-          </div>
-          <div class="row g-0">
-            <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-              <div class="bg-light rounded">
-                <div class="border-bottom py-4 px-5 mb-4">
-                  <h4 class="text-primary mb-1">Basic Plan</h4>
-                  <small class="text-uppercase">For Small Size Business</small>
-                </div>
-                <div class="p-5 pt-0">
-                  <h1 class="display-5 mb-3">
-                    <small class="align-top" style={{'font-size': '22px', 'line-height': '45px'}}>$</small>49.00<small
-                      class="align-bottom" style={{'font-size': '16px', 'line-height': '40px'}}> Month</small>
-                  </h1>
-                  <div class="d-flex justify-content-between mb-3"><span>HTML5 & CSS3</span><i class="fa fa-check text-primary pt-1"></i></div>
-                  <div class="d-flex justify-content-between mb-3"><span>Bootstrap v5</span><i class="fa fa-check text-primary pt-1"></i></div>
-                  <div class="d-flex justify-content-between mb-3"><span>Responsive Layout</span><i class="fa fa-times text-danger pt-1"></i></div>
-                  <div class="d-flex justify-content-between mb-2"><span>Cross-browser Support</span><i class="fa fa-times text-danger pt-1"></i></div>
-                  <a href="" class="btn btn-primary py-2 px-4 mt-4">Order Now</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
-              <div class="bg-white rounded shadow position-relative" style={{'z-index': 1}}>
-                <div class="border-bottom py-4 px-5 mb-4">
-                  <h4 class="text-primary mb-1">Standard Plan</h4>
-                  <small class="text-uppercase">For Medium Size Business</small>
-                </div>
-                <div class="p-5 pt-0">
-                  <h1 class="display-5 mb-3">
-                    <small class="align-top" style={{'font-size': '22px', 'line-height': '45px'}}>$</small>99.00<small
-                      class="align-bottom" style={{'font-size': '16px', 'line-height': '40px'}}> Month</small>
-                  </h1>
-                  <div class="d-flex justify-content-between mb-3"><span>HTML5 & CSS3</span><i class="fa fa-check text-primary pt-1"></i></div>
-                  <div class="d-flex justify-content-between mb-3"><span>Bootstrap v5</span><i class="fa fa-check text-primary pt-1"></i></div>
-                  <div class="d-flex justify-content-between mb-3"><span>Responsive Layout</span><i class="fa fa-check text-primary pt-1"></i></div>
-                  <div class="d-flex justify-content-between mb-2"><span>Cross-browser Support</span><i class="fa fa-times text-danger pt-1"></i></div>
-                  <a href="" class="btn btn-primary py-2 px-4 mt-4">Order Now</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 wow slideInUp" data-wow-delay="0.9s">
-              <div class="bg-light rounded">
-                <div class="border-bottom py-4 px-5 mb-4">
-                  <h4 class="text-primary mb-1">Advanced Plan</h4>
-                  <small class="text-uppercase">For Large Size Business</small>
-                </div>
-                <div class="p-5 pt-0">
-                  <h1 class="display-5 mb-3">
-                    <small class="align-top" style={{'font-size': '22px', 'line-height': '45px'}}>$</small>149.00<small
-                      class="align-bottom" style={{'font-size': '16px', 'line-height': '40px'}}>/ Month</small>
-                  </h1>
-                  <div class="d-flex justify-content-between mb-3"><span>HTML5 & CSS3</span><i class="fa fa-check text-primary pt-1"></i></div>
-                  <div class="d-flex justify-content-between mb-3"><span>Bootstrap v5</span><i class="fa fa-check text-primary pt-1"></i></div>
-                  <div class="d-flex justify-content-between mb-3"><span>Responsive Layout</span><i class="fa fa-check text-primary pt-1"></i></div>
-                  <div class="d-flex justify-content-between mb-2"><span>Cross-browser Support</span><i class="fa fa-check text-primary pt-1"></i></div>
-                  <a href="" class="btn btn-primary py-2 px-4 mt-4">Order Now</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-      {/* <!-- Pricing Plan End --> */}
-
-
-      {/* <!-- Quote Start --> */}
+      {/* <!-- FAQs Start --> */}
       <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
           <div class="row g-5">
@@ -582,24 +431,7 @@ export default function Home() {
                 <h5 class="fw-bold text-primary text-uppercase">Ask A Question</h5>
                 <h1 class="mb-0">Have A Question? Please Feel Free to Contact Us</h1>
               </div>
-              {/* <div class="row gx-3">
-                <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-                  <h5 class="mb-4"><i class="fa fa-reply text-primary me-3"></i>Reply within 24 hours</h5>
-                </div>
-                <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-                  <h5 class="mb-4"><i class="fa fa-phone-alt text-primary me-3"></i>24 hrs telephone support</h5>
-                </div>
-              </div> */}
               <p class="mb-4">Eirmod sed tempor lorem ut dolores. Aliquyam sit sadipscing kasd ipsum. Dolor ea et dolore et at sea ea at dolor, justo ipsum duo rebum sea invidunt voluptua. Eos vero eos vero ea et dolore eirmod et. Dolores diam duo invidunt lorem. Elitr ut dolores magna sit. Sea dolore sanctus sed et. Takimata takimata sanctus sed.</p>
-              {/* <div class="d-flex align-items-center mt-2 wow zoomIn" data-wow-delay="0.6s">
-                <div class="bg-primary d-flex align-items-center justify-content-center rounded" style={{ 'width': '60px', 'height': '60px' }}>
-                  <i class="fa fa-phone-alt text-white"></i>
-                </div>
-                <div class="ps-4">
-                  <h5 class="mb-2">Call to ask any question</h5>
-                  <h4 class="text-primary mb-0">+012 345 6789</h4>
-                </div>
-              </div> */}
             </div>
             <div class="col-lg-5">
               <div class="bg-primary rounded h-100 d-flex align-items-center p-5 wow zoomIn" data-wow-delay="0.9s">
@@ -611,14 +443,6 @@ export default function Home() {
                     <div class="col-12">
                       <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style={{ 'height': '55px' }} />
                     </div>
-                    {/* <div class="col-12">
-                      <select class="form-select bg-light border-0" style={{ 'height': '55px' }} >
-                        <option selected>Select A Service</option>
-                        <option value="1">Service 1</option>
-                        <option value="2">Service 2</option>
-                        <option value="3">Service 3</option>
-                      </select>
-                    </div> */}
                     <div class="col-12">
                       <textarea class="form-control bg-light border-0" rows="3" placeholder="Question"></textarea>
                     </div>
@@ -694,13 +518,14 @@ export default function Home() {
           </div>
         </div>
       </div>
+
       {/* <!-- Testimonial End --> */}
 
 
       {/* <!-- Team Start --> */}
       <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
-          <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" /*style="max-width: 600px;"*/>
+          <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ 'max-width': '600px' }}>
             <h5 class="fw-bold text-primary text-uppercase">Our Employees</h5>
             <h1 class="mb-0">Get to know some of the people you will be working with</h1>
           </div>
@@ -765,7 +590,7 @@ export default function Home() {
       {/* <!-- Blog Start --> */}
       <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
-          <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" /*style="max-width: 600px;"*/>
+          <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ 'max-width': '600px' }}>
             <h5 class="fw-bold text-primary text-uppercase">Latest Blog</h5>
             <h1 class="mb-0">Read The Latest Articles from Our Blog Post</h1>
           </div>
@@ -926,7 +751,7 @@ export default function Home() {
         <div class="container text-center">
           <div class="row justify-content-end">
             <div class="col-lg-8 col-md-6">
-              <div class="d-flex align-items-center justify-content-center" /*style="height: 75px;"*/>
+              <div class="d-flex align-items-center justify-content-center" style={{ 'height': '75px' }}>
                 <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Your Site Name</a>. All Rights Reserved.
 
                   {/* <!--This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. -->*/}
@@ -945,6 +770,7 @@ export default function Home() {
 
       {/* <!-- JavaScript Libraries --> */}
       <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      {/* TODO: remove this once we convert the code full to react-bootstrap */}
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
       <script src="lib/wow/wow.min.js"></script>
       <script src="lib/easing/easing.min.js"></script>
@@ -953,7 +779,7 @@ export default function Home() {
       <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
       {/* <!-- Template Javascript --> */}
-      <Script src="js/main.js" ></Script>
+      <Script src="js/main.js"></Script>
 
 
     </>
