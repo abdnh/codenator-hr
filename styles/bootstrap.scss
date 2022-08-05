@@ -1,45 +1,45 @@
-@use "vars";
+// @use "vars";
 
-$font-size-base: 1rem;
-$enable-responsive-font-sizes: true;
+// $font-size-base: 1rem;
+// $enable-responsive-font-sizes: true;
 
-$font-sizes: (
-  1: $font-size-base * 4,
-  2: $font-size-base * 3.5,
-  3: $font-size-base * 3,
-  4: $font-size-base * 2.5,
-  5: $font-size-base * 2,
-  6: $font-size-base * 1.75,
-  7: $font-size-base * 1.5,
-  8: $font-size-base * 1.25,
-  9: $font-size-base,
-);
+// $font-sizes: (
+//   1: $font-size-base * 4,
+//   2: $font-size-base * 3.5,
+//   3: $font-size-base * 3,
+//   4: $font-size-base * 2.5,
+//   5: $font-size-base * 2,
+//   6: $font-size-base * 1.75,
+//   7: $font-size-base * 1.5,
+//   8: $font-size-base * 1.25,
+//   9: $font-size-base,
+// );
 
-$utilities: (
-  "font-size": (
-    rfs: true,
-    property: font-size,
-    class: fs,
-    values: $font-sizes,
-  ),
-);
+// $utilities: (
+//   "font-size": (
+//     rfs: true,
+//     property: font-size,
+//     class: fs,
+//     values: $font-sizes,
+//   ),
+// );
 
 @import "~bootstrap/scss/bootstrap";
-@import "carousel.scss";
+// @import "carousel.scss";
 
-.nav-link {
-  color: white;
-  font-size: 1.25em;
-}
+// .nav-link {
+//   color: white;
+//   font-size: 1.25em;
+// }
 
-.navbar {
-  min-height: 75px;
-  background-color: vars.$color1 !important;
-  color: #fff;
-}
-.navbar-brand {
-  padding-bottom: 0;
-}
-.row {
-  padding: 0;
-}
+// .navbar {
+//   min-height: 75px;
+//   background-color: vars.$color1 !important;
+//   color: #fff;
+// }
+// .navbar-brand {
+//   padding-bottom: 0;
+// }
+// .row {
+//   padding: 0;
+// }
