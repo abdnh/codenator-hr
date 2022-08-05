@@ -1,4 +1,29 @@
 @use "vars";
+
+$font-size-base: 1rem;
+$enable-responsive-font-sizes: true;
+
+$font-sizes: (
+  1: $font-size-base * 4,
+  2: $font-size-base * 3.5,
+  3: $font-size-base * 3,
+  4: $font-size-base * 2.5,
+  5: $font-size-base * 2,
+  6: $font-size-base * 1.75,
+  7: $font-size-base * 1.5,
+  8: $font-size-base * 1.25,
+  9: $font-size-base,
+);
+
+$utilities: (
+  "font-size": (
+    rfs: true,
+    property: font-size,
+    class: fs,
+    values: $font-sizes,
+  ),
+);
+
 @import "~bootstrap/scss/bootstrap";
 @import "carousel.scss";
 

@@ -1,9 +1,7 @@
 @use "vars";
 
 .home {
-  margin-inline: 64px;
-  max-width: 80vw;
-  background-color: vars.$bg1;
+  margin-inline: 32px;
 }
 
 .home {
@@ -35,26 +33,6 @@
     font-size: 16px;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: vars.$black;
-    text-align: left;
-    font-family: vars.$font1-bold, sans-serif;
-  }
-  h1::before,
-  h2::before,
-  h3::before,
-  h4::before,
-  h5::before,
-  h6::before {
-    content: "# ";
-    color: vars.$black50;
-  }
-
   .title a:hover,
   .title a:focus,
   .title a:active {
@@ -62,26 +40,20 @@
   }
 
   .title {
-    margin-top: 1.5em;
+    margin-top: 2em;
     line-height: 1.15;
-    font-size: 4rem;
+    font-size: vars.$fs2;
     padding-top: 16px;
   }
 
   .title,
   .description {
-    text-align: center;
-    // max-width: 80vw;
-    // margin-inline: auto;
     color: vars.$black;
   }
 
   .description {
     margin-block: 4rem;
     line-height: 1.5;
-    font-size: 1.5rem;
-  }
-  .cardHeader {
-    line-height: 46px;
+    font-size: vars.$fs5;
   }
 }

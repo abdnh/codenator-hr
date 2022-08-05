@@ -2,14 +2,16 @@ import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import Button from "./Button";
 
-import styles from "../styles/InternshipsPreview.module.scss";
 
 export default function InternshipsPreview() {
     return <div>
-        <div className={styles.header}>
-            <h3>Internships</h3>
+        {/* Used to ensure the whole section is visible when scrolling to this fragment */}
+        <div id="internships" style={{ height: '62px' }}></div>
+        <div className="headerbar">
+            <h3 className="homesection-header">Internships</h3>
             <Button buttonStyle="secondary">More</Button>
         </div>
+        <div className="text-center" style={{fontSize: '24px'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
         <CardGroup>
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="/placeholder.svg" />

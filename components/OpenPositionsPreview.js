@@ -18,11 +18,13 @@ function CarouselImage({ src, width, height, alt }) {
 
 export default function OpenPositionsPreview() {
     return <div className={styles.positionsPreview}>
-        <div className={styles.header}>
-            <h3>Open Positions</h3>
+        {/* Used to ensure the whole section is visible when scrolling to this fragment */}
+        <div id="jobs" style={{ height: '62px' }}></div>
+        <div className="headerbar">
+            <h3 className="homesection-header">Open Positions</h3>
             <Button buttonStyle="secondary">More</Button>
         </div>
-        <Carousel interval={null} className={styles.carousel}>
+        <Carousel className={styles.carousel}>
             <Carousel.Item>
                 <CarouselImage
                     className="d-block w-25"

@@ -15,16 +15,6 @@
     font-family: vars.$font1-bold, sans-serif;
   }
 
-  h1::before,
-  h2::before,
-  h3::before,
-  h4::before,
-  h5::before,
-  h6::before {
-    content: "# ";
-    color: vars.$black50;
-  }
-
   .title a:hover,
   .title a:focus,
   .title a:active {
@@ -32,7 +22,7 @@
   }
 
   .title {
-    margin-top: 1.5em;
+    margin-top: 2.5em;
     line-height: 1.15;
     font-size: 4rem;
     padding-top: 16px;
