@@ -1,5 +1,21 @@
+import classNames from "classnames";
 import Head from "next/head";
 import Script from "next/script";
+import { useEffect, useState } from "react";
+
+function Spinner() {
+  const [shown, setShown] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShown(false);
+    }, 1);
+  }, [shown]);
+
+  return <div id="spinner" className={classNames({ show: shown }, 'bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center')}>
+    <div className="spinner"></div>
+  </div>
+}
 
 export default function Home() {
 
@@ -30,15 +46,9 @@ export default function Home() {
       </Head>
 
       <div id="homepage">
+        <Spinner />
 
-        {/* <!-- Spinner Start --> */}
-        <div id="spinner" className="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-          <div className="spinner"></div>
-        </div>
-        {/* <!-- Spinner End -->
-
-
-      {/* <!-- Topbar Start --> */}
+        {/* <!-- Topbar Start --> */}
         <div className="container-fluid bg-dark px-5 d-none d-lg-block">
           <div className="row gx-0">
             <div className="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
