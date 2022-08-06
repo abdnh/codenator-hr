@@ -136,12 +136,14 @@
     transition: 0.5s;
   }
 
-  .navbar {
-    position: absolute !important;
+  @include media-breakpoint-up(lg) {
+    .navbar {
+      position: fixed !important;
+    }
   }
 
   .shadow-sm {
-    position: fixed !important;
+    position: fixed;
   }
 
   .sticky-top.navbar-dark .navbar-nav .nav-link {
