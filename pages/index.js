@@ -3,8 +3,9 @@ import Head from "next/head";
 import Script from "next/script";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationDot, faPhone, faEnvelopeOpen } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot, faPhone, faEnvelopeOpen, faBars, faCheck, faArrowsToEye, faBugSlash, faDatabase, faCoins, faHeadset, faAnglesRight, faUserTie, faSearch, faUsers, faBuilding, } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter, faLinkedinIn, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faUser, faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
 
 function Spinner() {
   const [shown, setShown] = useState(true);
@@ -53,7 +54,7 @@ function Navbar() {
 
     </a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-      <span className="fa fa-bars"></span>
+      <span><FontAwesomeIcon icon={faBars} /></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarCollapse">
       <div className="navbar-nav ms-auto py-0">
@@ -64,7 +65,7 @@ function Navbar() {
         <a href="#blog" className="nav-item nav-link">Blog</a>
         <a href="#contact" className="nav-item nav-link">Contact</a>
       </div>
-      <button type="button" className="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i className="fa fa-search"></i></button>
+      <button type="button" className="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i><FontAwesomeIcon icon={faSearch} /></i></button>
       <a href="#" className="btn btn-primary py-2 px-4 ms-3">Codenator</a>
     </div>
   </nav>
@@ -114,7 +115,7 @@ function Stats() {
         <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
           <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style={{ height: '150px' }}>
             <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style={{ width: '60px', height: '60px' }}>
-              <i class="fa fa-users text-primary"></i>
+              <i class="text-primary"><FontAwesomeIcon icon={faUsers} /></i>
             </div>
             <div class="ps-4">
               <h5 class="text-white mb-0">Happy Users</h5>
@@ -136,7 +137,7 @@ function Stats() {
         <div class="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
           <div class="bg-primary shadow d-flex align-items-center justify-content-center p-4" style={{ height: '150px' }}>
             <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style={{ width: '60px', height: '60px' }}>
-              <i class="far fa-building"></i>
+              <i><FontAwesomeIcon icon={faBuilding} /></i>
             </div>
             <div class="ps-4">
               <h5 class="text-white mb-0">Headquarters</h5>
@@ -161,12 +162,12 @@ function About() {
           <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor eirmod magna dolore erat amet</p>
           <div class="row g-0 mb-3">
             <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
-              <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Free</h5>
-              <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Customizable</h5>
+              <h5 class="mb-3"><i class="text-primary me-3"><FontAwesomeIcon icon={faCheck} /></i>Free</h5>
+              <h5 class="mb-3"><i class="text-primary me-3"><FontAwesomeIcon icon={faCheck} /></i>Customizable</h5>
             </div>
             <div class="col-sm-6 wow zoomIn" data-wow-delay="0.4s">
-              <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Cross-platform</h5>
-              <h5 class="mb-3"><i class="fa fa-check text-primary me-3"></i>Continuously improved</h5>
+              <h5 class="mb-3"><i class="text-primary me-3"><FontAwesomeIcon icon={faCheck} /></i>Cross-platform</h5>
+              <h5 class="mb-3"><i class="text-primary me-3"><FontAwesomeIcon icon={faCheck} /></i>Continuously improved</h5>
             </div>
           </div>
           <a href="#" class="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Download Codenator</a>
@@ -310,7 +311,7 @@ function Jobs() {
         <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
           <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
             <div class="service-icon">
-              <i class="fa fa-shield-alt text-white"></i>
+              <i class="text-white"><FontAwesomeIcon icon={faArrowsToEye} /></i>
             </div>
             <h4 class="mb-3">Quality Control Engineer</h4>
             <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
@@ -322,7 +323,7 @@ function Jobs() {
         <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
           <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
             <div class="service-icon">
-              <i class="fa fa-chart-pie text-white"></i>
+              <i class="text-white"><FontAwesomeIcon icon={faBugSlash} /></i>
             </div>
             <h4 class="mb-3">Test engineer</h4>
             <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
@@ -334,7 +335,7 @@ function Jobs() {
         <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
           <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
             <div class="service-icon">
-              <i class="fa fa-code text-white"></i>
+              <i class="text-white"><FontAwesomeIcon icon={faDatabase} /></i>
             </div>
             <h4 class="mb-3">Database engineer</h4>
             <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
@@ -346,7 +347,7 @@ function Jobs() {
         <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
           <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
             <div class="service-icon">
-              <i class="fab fa-android text-white"></i>
+              <i class="text-white"><FontAwesomeIcon icon={faCoins} /></i>
             </div>
             <h4 class="mb-3">Senior Financial Analyst</h4>
             <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
@@ -358,7 +359,7 @@ function Jobs() {
         <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
           <div class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
             <div class="service-icon">
-              <i class="fa fa-search text-white"></i>
+              <i class="text-white"><FontAwesomeIcon icon={faHeadset} /></i>
             </div>
             <h4 class="mb-3">Technical Support Engineer</h4>
             <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
@@ -369,8 +370,13 @@ function Jobs() {
         </div>
         <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
           <a href="#">
+
             <div class="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
               <h3 class="text-white mb-3">And more</h3>
+              <div class="service-icon">
+                <i class="text-white"><FontAwesomeIcon icon={faAnglesRight} /></i>
+              </div>
+
             </div>
           </a>
         </div>
@@ -585,8 +591,7 @@ function Employees() {
 }
 
 function Blog() {
-  return
-  <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+  return <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container py-5">
       <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ 'max-width': '600px' }}>
         <h5 class="fw-bold text-primary text-uppercase">Latest Blog</h5>
@@ -601,8 +606,8 @@ function Blog() {
             </div>
             <div class="p-4">
               <div class="d-flex mb-3">
-                <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small>
-                <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
+                <small class="me-3"><i class="text-primary me-2"><FontAwesomeIcon icon={faUser} /></i>John Doe</small>
+                <small><i class="text-primary me-2"><FontAwesomeIcon icon={faCalendarAlt} /></i>01 Jan, 2045</small>
               </div>
               <h4 class="mb-3">Preparing for your interview in Codenator</h4>
               <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
@@ -618,8 +623,8 @@ function Blog() {
             </div>
             <div class="p-4">
               <div class="d-flex mb-3">
-                <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small>
-                <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
+                <small class="me-3"><i class="text-primary me-2"><FontAwesomeIcon icon={faUser} /></i>John Doe</small>
+                <small><i class="text-primary me-2"><FontAwesomeIcon icon={faCalendarAlt} /></i>01 Jan, 2045</small>
               </div>
               <h4 class="mb-3">Our candidate assessment criteria</h4>
               <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
@@ -635,8 +640,8 @@ function Blog() {
             </div>
             <div class="p-4">
               <div class="d-flex mb-3">
-                <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small>
-                <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
+                <small class="me-3"><i class="text-primary me-2"><FontAwesomeIcon icon={faUser} /></i>John Doe</small>
+                <small><i class="text-primary me-2"><FontAwesomeIcon icon={faCalendarAlt} /></i>01 Jan, 2045</small>
               </div>
               <h4 class="mb-3">Codenator rated as one of the best employers</h4>
               <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
@@ -677,7 +682,7 @@ function Footer() {
         <div class="col-lg-4 col-md-6 footer-about">
           <div class="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
             <a href="index.html" class="navbar-brand">
-              <h1 class="m-0 text-white"><i class="fa fa-user-tie me-2"></i>Codenator</h1>
+              <h1 class="m-0 text-white"><i class="me-2"><FontAwesomeIcon icon={faUserTie} /></i>Codenator</h1>
             </a>
             <p class="mt-3 mb-4">Lorem diam sit erat dolor elitr et, diam lorem justo amet clita stet eos sit. Elitr dolor duo lorem, elitr clita ipsum sea. Diam amet erat lorem stet eos. Diam amet et kasd eos duo.</p>
             <form action="">
@@ -768,8 +773,6 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-        {/* <!-- Icon Font Stylesheet --> */}
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
 
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
