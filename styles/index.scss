@@ -136,12 +136,6 @@
     transition: 0.5s;
   }
 
-  @include media-breakpoint-up(lg) {
-    .navbar {
-      position: fixed !important;
-    }
-  }
-
   .shadow-sm {
     position: fixed;
   }
