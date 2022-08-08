@@ -770,7 +770,6 @@ export default function Home() {
         <title>Codenator HR - Embark on the endgame of editor wars with Codenator</title>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
-        {/* <!-- Google Web Fonts --> */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -798,7 +797,6 @@ export default function Home() {
         <Clients />
         <Footer />
 
-        {/* <!-- JavaScript Libraries --> */}
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         {/* TODO: remove this once we convert the code full to react-bootstrap */}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -808,9 +806,7 @@ export default function Home() {
         <script src="lib/counterup/counterup.min.js"></script>
         <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-        {/* <!-- Template Javascript --> */}
         <Script src="js/main.js"></Script>
-
 
       </div>
     </>
