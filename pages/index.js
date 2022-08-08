@@ -59,11 +59,11 @@ function Navbar() {
     <div className="collapse navbar-collapse" id="navbarCollapse">
       <div className="navbar-nav ms-auto py-0">
         <a href="" className="nav-item nav-link active">Home</a>
-        <a href="#about" className="nav-item nav-link">About</a>
+        <a href="#apply" className="nav-item nav-link">Apply</a>
         <a href="#jobs" className="nav-item nav-link">Jobs</a>
         <a href="#internships" className="nav-item nav-link">Internships</a>
         <a href="#blog" className="nav-item nav-link">Blog</a>
-        <a href="#contact" className="nav-item nav-link">Contact</a>
+        <a href="#about" className="nav-item nav-link">About</a>
       </div>
       <button type="button" className="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i><FontAwesomeIcon icon={faSearch} /></i></button>
       <a href="#" className="btn btn-primary py-2 px-4 ms-3">Codenator</a>
