@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationDot, faPhone, faEnvelopeOpen, faBars, faCheck, faArrowsToEye, faBugSlash, faDatabase, faCoins, faHeadset, faAnglesRight, faUserTie, faSearch, faUsers, faBuilding, } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter, faLinkedinIn, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faUser, faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
+import { ArrowRight, ArrowUp, BracesAsterisk, Briefcase, EnvelopeOpen, GeoAlt, Search, Telephone } from 'react-bootstrap-icons';
 
 function Spinner() {
   const [shown, setShown] = useState(true);
@@ -47,9 +48,7 @@ function Topbar() {
 function Navbar() {
   return <nav className="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
     <a href="" className="navbar-brand p-0">
-      <h1 className="m-0"><i className="me-2"></i>      <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-braces-asterisk" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M1.114 8.063V7.9c1.005-.102 1.497-.615 1.497-1.6V4.503c0-1.094.39-1.538 1.354-1.538h.273V2h-.376C2.25 2 1.49 2.759 1.49 4.352v1.524c0 1.094-.376 1.456-1.49 1.456v1.299c1.114 0 1.49.362 1.49 1.456v1.524c0 1.593.759 2.352 2.372 2.352h.376v-.964h-.273c-.964 0-1.354-.444-1.354-1.538V9.663c0-.984-.492-1.497-1.497-1.6ZM14.886 7.9v.164c-1.005.103-1.497.616-1.497 1.6v1.798c0 1.094-.39 1.538-1.354 1.538h-.273v.964h.376c1.613 0 2.372-.759 2.372-2.352v-1.524c0-1.094.376-1.456 1.49-1.456v-1.3c-1.114 0-1.49-.362-1.49-1.456V4.352C14.51 2.759 13.75 2 12.138 2h-.376v.964h.273c.964 0 1.354.444 1.354 1.538V6.3c0 .984.492 1.497 1.497 1.6ZM7.5 11.5V9.207l-1.621 1.621-.707-.707L6.792 8.5H4.5v-1h2.293L5.172 5.879l.707-.707L7.5 6.792V4.5h1v2.293l1.621-1.621.707.707L9.208 7.5H11.5v1H9.207l1.621 1.621-.707.707L8.5 9.208V11.5h-1Z" />
-      </svg></h1>
+      <h1 className="m-0"><i className="me-2"></i><BracesAsterisk size={64} /></h1>
 
 
     </a>
@@ -99,7 +98,7 @@ function Searchbar() {
         <div className="modal-body d-flex align-items-center justify-content-center">
           <div className="input-group" style={{ 'max-width': '600px' }}>
             <input type="text" className="form-control border-primary p-3" placeholder="Type search keyword" />
-            <button className="btn btn-primary px-4"><i className="bi bi-search"></i></button>
+            <button className="btn btn-primary px-4"><Search /></button>
           </div>
         </div>
       </div>
@@ -126,7 +125,7 @@ function Stats() {
         <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
           <div class="bg-light shadow d-flex align-items-center justify-content-center p-4" style={{ height: '150px' }}>
             <div class="bg-primary d-flex align-items-center justify-content-center rounded mb-2" style={{ width: '60px', height: '60px' }}>
-              <i class="bi bi-briefcase"></i>
+              <Briefcase />
             </div>
             <div class="ps-4">
               <h5 class="text-primary mb-0">Employees</h5>
@@ -316,7 +315,7 @@ function Jobs() {
             <h4 class="mb-3">Quality Control Engineer</h4>
             <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
             <a class="btn btn-lg btn-primary rounded" href="">
-              <i class="bi bi-arrow-right"></i>
+              <ArrowRight />
             </a>
           </div>
         </div>
@@ -328,7 +327,7 @@ function Jobs() {
             <h4 class="mb-3">Test engineer</h4>
             <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
             <a class="btn btn-lg btn-primary rounded" href="">
-              <i class="bi bi-arrow-right"></i>
+              <ArrowRight />
             </a>
           </div>
         </div>
@@ -340,7 +339,7 @@ function Jobs() {
             <h4 class="mb-3">Database engineer</h4>
             <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
             <a class="btn btn-lg btn-primary rounded" href="">
-              <i class="bi bi-arrow-right"></i>
+              <ArrowRight />
             </a>
           </div>
         </div>
@@ -352,7 +351,7 @@ function Jobs() {
             <h4 class="mb-3">Senior Financial Analyst</h4>
             <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
             <a class="btn btn-lg btn-primary rounded" href="">
-              <i class="bi bi-arrow-right"></i>
+              <ArrowRight />
             </a>
           </div>
         </div>
@@ -364,7 +363,7 @@ function Jobs() {
             <h4 class="mb-3">Technical Support Engineer</h4>
             <p class="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
             <a class="btn btn-lg btn-primary rounded" href="">
-              <i class="bi bi-arrow-right"></i>
+              <ArrowRight />
             </a>
           </div>
         </div>
@@ -611,7 +610,7 @@ function Blog() {
               </div>
               <h4 class="mb-3">Preparing for your interview in Codenator</h4>
               <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
-              <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
+              <a class="text-uppercase" href="">Read More <ArrowRight /></a>
             </div>
           </div>
         </div>
@@ -628,7 +627,7 @@ function Blog() {
               </div>
               <h4 class="mb-3">Our candidate assessment criteria</h4>
               <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
-              <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
+              <a class="text-uppercase" href="">Read More <ArrowRight /></a>
             </div>
           </div>
         </div>
@@ -645,7 +644,7 @@ function Blog() {
               </div>
               <h4 class="mb-3">Codenator rated as one of the best employers</h4>
               <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
-              <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
+              <a class="text-uppercase" href="">Read More <ArrowRight /></a>
             </div>
           </div>
         </div>
@@ -657,7 +656,10 @@ function Blog() {
 function Clients() {
   return <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div class="container py-5 mb-5">
-      {/* TODO: add header */}
+      <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ 'max-width': '600px' }}>
+        <h5 class="fw-bold text-primary text-uppercase">Our Clients</h5>
+        <h1 class="mb-0">Some Of The Companies That Use Our Products</h1>
+      </div>
       <div class="bg-white">
         <div class="owl-carousel vendor-carousel">
           <img src="img/vendor-1.jpg" alt="" />
@@ -700,15 +702,15 @@ function Footer() {
                 <h3 class="text-light mb-0">Get In Touch</h3>
               </div>
               <div class="d-flex mb-2">
-                <i class="bi bi-geo-alt text-primary me-2"></i>
+                <GeoAlt className="text-primary me-2" />
                 <p class="mb-0">123 Street, Istanbul, Turkey</p>
               </div>
               <div class="d-flex mb-2">
-                <i class="bi bi-envelope-open text-primary me-2"></i>
+                <EnvelopeOpen className="text-primary me-2" />
                 <p class="mb-0">info@codenator.com</p>
               </div>
               <div class="d-flex mb-2">
-                <i class="bi bi-telephone text-primary me-2"></i>
+                <Telephone className="text-primary me-2" />
                 <p class="mb-0">+012 345 67890</p>
               </div>
               <div class="d-flex mt-4">
@@ -723,12 +725,12 @@ function Footer() {
                 <h3 class="text-light mb-0">Links</h3>
               </div>
               <div class="link-animated d-flex flex-column justify-content-start">
-                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Jobs</a>
-                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
-                <a class="text-light mb-2" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                <a class="text-light" href="#"><i class="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
+                <a class="text-light mb-2" href="#"><ArrowRight class="text-primary me-2" />Home</a>
+                <a class="text-light mb-2" href="#"><ArrowRight class="text-primary me-2" />About Us</a>
+                <a class="text-light mb-2" href="#"><ArrowRight class="text-primary me-2" />Jobs</a>
+                <a class="text-light mb-2" href="#"><ArrowRight class="text-primary me-2" />Meet The Team</a>
+                <a class="text-light mb-2" href="#"><ArrowRight class="text-primary me-2" />Latest Blog</a>
+                <a class="text-light mb-2" href="#"><ArrowRight class="text-primary me-2" />Contact Us</a>
               </div>
             </div>
           </div>
@@ -744,14 +746,14 @@ function Footer() {
               <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Codenator</a>. All Rights Reserved.{` `}
 
                 {/* <!--This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. -->*/}
-                Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a></p>
+                Designed by <a class="text-white border-bottom" href="https://htmlcodex.com">HTML Codex</a>.</p>
               <br />Distributed By: <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded back-to-top"><ArrowUp /></a>
   </>
 }
 
@@ -772,9 +774,6 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-
         <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
         <link href="lib/animate/animate.min.css" rel="stylesheet" />
 
