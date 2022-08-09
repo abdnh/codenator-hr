@@ -1,0 +1,46 @@
+.admin_navbar{
+    width: 240px;
+    height: 100vh;
+    background: #0078aa;
+    display:flex;
+    float: left;
+    border-right: 1px solid #f3fafc;
+    .baslik{
+        font-weight: bold;
+        font-size: 10px;
+        margin: 20px ;
+        text-align: center;
+        color: white;
+        display: flex;
+        flex-direction: column;
+    }
+    .liste{
+        padding: 10px 0;
+        z-index:1;
+        ul{
+            list-style: none;
+            margin-top: 15px;
+            text-align: left;
+            padding-left: 10px;
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+            gap: 30px;
+            color: white;
+            li{
+               a{
+                color: white;
+                font-size: 18px;
+                text-decoration:none;
+                
+               } 
+            }
+        }
+        li:hover{
+            font-size: 22px;
+            color: #fff;
+            opacity: .7;
+            transform: 0.2s;
+            }
+    }
+}

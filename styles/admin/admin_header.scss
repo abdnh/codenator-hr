@@ -1,0 +1,18 @@
+.admin_Header{
+     height: 65px;
+     background: #0078aa;
+     .left{
+         color: white;
+         margin-left:15px;
+         p{
+             font-size: 15px;
+         }
+     }
+     .right {
+        display: flex;
+        justify-content: space-evenly;
+        margin: 20px 0;
+        flex-direction: row;
+        color:white;
+     }
+}

@@ -1,7 +1,6 @@
 @use "vars";
 @import "./bootstrap.scss";
 @import "./index.scss";
-
 @import "./login.scss";
 @import "./AccessTabs.scss";
 @import "./signup.scss";
@@ -9,6 +8,9 @@
 html {
   scroll-behavior: smooth;
 }
+
+@import "./admin/admin_navbar.scss";
+@import "./admin/admin_header.scss";
 
 html,
 body {
