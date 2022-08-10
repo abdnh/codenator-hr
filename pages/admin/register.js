@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 export default function Register() {
     return (
-         <div class="container">
+         <div class="admin_register_container">
          <div class="screen">
              <div class="screen__content">
                  <form class="register">
