@@ -1,26 +1,32 @@
 import React from 'react';
-import Link from 'next/link';
-import SettingsIcon from '@mui/icons-material/Settings';
-import LogoutIcon from '@mui/icons-material/Logout';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-export default function Headerl() {
+import { VscListSelection } from "react-icons/vsc";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon, faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faBell } from '@fortawesome/free-regular-svg-icons';
+export default function Headerl({ setCollpase, collpase, setMoon, moon, full, setFull }) {
+
   return (
-    <div className="admin_Header">
-      <Row>
-        <Col xs={10} >
+    <div className={moon ? "dark" : "light"}>
+      <div className={collpase ? "admin_Header p-l-240" : "admin_Header p-l-40"}>
+        <div className='header-content'>
           <div className="left">
-            <h4>Merhaba <b>Kullanıcı</b></h4>
-            <p>Hoş Geldin</p>
+            <button onClick={() => setCollpase(!collpase)}><VscListSelection className="icon" /></button>
           </div>
-        </Col>
-        <Col xs={2} >
           <div className="right">
-            <Link href="/akis/5"><SettingsIcon style={{width:"27px",height:"27px"}}/></Link>
-            <Link href="/akis/6"><LogoutIcon style={{width:"27px",height:"27px"}}/></Link>
+            <ul>
+              <li>
+                <button><FontAwesomeIcon icon={faGlobe} className="icon" /></button>
+              </li>
+              <li>
+                <button onClick={() => setMoon(!moon)}><FontAwesomeIcon icon={faMoon} className="icon" /></button>
+              </li>
+
+              <button><FontAwesomeIcon icon={faBell} className="icon" /></button>
+            </ul>
+            <h4>Merhaba <b>Kullanıcı</b></h4>
           </div>
-        </Col>
-      </Row>
+        </div>
+      </div>
     </div>
   )
 }

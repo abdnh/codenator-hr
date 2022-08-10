@@ -4,22 +4,26 @@
 @import "./login.scss";
 @import "./AccessTabs.scss";
 @import "./signup.scss";
-@import "./admin/admin_navbar.scss";
+@import "./admin/admin_sidebar.scss";
 @import "./admin/admin_header.scss";
+@import "./admin/admin_register.scss";
+@import "./admin/admin_login.scss";
+@import "./admin/body.scss";
 
 html {
   scroll-behavior: smooth;
 }
 
-@import "./admin/admin_navbar.scss";
-@import "./admin/admin_header.scss";
 
 html,
 body {
   padding: 0;
   margin: 0;
-  background: #fff;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   background-color: vars.$bg1;
+}
+
+input:focus{
+  box-shadow: 0 0 0 0;
 }

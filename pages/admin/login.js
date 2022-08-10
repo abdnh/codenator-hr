@@ -1,37 +1,32 @@
-import React ,{useState}from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 export default function Login() {
-    const [email,setEmail] = useState("");
-    const [password,setPassword]=useState("");
-
-    async function handelLogin (e){
-        const data={
-            useremail:email,
-            userpassword:password,
-        }
-        const response = fetch(`http://localhost:8000/user`,{
-        method:"POST",
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data)
-      });
-    }
-     
-  return (
-    <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control style={{width:500}} type="email"  onClick={((e) => {setEmail(e.target.value)})} />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control style={{width:500}} type="password"  onClick={((e) => {setPassword(e.target.value)})}/>
-      </Form.Group>
-      <Button variant="primary" type="submit" onSubmit={handelLogin()} href="/login">
-        Login
-      </Button>
-    </Form>
-  )
+    return (
+        <div class="container">
+            <div class="screen">
+                <div class="screen__content">
+                    <form class="login">
+                        <h2>Giriş Yap</h2>
+                        <div class="user-box">
+                            <span className="icon"><FontAwesomeIcon icon={faEnvelope} /></span>
+                            <input type="email" class="form-control" placeholder='Eposta' id="exampleInputEmail1" aria-describedby="emailHelp" required />
+                        </div>
+                        <div class="user-box">
+                            <span class="icon"><FontAwesomeIcon icon={faLock} /></span>
+                            <input type="password" class="form-control" placeholder='Şifre' id="exampleInputPassword1" required />
+                        </div>
+                        <button className="bttn">Giriş Yap</button>
+                        <a href="/admin/register">Hesabınız Yoksa?Yeni Hesap Oluşturmak için Tıklayınız</a>
+                    </form>
+                </div>
+                <div class="screen__background">
+                    <span class="screen__background__shape screen__background__shape4"></span>
+                    <span class="screen__background__shape screen__background__shape3"></span>
+                    <span class="screen__background__shape screen__background__shape2"></span>
+                    <span class="screen__background__shape screen__background__shape1"></span>
+                </div>
+            </div>
+        </div>
+    )
 }

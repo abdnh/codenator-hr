@@ -1,11 +1,10 @@
 import React from 'react';
 import Layout from '../../layouts/admin/layout/layout';
-import Navbarl from '../../layouts/admin/layout/navbar';
-
+import Body from '../../layouts/admin/layout/body';
 export default function Admin() {
   return (
     <Layout>
-      <Navbarl/>
+        <Body/>
     </Layout>
   )
 }
