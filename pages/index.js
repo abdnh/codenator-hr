@@ -22,6 +22,8 @@ import ScaleImage from "../assets/icons//scale.svg";
 import SponsorsImage from "../assets/icons//sponsors.svg";
 
 
+import Navbar from "../components/home/Navbar";
+
 
 function Spinner() {
   const [shown, setShown] = useState(true);
@@ -58,31 +60,6 @@ function Topbar() {
       </div>
     </div>
   </div>
-}
-
-function Navbar() {
-  return <nav className="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
-    <a href="" className="navbar-brand p-0">
-      <h1 className="m-0"><i className="me-2"></i><BracesAsterisk size={64} /></h1>
-
-
-    </a>
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-      <span><FontAwesomeIcon icon={faBars} /></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarCollapse">
-      <div className="navbar-nav ms-auto py-0">
-        <a href="" className="nav-item nav-link active">Home</a>
-        <a href="#apply" className="nav-item nav-link">Apply</a>
-        <a href="#jobs" className="nav-item nav-link">Jobs</a>
-        <a href="#internships" className="nav-item nav-link">Internships</a>
-        <a href="#blog" className="nav-item nav-link">Blog</a>
-        <a href="#about" className="nav-item nav-link">About</a>
-      </div>
-      <button type="button" className="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i><FontAwesomeIcon icon={faSearch} /></i></button>
-      <a href="#" className="btn btn-primary py-2 px-4 ms-3">Codenator</a>
-    </div>
-  </nav>
 }
 
 function CTA() {
