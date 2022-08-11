@@ -41,15 +41,23 @@
   }
 
   @media (max-width: 991.98px) {
-    .sticky-top.navbar-dark {
+    .sticky-top.navbar {
       position: relative;
+    }
+    .sticky-top.navbar-dark {
       background: #ffffff;
+    }
+
+    .navbar .navbar-nav .nav-link,
+    .navbar .navbar-nav .nav-link.show,
+    .sticky-top.navbar .navbar-nav .nav-link {
+      padding: 10px 0;
+      color: var(--dark);
     }
 
     .navbar-dark .navbar-nav .nav-link,
     .navbar-dark .navbar-nav .nav-link.show,
     .sticky-top.navbar-dark .navbar-nav .nav-link {
-      padding: 10px 0;
       color: var(--dark);
     }
 

@@ -1,10 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { BracesAsterisk } from 'react-bootstrap-icons';
 import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
+
+import BootstrapNavbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Button from "react-bootstrap/Button";
+
+
+import { BracesAsterisk } from 'react-bootstrap-icons';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-// TODO: use react-bootstrap
 export default function Navbar({ dark = true }) {
     const [sticky, setSticky] = useState(false);
 
@@ -16,26 +21,26 @@ export default function Navbar({ dark = true }) {
 
     return (
         <div id="homenavbar">
-            <nav className={classNames("navbar navbar-expand-lg px-5 py-3 py-lg-0", { 'sticky-top': sticky }, { 'shadow-sm': sticky }, { 'navbar-dark': dark })} >
-                <a href="" className="navbar-brand p-0">
+            <BootstrapNavbar expand="lg" className={classNames('navbar', 'px-5', 'py-3', 'py-lg-0', { 'sticky-top': sticky }, { 'shadow-sm': sticky }, { 'navbar-dark': dark })}>
+                <BootstrapNavbar.Brand className="p-0" as={"a"}>
                     <h1 className="m-0"><i className="me-2"></i><BracesAsterisk size={64} /></h1>
-                </a>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                </BootstrapNavbar.Brand>
+                <BootstrapNavbar.Toggle data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span><FontAwesomeIcon icon={faBars} /></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarCollapse">
-                    <div className="navbar-nav ms-auto py-0">
-                        <a href="" className="nav-item nav-link active">Home</a>
-                        <a href="#apply" className="nav-item nav-link">Apply</a>
-                        <a href="#jobs" className="nav-item nav-link">Jobs</a>
-                        <a href="#internships" className="nav-item nav-link">Internships</a>
-                        <a href="#blog" className="nav-item nav-link">Blog</a>
-                        <a href="#about" className="nav-item nav-link">About</a>
-                    </div>
-                    <button type="button" className="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i><FontAwesomeIcon icon={faSearch} /></i></button>
-                    <a href="#" className="btn btn-primary py-2 px-4 ms-3">Codenator</a>
-                </div>
-            </nav>
+                </BootstrapNavbar.Toggle>
+                <BootstrapNavbar.Collapse className="collapse" id="navbarCollapse">
+                    <Nav className="ms-auto py-0">
+                        <Nav.Link href="#" active>Home</Nav.Link>
+                        <Nav.Link href="#apply">Apply</Nav.Link>
+                        <Nav.Link href="#jobs">Jobs</Nav.Link>
+                        <Nav.Link href="#internships">Internships</Nav.Link>
+                        <Nav.Link href="#blog">Blog</Nav.Link>
+                        <Nav.Link href="#about">About</Nav.Link>
+                    </Nav>
+                    <button className="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i><FontAwesomeIcon icon={faSearch} /></i></button>
+                    <Button as="a" className="py-2 px-4 ms-3">Codenator</Button>
+                </BootstrapNavbar.Collapse>
+            </BootstrapNavbar>
         </div >
     )
 }
