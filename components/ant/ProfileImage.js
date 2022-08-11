@@ -1,35 +1,4 @@
-// import { Modal, Upload } from 'antd';
-// import { PlusOutlined } from '@ant-design/icons';
-
-
-// export default function ProfileImage() {
-//     return <>
-//         <Upload
-//             action=""
-//             listType="picture-card"
-//         >
-//             <div>
-//                 <PlusOutlined />
-//                 <div
-//                     style={{
-//                         marginTop: 8,
-//                     }}
-//                 >
-//                     Upload
-//                 </div>
-//             </div>
-//         </Upload>
-//         <Modal visible={false} title="Profile Image" footer={null} >
-//             <img
-//                 alt="example"
-//                 style={{
-//                     width: '100%',
-//                 }}
-//                 src="/favicon.svg"
-//             />
-//         </Modal>
-//     </>
-// }
+import Image from "next/image";
 
 import { PlusOutlined } from '@ant-design/icons';
 import { Modal, Upload } from 'antd';
@@ -90,11 +59,11 @@ export default function ProfileImage() {
                 {fileList.length >= 1 ? null : uploadButton}
             </Upload>
             <Modal visible={previewVisible} title={previewTitle} footer={null} onCancel={handleCancel}>
-                <img
+                <Image
                     alt="example"
-                    style={{
-                        width: '100%',
-                    }}
+                    layout="responsive"
+                    width="100%"
+                    height="100%"
                     src={previewImage}
                 />
             </Modal>
