@@ -4,8 +4,8 @@ import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-
-export default function Navbar() {
+// TODO: use react-bootstrap
+export default function Navbar({ dark = true }) {
     const [sticky, setSticky] = useState(false);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ export default function Navbar() {
 
     return (
         <div id="homenavbar">
-            <nav className={classNames("navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0", { 'sticky-top': sticky }, { 'shadow-sm': sticky })} >
+            <nav className={classNames("navbar navbar-expand-lg px-5 py-3 py-lg-0", { 'sticky-top': sticky }, { 'shadow-sm': sticky }, { 'navbar-dark': dark })} >
                 <a href="" className="navbar-brand p-0">
                     <h1 className="m-0"><i className="me-2"></i><BracesAsterisk size={64} /></h1>
                 </a>
