@@ -9,9 +9,11 @@ import Button from "react-bootstrap/Button";
 import { BracesAsterisk } from 'react-bootstrap-icons';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
+import Searchbar from './Searchbar';
 
 export default function Navbar({ dark = true }) {
     const [sticky, setSticky] = useState(false);
+    const [searchBarShown, setSearchBarShown] = useState(false);
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
@@ -19,7 +21,16 @@ export default function Navbar({ dark = true }) {
         });
     })
 
-    return (
+    function showSearchBar() {
+        setSearchBarShown(true);
+    }
+
+    function hideSearchBar() {
+        setSearchBarShown(false);
+    }
+
+    return (<>
+        <Searchbar shown={searchBarShown} onHide={hideSearchBar} />
         <div id="homenavbar">
             <BootstrapNavbar expand="lg" className={classNames('navbar', 'px-5', 'py-3', 'py-lg-0', { 'sticky-top': sticky }, { 'shadow-sm': sticky }, { 'navbar-dark': dark })}>
                 <BootstrapNavbar.Brand className="p-0" as={"a"}>
@@ -37,10 +48,11 @@ export default function Navbar({ dark = true }) {
                         <Nav.Link href="#blog">Blog</Nav.Link>
                         <Nav.Link href="#about">About</Nav.Link>
                     </Nav>
-                    <button className="btn text-primary ms-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i><FontAwesomeIcon icon={faSearch} /></i></button>
+                    <button className="btn text-primary ms-3" data-bs-toggle="modal" onClick={showSearchBar}><i><FontAwesomeIcon icon={faSearch} /></i></button>
                     <Button as="a" className="py-2 px-4 ms-3">Codenator</Button>
                 </BootstrapNavbar.Collapse>
             </BootstrapNavbar>
         </div >
+    </>
     )
 }

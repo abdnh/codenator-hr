@@ -24,7 +24,6 @@ import SponsorsImage from "../assets/icons//sponsors.svg";
 
 import Navbar from "../components/home/Navbar";
 
-
 function Spinner() {
   const [shown, setShown] = useState(true);
 
@@ -78,25 +77,6 @@ function CTA() {
       </div>
     </div>
   </div>
-}
-
-function Searchbar() {
-  return <div className="modal fade" id="searchModal" tabIndex="-1">
-    <div className="modal-dialog modal-fullscreen">
-      <div className="modal-content" style={{ background: 'rgba(9, 30, 62, 0)' }}>
-        <div className="modal-header border-0">
-          <button type="button" className="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div className="modal-body d-flex align-items-center justify-content-center">
-          <div className="input-group" style={{ 'max-width': '600px' }}>
-            <input type="text" className="form-control border-primary p-3" placeholder="Type search keyword" />
-            <button className="btn btn-primary px-4"><Search /></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 }
 
 function Stats() {
@@ -778,7 +758,6 @@ export default function Home() {
           <Navbar />
           <CTA />
         </div>
-        <Searchbar />
         <Stats />
         <About />
         <Benefits />
