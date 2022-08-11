@@ -1,0 +1,17 @@
+.item {
+  padding: 60px 36px;
+  background: #ffffff;
+  box-shadow: 1px 4px 20px -2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.itemBody {
+  place-self: flex-start;
+}
+
+.applyButton {
+  height: 48px;
+}
