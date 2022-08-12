@@ -205,13 +205,13 @@ function BasicForm({ countries }) {
             <Divider >Address</Divider>
             <Row gutter={24}>
                 <Col span={8}>
-                    <CountrySelector value={selectedCountry} countries={countries} onChange={onCountryChange} />
+                    <CountrySelector countries={countries} onChange={onCountryChange} />
                 </Col>
                 <Col span={8}>
-                    <StateSelector value={selectedState} states={countryData[countries[selectedCountry]?.isoCode]?.states} onChange={onStateChange} />
+                    <StateSelector states={countryData[countries[selectedCountry]?.isoCode]?.states} onChange={onStateChange} />
                 </Col>
                 <Col span={8}>
-                    <CitySelector value={selectedCity} cities={countryData[countries[selectedCountry]?.isoCode]?.cities} onChange={onCityChange} />
+                    <CitySelector cities={countryData[countries[selectedCountry]?.isoCode]?.cities} onChange={onCityChange} />
                 </Col>
             </Row>
             <Row gutter={24}>
