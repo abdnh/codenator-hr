@@ -1,27 +1,29 @@
-import { useRouter } from 'next/router';
-import Navbar from '../../components/home/Navbar';
 
 import { Row, Container, Col } from "react-bootstrap";
 
-import ContainerLayout from '../../layouts/ContainerLayout';
+import Navbar from '../../components/home/Navbar';
 import Item from "../../components/job/Item";
 import Banner from "../../components/job/Banner";
+import MainLayout from '../../layouts/MainLayout';
+import { getJob, getAllJobs } from "../../lib/job";
 
 
 export async function getStaticProps({ params }) {
-    const results = await (await fetch(`${process.env.JSON_SERVER}/jobs?id=${params.id}`)).json();
-    const post = results[0];
+    const job = await getJob(params.id);
     return {
         props: {
-            post,
+            job,
         },
     };
 }
 
 export async function getStaticPaths() {
-    const paths = [{
-        params: { id: '1' }
-    }];
+    const jobs = await getAllJobs()
+    const paths = jobs.map((job) => (
+        {
+            params: { id: job.id.toString() }
+        }
+    ));
     return {
         paths,
         fallback: true,
@@ -29,22 +31,22 @@ export async function getStaticPaths() {
 }
 
 
-export default function JobView({ post }) {
-    const router = useRouter()
+export default function JobView({ job }) {
 
     return (<>
         <Navbar dark={false} />
-        <Banner title={post.title} />
-        <ContainerLayout subtitle={post.title}>
+        <Banner title={job.title} />
+
+        <MainLayout subtitle={job.title}>
             <Container>
                 <Row>
                     <Col>
-                        <Item title={post.title} text={post.text} iconSrc="/favicon.svg" />
+                        <Item title={job.title} text={job.text} iconSrc="/favicon.svg" />
                     </Col>
                 </Row>
             </Container>
 
-        </ContainerLayout>
+        </MainLayout>
     </>
     )
 }
