@@ -8,6 +8,10 @@ export default function Divider({ children }) {
                 .ant-divider {
                     font-size: 18px !important;
                 }
+                .ant-divider-horizontal.ant-divider-with-text::before,
+                .ant-divider-horizontal.ant-divider-with-text::after {
+                    border-top-color: #d7d7d7;
+                }
         `}</style>
         </>
     )
