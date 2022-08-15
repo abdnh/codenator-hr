@@ -75,6 +75,7 @@ export default function JobList(props) {
                 <SearchRow onChange={onSearch} />
 
                 <div id="results">
+                    {/* TODO: use pagination feature of json-server instead of fetching all jobs at once */}
                     {jobs.slice((page - 1) * pageSize, page * pageSize).map((job) => (
                         // TODO: get icon from job
                         <JobRow key={job.id} job={job} icon={<FontAwesomeIcon icon={faDatabase} />} />

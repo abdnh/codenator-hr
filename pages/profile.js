@@ -230,7 +230,7 @@ function BasicForm({ countries }) {
 
             <Divider >Citizenship</Divider>
             <Form.List name="citizenships" initialValue={[
-                { conutry: "foo", citizenship_reason: "By birth" }
+                {}
             ]}>
                 {(fields, { add, remove }) => (
                     <>
@@ -294,7 +294,7 @@ function EducationForm() {
 
             <Divider >Degrees</Divider>
             <Form.List name="degrees" initialValue={[
-                { conutry: "foo", citizenship_reason: "By birth" }
+                {}
             ]}>
                 {(fields, { add, remove }) => (
                     <Space direction="vertical">
@@ -350,9 +350,7 @@ function EducationForm() {
             </Form.List>
 
             <Divider >Certifications</Divider>
-            <Form.List name="certifications" initialValue={[
-                // TODO
-            ]}>
+            <Form.List name="certifications">
                 {(fields, { add, remove }) => (
                     <Space direction="vertical">
                         {fields.map(({ key, name, ...restField }) => (
@@ -389,7 +387,7 @@ function EducationForm() {
 
             <Divider >Languages</Divider>
             <Form.List name="languages" initialValue={[
-                // TODO
+                {}
             ]}>
                 {(fields, { add, remove }) => (
                     <Space direction="vertical">
