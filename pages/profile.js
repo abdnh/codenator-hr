@@ -12,16 +12,15 @@ import ReferenceIcon from "../assets/icons/reference.svg";
 import ResumeIcon from "../assets/icons/resume.svg";
 
 
-// import MainLayout from "../layouts/MainLayout";
 import ContainerLayout from '../layouts/ContainerLayout';
-// import AdminLayout from "../layouts/admin/layout/layout";
 import Divider from "../components/ant/Divider";
 import PlusButton from "../components/ant/PlusButton";
-import ProfileImage from "../components/ant/ProfileImage";
 import PhoneInput from "../components/ant/PhoneInput";
 import CountrySelector from "../components/ant/CountrySelector";
 import StateSelector from "../components/ant/StateSelector";
 import CitySelector from "../components/ant/CitySelector";
+import Banner from "../components/profile/Banner";
+import Navbar from "../components/home/Navbar";
 
 import { getAllCountries } from "../lib/country";
 
@@ -54,7 +53,7 @@ function BasicForm({ countries }) {
         const states = await (await fetch(`/api/states?countryCode=${countryCode}`, {
             method: "GET",
         })).json();
-        
+
         const copy = Object.assign({}, countryData);
         copy[countryCode] = { states };
         setCountryData(copy);
@@ -112,11 +111,11 @@ function BasicForm({ countries }) {
             onFinishFailed={onFinishFailed}
             autoComplete="off"
         >
-            <Row gutter={24} className={"mb-4"}>
+            {/* <Row gutter={24} className={"mb-4"}>
                 <Col span={24} offset={0}>
                     <ProfileImage />
                 </Col>
-            </Row>
+            </Row> */}
             <Divider>Basic</Divider>
             <Row gutter={24}>
                 <Col span={8}>
@@ -724,7 +723,10 @@ export default function Profile({ countries }) {
         console.log('onChange:', current);
         setCurrent(value);
     };
-    return (
+
+    return (<>
+        <Navbar dark={false} />
+        <Banner title="Profile" id="banner" />
         <ContainerLayout subtitle="Profile">
             <Steps current={current} onChange={onChange}>
                 <Step title="Biography" icon={<InfoCircle />} description="&nbsp;" />
@@ -776,6 +778,8 @@ export default function Profile({ countries }) {
             </style>
 
         </ContainerLayout>
-    );
+    </>
+    )
+
 };
 
