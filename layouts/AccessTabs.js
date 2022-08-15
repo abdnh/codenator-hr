@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-export default function AccessTabs({ children, activeTab }) {
+export default function AccessTabs({ children, activeTab, onSubmit }) {
 
     const router = useRouter();
     function handleTabSelect(selected) {
@@ -23,7 +23,7 @@ export default function AccessTabs({ children, activeTab }) {
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
                     </Col>
                     <Col xs={6} className="right">
-                        <Form className="form">
+                        <Form className="form" onSubmit={onSubmit}>
                             <Nav fill variant="tabs" defaultActiveKey={activeTab} onSelect={handleTabSelect}>
                                 <Nav.Item>
                                     <Nav.Link className="btn" eventKey="login">Login</Nav.Link>
