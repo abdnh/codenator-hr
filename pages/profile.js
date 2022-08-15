@@ -23,6 +23,8 @@ import Banner from "../components/profile/Banner";
 import Navbar from "../components/home/Navbar";
 
 import { getAllCountries } from "../lib/country";
+import useUser from "../lib/useUser";
+
 
 const REQUIRED_MESSAGE = "This field is required";
 
@@ -718,11 +720,22 @@ function CVUpload(props) {
 
 
 export default function Profile({ countries }) {
+    const { user } = useUser({
+        redirectTo: '/login'
+    });
     const [current, setCurrent] = useState(0);
     function onChange(value) {
         console.log('onChange:', current);
         setCurrent(value);
     };
+
+    if (!user || !user.loggedIn) {
+        return (
+            <p>
+                Redirecting...
+            </p>
+        )
+    }
 
     return (<>
         <Navbar dark={false} />
