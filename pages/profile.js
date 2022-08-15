@@ -299,8 +299,8 @@ function EducationForm() {
                 {(fields, { add, remove }) => (
                     <Space direction="vertical">
                         {fields.map(({ key, name, ...restField }) => (
-                            <>
-                                <Row gutter={20} key={key}>
+                            <div key={key}>
+                                <Row gutter={20}>
                                     <Col span={8}>
                                         <Form.Item {...restField} name={[name, 'university']} label="University" labelCol={{ span: 24 }} rules={[{ required: true }]}>
                                             <Input />
@@ -317,7 +317,7 @@ function EducationForm() {
                                         </Form.Item>
                                     </Col>
                                 </Row>
-                                <Row gutter={20} key={key}>
+                                <Row gutter={20}>
 
                                     <Col span={6}>
                                         <Form.Item {...restField} name={[name, 'score']} label="Score" labelCol={{ span: 24 }} rules={[{ required: true, type: "number" }]}>
@@ -340,7 +340,7 @@ function EducationForm() {
                                         <MinusCircleOutlined onClick={() => remove(name)} />
                                     </Col>
                                 </Row>
-                            </>
+                            </div>
                         ))}
                         <Form.Item>
                             <PlusButton onClick={() => add()} />
