@@ -9,7 +9,10 @@ import Button from "react-bootstrap/Button";
 import { BracesAsterisk } from 'react-bootstrap-icons';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
+
+
 import Searchbar from './Searchbar';
+import Navlink from './Navlink';
 
 export default function Navbar({ dark = true }) {
     const [sticky, setSticky] = useState(false);
@@ -41,12 +44,13 @@ export default function Navbar({ dark = true }) {
                 </BootstrapNavbar.Toggle>
                 <BootstrapNavbar.Collapse className="collapse" id="navbarCollapse">
                     <Nav className="ms-auto py-0">
-                        <Nav.Link href="#" active>Home</Nav.Link>
-                        <Nav.Link href="#apply">Apply</Nav.Link>
-                        <Nav.Link href="#jobs">Jobs</Nav.Link>
-                        <Nav.Link href="#internships">Internships</Nav.Link>
-                        <Nav.Link href="#blog">Blog</Nav.Link>
-                        <Nav.Link href="#about">About</Nav.Link>
+                        <Navlink href="/" active>Home</Navlink>
+                        <Navlink href="/profile">Profile</Navlink>
+                        <Navlink href="/jobs">Jobs</Navlink>
+                        {/* TODO: add a url query param to only show internships in jobs page */}
+                        <Navlink href="/jobs">Internships</Navlink>
+                        <Navlink href="#blog">Blog</Navlink>
+                        <Navlink href="#about">About</Navlink>
                     </Nav>
                     <button className="btn text-primary ms-3" data-bs-toggle="modal" onClick={showSearchBar}><i><FontAwesomeIcon icon={faSearch} /></i></button>
                     <Button as="a" className="py-2 px-4 ms-3">Codenator</Button>
