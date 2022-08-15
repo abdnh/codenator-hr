@@ -1,14 +1,14 @@
-import { Divider as AntDivider} from "antd";
-import styled from "styled-components";
+import { Divider as AntDivider } from "antd";
 
-const Divider = styled(AntDivider)`
-    font-size: 18px !important;
-`;
-
-
-export default Divider;
-
-// function Divider() {
-//     // return         <Divider orientation="left">Address</Divider>
-
-// }
+export default function Divider({ children }) {
+    return (
+        <>
+            <AntDivider>{children}</AntDivider>
+            <style global jsx>{`
+                .ant-divider {
+                    font-size: 18px !important;
+                }
+        `}</style>
+        </>
+    )
+}
