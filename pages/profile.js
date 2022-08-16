@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import moment from 'moment';
 
-import { Upload, DatePicker, InputNumber, Button, Form, Input, Row, Col, Select, Space, Tabs, Steps } from 'antd';
+import { Upload, DatePicker, InputNumber, Button, Form, Input, Row, Col, Select, Space, Tabs, Steps, message } from 'antd';
 import { UploadOutlined, MinusCircleOutlined } from '@ant-design/icons';
 const { TabPane } = Tabs;
 const { Option } = Select;
@@ -53,7 +53,15 @@ function TabbedForm({ children, user, profileData, ...rest }) {
         // TODO: handle file uploads
 
         console.log('onFinish:', values);
-        postJSON('/api/profile', { id: user.id, ...values });
+        postJSON('/api/profile', { id: user.id, ...values }).then(
+            (res) => {
+                if (res.ok) {
+                    message.success("Successfully saved");
+                } else {
+                    message.error("Failed to save");
+                }
+            }
+        ).catch((e) => message.error(`Failed to save: ${e}`));
     };
 
     function onFinishFailed(errorInfo) {
