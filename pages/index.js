@@ -143,7 +143,7 @@ function About() {
           </div>
           <a href="#" className="btn btn-primary py-3 px-5 mt-3 wow zoomIn" data-wow-delay="0.9s">Download Codenator</a>
         </div>
-        <div className="col-lg-5" style={{ 'min-height': '500px' }}>
+        <div className="col-lg-5" style={{ minHeight: '500px' }}>
           <div className="position-relative h-100">
             {/* TODO: better image */}
             <Image className="rounded wow zoomIn" data-wow-delay="0.9s" src={AboutImage} layout="responsive" alt="" />
