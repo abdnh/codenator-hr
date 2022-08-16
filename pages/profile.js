@@ -26,7 +26,7 @@ import Navbar from "../components/home/Navbar";
 
 import { getAllCountries } from "../lib/country";
 import useUser from "../lib/useUser";
-
+import { postJSON } from "../lib/request";
 
 const REQUIRED_MESSAGE = "This field is required";
 
@@ -53,12 +53,7 @@ function TabbedForm({ children, user, profileData, ...rest }) {
         // TODO: handle file uploads
 
         console.log('onFinish:', values);
-        await fetch('/api/profile', {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id: user.id, ...values }),
-        });
-
+        postJSON('/api/profile', { id: user.id, ...values });
     };
 
     function onFinishFailed(errorInfo) {
@@ -782,12 +777,9 @@ export default function Profile({ countries }) {
         )
     }
 
-    // return (
-    //     <p>{JSON.stringify(profileData)}</p>
-    // )
     return (<>
         <Navbar dark={false} />
-        <Banner title="Profile" id="banner" />
+        <Banner title="Profile" id="banner" user={user} profileData={profileData} />
         <ContainerLayout subtitle="Profile">
             <Steps current={current} onChange={onChange}>
                 <Step title="Biography" icon={<InfoCircle />} description="&nbsp;" />

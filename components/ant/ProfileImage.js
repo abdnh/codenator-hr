@@ -2,7 +2,8 @@ import Image from "next/image";
 
 import { PlusOutlined } from '@ant-design/icons';
 import { Modal, Upload } from 'antd';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { postJSON } from "../../lib/request";
 
 const getBase64 = (file) =>
     new Promise((resolve, reject) => {
@@ -14,11 +15,30 @@ const getBase64 = (file) =>
         reader.onerror = (error) => reject(error);
     });
 
-export default function ProfileImage() {
+export default function ProfileImage({ user, profileData }) {
     const [previewVisible, setPreviewVisible] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
     const [previewTitle, setPreviewTitle] = useState('');
     const [fileList, setFileList] = useState([]);
+
+    useEffect(() => {
+        if (!profileData.profile_image) return;
+        const profileImage = profileData.profile_image;
+        const data = window.atob(profileImage.data);
+        const arr = new Uint8Array(data.length);
+        for (let i = 0; i < data.length; i++) {
+            arr[i] = data.charCodeAt(i);
+        }
+        const file = new File([arr.buffer], profileImage.name, {
+            type: profileImage.type,
+        });
+        const antFile = {
+            originFileObj: file,
+            name: profileImage.name,
+            type: profileImage.type,
+        }
+        setFileList([antFile]);
+    }, [profileData]);
 
     const handleCancel = () => setPreviewVisible(false);
 
@@ -32,7 +52,25 @@ export default function ProfileImage() {
         setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
     };
 
-    const handleChange = ({ fileList: newFileList }) => setFileList(newFileList);
+    function handleChange({ fileList: newFileList }) {
+        setFileList(newFileList);
+    }
+
+    async function handleRequest(info) {
+        const file = info.file;
+        const base64String = window.btoa(String.fromCharCode(...new Uint8Array(await file.arrayBuffer())));
+        const data = {
+            id: user.id,
+            profile_image: {
+                data: base64String,
+                type: file.type,
+                name: file.name,
+            }
+        }
+        postJSON('/api/profile', data).then(res => info.onSuccess(res.body)).catch(err => {
+            info.onError(err, null);
+        });
+    }
 
     const uploadButton = (
         <div>
@@ -46,15 +84,17 @@ export default function ProfileImage() {
             </div>
         </div>
     );
+
     return (
         <>
             <Upload
-                // TODO
-                action="/api/test"
+                customRequest={handleRequest}
                 listType="picture-card"
                 fileList={fileList}
                 onPreview={handlePreview}
                 onChange={handleChange}
+            // TODO
+            // onRemove={handleRemove}
             >
                 {fileList.length >= 1 ? null : uploadButton}
             </Upload>
@@ -70,4 +110,3 @@ export default function ProfileImage() {
         </>
     );
 };
-
