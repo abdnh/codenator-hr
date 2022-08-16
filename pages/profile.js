@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import moment from 'moment';
 
 import { Upload, DatePicker, InputNumber, Button, Form, Input, Row, Col, Select, Space, Tabs, Steps } from 'antd';
 import { UploadOutlined, MinusCircleOutlined } from '@ant-design/icons';
@@ -38,8 +40,46 @@ export function getStaticProps() {
     }
 }
 
+function TabbedForm({ children, user, profileData, ...rest }) {
+    const [form] = Form.useForm();
+    // Ensure initial field values are updated
+    useEffect(() => form.resetFields(), [profileData, user]);
 
-function BasicForm({ countries }) {
+    async function onFinish(values) {
+
+        // We store the email in the user object and only show it here for completeness
+        delete values.email;
+
+        // TODO: handle file uploads
+
+        console.log('onFinish:', values);
+        await fetch('/api/profile', {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: user.id, ...values }),
+        });
+
+    };
+
+    function onFinishFailed(errorInfo) {
+        console.log('onFinishFailed:', errorInfo);
+    };
+
+    return (
+        <Form
+            form={form}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+            {...rest}>
+            {children}
+            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                <Button type="primary" htmlType="submit" style={{ float: 'right', marginBottom: 32 }}>Save</Button>
+            </Form.Item>
+        </Form>
+    )
+}
+
+function BasicForm({ countries, user, profileData }) {
     const [selectedCountry, setSelectedCountry] = useState('');
     const [selectedState, setSelectedState] = useState('');
     const [selectedCity, setSelectedCity] = useState('');
@@ -89,606 +129,571 @@ function BasicForm({ countries }) {
         setSelectedCity(value);
     }
 
-    const onFinish = (values) => {
-        console.log('Success:', values);
-    };
-
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
-
-    return <TabbedForm>
-        <Form
-            name="basic"
-            // labelCol={{
-            //     span: 24,
-            // }}
-            // wrapperCol={{
-            //     span: 16,
-            // }}
-            initialValues={{
-                email: "foo@example.com",
-            }}
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-        >
-            {/* <Row gutter={24} className={"mb-4"}>
+    return <TabbedForm
+        name="basic"
+        // labelCol={{
+        //     span: 24,
+        // }}
+        // wrapperCol={{
+        //     span: 16,
+        // }}
+        autoComplete="off"
+        user={user}
+        profileData={profileData}
+    >
+        {/* <Row gutter={24} className={"mb-4"}>
                 <Col span={24} offset={0}>
                     <ProfileImage />
                 </Col>
             </Row> */}
-            <Divider>Basic</Divider>
-            <Row gutter={24}>
-                <Col span={8}>
-                    <Form.Item
-                        label="First Name"
-                        labelCol={{ span: 24 }}
-                        name="first_name"
-                        rules={[
-                            {
-                                required: true,
-                                message: REQUIRED_MESSAGE,
-                            },
-                        ]}
+        <Divider>Basic</Divider>
+        <Row gutter={24}>
+            <Col span={8}>
+                <Form.Item
+                    label="First Name"
+                    labelCol={{ span: 24 }}
+                    name="first_name"
+                    initialValue={profileData.first_name}
+                    rules={[
+                        {
+                            required: true,
+                            message: REQUIRED_MESSAGE,
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+            </Col>
+
+            <Col span={8}>
+                <Form.Item
+                    label="Middle Name"
+                    labelCol={{ span: 24 }}
+                    name="middle_name"
+                    initialValue={profileData.middle_name}
+
+                    rules={[
+                        {
+                            required: false,
+                            message: REQUIRED_MESSAGE,
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+            </Col>
+
+            <Col span={8}>
+                <Form.Item
+                    label="Last Name"
+                    labelCol={{ span: 24 }}
+                    initialValue={profileData.last_name}
+                    name="last_name"
+                    rules={[
+                        {
+                            required: true,
+                            message: REQUIRED_MESSAGE,
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+            </Col>
+
+        </Row>
+
+
+        <Row gutter={24}>
+            <Col span={8}>
+                <Form.Item
+                    name="gender"
+                    label="Gender"
+                    labelCol={{ span: 24 }}
+                    initialValue={profileData.gender}
+                    rules={[{ required: true }]}>
+                    <Select
                     >
-                        <Input />
+                        <Select.Option value="male">male</Select.Option>
+                        <Select.Option value="female">female</Select.Option>
+                    </Select>
+                </Form.Item>
+            </Col>
+
+            <Col span={8}>
+                <Form.Item
+                    name="email"
+                    label="Email"
+                    labelCol={{ span: 24 }}
+                    initialValue={user.email}
+                    rules={[{ required: true, type: "email" }]}>
+                    <Input disabled />
+                </Form.Item>
+            </Col>
+
+            <Col span={8}>
+                <PhoneInput countries={countries} rules={[
+                    {
+                        required: true,
+                        message: REQUIRED_MESSAGE,
+                    },
+                ]} initialValue={profileData.phone} />
+            </Col>
+        </Row>
+
+        <Row gutter={24}>
+            <Col span={24}>
+                <Form.Item
+                    name="birth_date"
+                    label="Birth Date"
+                    labelCol={{ span: 6 }}
+                    initialValue={profileData.birth_date}
+                    rules={[{ required: true, type: "date" }]}>
+                    <DatePicker />
+                </Form.Item>
+            </Col>
+        </Row>
+
+        <Divider >Address</Divider>
+        <Row gutter={24}>
+            <Col span={8}>
+                <CountrySelector initialValue={profileData.country} countries={countries} onChange={onCountryChange} />
+            </Col>
+            <Col span={8}>
+                <StateSelector initialValue={profileData.state} states={countryData[countries[selectedCountry]?.isoCode]?.states} onChange={onStateChange} />
+            </Col>
+            <Col span={8}>
+                <CitySelector initialValue={profileData.city} cities={countryData[countries[selectedCountry]?.isoCode]?.cities} onChange={onCityChange} />
+            </Col>
+        </Row>
+        <Row gutter={24}>
+            <Col span={16}>
+                <Form.Item
+                    name="address"
+                    label="Address"
+                    labelCol={{ span: 24 }}
+                    initialValue={profileData.address}
+                    rules={[{ required: true }]}>
+                    <Input.TextArea />
+                </Form.Item>
+            </Col>
+            <Col span={8}>
+                <Form.Item
+                    name="zip_code"
+                    label="Zip Code"
+                    labelCol={{ span: 24 }}
+                    initialValue={profileData.zip_code}
+                    rules={[{ required: true }]}>
+                    <Input />
+                </Form.Item>
+            </Col>
+        </Row>
+
+        <Divider >Citizenship</Divider>
+        <Form.List name="citizenships" initialValue={profileData.citizenships}>
+            {(fields, { add, remove }) => (
+                <>
+                    {fields.map(({ key, name, ...restField }) => (
+                        <Row gutter={20} key={key}>
+                            <Col span={11}>
+                                <CountrySelector
+                                    {...restField}
+                                    countries={countries}
+                                    name={[name, 'country']}
+                                    label="Country"
+                                    labelCol={{ span: 24 }}
+                                    rules={[{ required: true }]} />
+                            </Col>
+                            <Col span={11}>
+                                <Form.Item
+                                    {...restField}
+                                    name={[name, 'citizenship_reason']}
+                                    label="How did you obtain this citizenship?"
+                                    labelCol={{ span: 24 }}
+                                    rules={[{ required: true }]}>
+                                    <Select>
+                                        <Option value="By birth"></Option>
+                                        <Option value="By application"></Option>
+                                    </Select>
+                                </Form.Item>
+                            </Col>
+                            <Col span={2}>
+                                <MinusCircleOutlined onClick={() => remove(name)} />
+                            </Col>
+                        </Row>
+
+                    ))}
+                    <Form.Item>
+                        <PlusButton onClick={() => add()} />
                     </Form.Item>
-                </Col>
-
-                <Col span={8}>
-                    <Form.Item
-                        label="Middle Name"
-                        labelCol={{ span: 24 }}
-
-                        name="middle_name"
-                        rules={[
-                            {
-                                required: false,
-                                message: REQUIRED_MESSAGE,
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-
-                <Col span={8}>
-                    <Form.Item
-                        label="Last Name"
-                        labelCol={{ span: 24 }}
-
-                        name="last_name"
-                        rules={[
-                            {
-                                required: true,
-                                message: REQUIRED_MESSAGE,
-                            },
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
-                </Col>
-
-            </Row>
-
-
-            <Row gutter={24}>
-                <Col span={8}>
-                    <Form.Item name="gender" label="Gender" labelCol={{ span: 24 }} rules={[{ required: true }]}>
-                        <Select
-                        >
-                            <Select.Option value="male">male</Select.Option>
-                            <Select.Option value="female">female</Select.Option>
-                        </Select>
-                    </Form.Item>
-                </Col>
-
-                <Col span={8}>
-                    <Form.Item name="email" label="Email" labelCol={{ span: 24 }} rules={[{ required: true, type: "email" }]}>
-                        <Input disabled />
-                    </Form.Item>
-                </Col>
-
-                <Col span={8}>
-                    <PhoneInput countries={countries} />
-                </Col>
-            </Row>
-
-            <Row gutter={24}>
-                <Col span={24}>
-                    <Form.Item name="birth_date" label="Birth Date" labelCol={{ span: 6 }} rules={[{ required: true, type: "date" }]}>
-                        <DatePicker />
-                    </Form.Item>
-                </Col>
-            </Row>
-
-            <Divider >Address</Divider>
-            <Row gutter={24}>
-                <Col span={8}>
-                    <CountrySelector countries={countries} onChange={onCountryChange} />
-                </Col>
-                <Col span={8}>
-                    <StateSelector states={countryData[countries[selectedCountry]?.isoCode]?.states} onChange={onStateChange} />
-                </Col>
-                <Col span={8}>
-                    <CitySelector cities={countryData[countries[selectedCountry]?.isoCode]?.cities} onChange={onCityChange} />
-                </Col>
-            </Row>
-            <Row gutter={24}>
-                <Col span={16}>
-                    <Form.Item name="address" label="Address" labelCol={{ span: 24 }} rules={[{ required: true }]}>
-                        <Input.TextArea />
-                    </Form.Item>
-                </Col>
-                <Col span={8}>
-                    <Form.Item name="zip_code" label="Zip Code" labelCol={{ span: 24 }} rules={[{ required: true }]}>
-                        <Input />
-                    </Form.Item>
-                </Col>
-            </Row>
-
-            <Divider >Citizenship</Divider>
-            <Form.List name="citizenships" initialValue={[
-                {}
-            ]}>
-                {(fields, { add, remove }) => (
-                    <>
-                        {fields.map(({ key, name, ...restField }) => (
-                            <Row gutter={20} key={key}>
-                                <Col span={11}>
-                                    <CountrySelector {...restField} countries={countries} name={[name, 'country']} label="Country" labelCol={{ span: 24 }} rules={[{ required: true }]} />
-                                </Col>
-                                <Col span={11}>
-                                    <Form.Item {...restField} name={[name, 'citizenship_reason']} label="How did you obtain this citizenship?" labelCol={{ span: 24 }} rules={[{ required: true }]}>
-                                        <Select>
-                                            <Option value="By birth"></Option>
-                                            <Option value="By application"></Option>
-                                        </Select>
-                                    </Form.Item>
-                                </Col>
-                                <Col span={2}>
-                                    <MinusCircleOutlined onClick={() => remove(name)} />
-                                </Col>
-                            </Row>
-
-                        ))}
-                        <Form.Item>
-                            <PlusButton onClick={() => add()} />
-                        </Form.Item>
-                    </>
-                )}
-            </Form.List>
-
-        </Form>
+                </>
+            )}
+        </Form.List>
     </TabbedForm>
 }
 
-function TabbedForm({ children }) {
-    return (
-        <div>
-            {children}
-            <Button type="primary" style={{ float: 'right', marginBottom: 32 }}>Save</Button>
-        </div>
-    )
-}
-
-function EducationForm() {
-
-    const onFinish = (values) => {
-        console.log('Success:', values);
-    };
-
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
-
-    return <TabbedForm>
-        <Form
-            name="education"
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-        >
+function EducationForm({ user, profileData }) {
 
 
-            <Divider >Degrees</Divider>
-            <Form.List name="degrees" initialValue={[
-                {}
-            ]}>
-                {(fields, { add, remove }) => (
-                    <Space direction="vertical">
-                        {fields.map(({ key, name, ...restField }) => (
-                            <div key={key}>
-                                <Row gutter={20}>
-                                    <Col span={8}>
-                                        <Form.Item {...restField} name={[name, 'university']} label="University" labelCol={{ span: 24 }} rules={[{ required: true }]}>
-                                            <Input />
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={8}>
-                                        <Form.Item {...restField} name={[name, 'faculty']} label="Faculty" labelCol={{ span: 24 }} rules={[{ required: true }]}>
-                                            <Input />
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={8}>
-                                        <Form.Item {...restField} name={[name, 'branch']} label="Branch" labelCol={{ span: 24 }} rules={[{ required: true }]}>
-                                            <Input />
-                                        </Form.Item>
-                                    </Col>
-                                </Row>
-                                <Row gutter={20}>
+    return <TabbedForm
+        name="education"
+        autoComplete="off"
+        user={user}
+    >
 
-                                    <Col span={6}>
-                                        <Form.Item {...restField} name={[name, 'score']} label="Score" labelCol={{ span: 24 }} rules={[{ required: true, type: "number" }]}>
-                                            <InputNumber min={0} max={100} />
-                                        </Form.Item>
-                                    </Col>
 
-                                    <Col span={6}>
-                                        <Form.Item {...restField} name={[name, 'enrollment_date']} label="Enrollment Date" labelCol={{ span: 24 }} rules={[{ required: true, type: "date" }]}>
-                                            <DatePicker />
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={6}>
-                                        <Form.Item {...restField} name={[name, 'graduation_date']} label="Graduation Date" labelCol={{ span: 24 }} rules={[{ required: true, type: "date" }]}>
-                                            <DatePicker />
-                                        </Form.Item>
-                                    </Col>
-
-                                    <Col span={24}>
-                                        <MinusCircleOutlined onClick={() => remove(name)} />
-                                    </Col>
-                                </Row>
-                            </div>
-                        ))}
-                        <Form.Item>
-                            <PlusButton onClick={() => add()} />
-                        </Form.Item>
-                    </Space>
-                )}
-            </Form.List>
-
-            <Divider >Certifications</Divider>
-            <Form.List name="certifications">
-                {(fields, { add, remove }) => (
-                    <Space direction="vertical">
-                        {fields.map(({ key, name, ...restField }) => (
-                            <Row gutter={20} key={key}>
-                                <Col span={6}>
-                                    <Form.Item {...restField} name={[name, 'institute']} label="Institute" labelCol={{ span: 24 }} rules={[{ required: true }]}>
+        <Divider >Degrees</Divider>
+        <Form.List name="degrees" initialValue={profileData.degrees}>
+            {(fields, { add, remove }) => (
+                <Space direction="vertical">
+                    {fields.map(({ key, name, ...restField }) => (
+                        <div key={key}>
+                            <Row gutter={20}>
+                                <Col span={8}>
+                                    <Form.Item {...restField} name={[name, 'university']} label="University" labelCol={{ span: 24 }} rules={[{ required: true }]}>
                                         <Input />
                                     </Form.Item>
                                 </Col>
+                                <Col span={8}>
+                                    <Form.Item {...restField} name={[name, 'faculty']} label="Faculty" labelCol={{ span: 24 }} rules={[{ required: true }]}>
+                                        <Input />
+                                    </Form.Item>
+                                </Col>
+                                <Col span={8}>
+                                    <Form.Item {...restField} name={[name, 'branch']} label="Branch" labelCol={{ span: 24 }} rules={[{ required: true }]}>
+                                        <Input />
+                                    </Form.Item>
+                                </Col>
+                            </Row>
+                            <Row gutter={20}>
+
                                 <Col span={6}>
-                                    <Form.Item {...restField} name={[name, 'issuing_date']} label="Issuing Date" labelCol={{ span: 24 }} rules={[{ required: true }]}>
+                                    <Form.Item {...restField} name={[name, 'score']} label="Score" labelCol={{ span: 24 }} rules={[{ required: true, type: "number" }]}>
+                                        <InputNumber min={0} max={100} />
+                                    </Form.Item>
+                                </Col>
+
+                                <Col span={6}>
+                                    <Form.Item {...restField} name={[name, 'enrollment_date']} label="Enrollment Date" labelCol={{ span: 24 }} rules={[{ required: true, type: "date" }]}>
                                         <DatePicker />
                                     </Form.Item>
                                 </Col>
                                 <Col span={6}>
-                                    <Form.Item {...restField} name={[name, 'certification_upload']} label="&nbsp;" labelCol={{ span: 24 }} rules={[{ required: true }]}>
-                                        {/* <Input /> */}
-                                        <Upload>
-                                            <Button icon={<UploadOutlined />}>Upload</Button>
-                                        </Upload>
+                                    <Form.Item {...restField} name={[name, 'graduation_date']} label="Graduation Date" labelCol={{ span: 24 }} rules={[{ required: true, type: "date" }]}>
+                                        <DatePicker />
                                     </Form.Item>
                                 </Col>
-                                <Col span={6}>
+
+                                <Col span={24}>
                                     <MinusCircleOutlined onClick={() => remove(name)} />
                                 </Col>
                             </Row>
-                        ))}
-                        <Form.Item>
-                            <PlusButton onClick={() => add()} />
-                        </Form.Item>
-                    </Space>
-                )}
-            </Form.List>
+                        </div>
+                    ))}
+                    <Form.Item>
+                        <PlusButton onClick={() => add()} />
+                    </Form.Item>
+                </Space>
+            )}
+        </Form.List>
 
-            <Divider >Languages</Divider>
-            <Form.List name="languages" initialValue={[
-                {}
-            ]}>
-                {(fields, { add, remove }) => (
-                    <Space direction="vertical">
-                        {fields.map(({ key, name, ...restField }) => (
-                            <Row gutter={20} key={key}>
-                                <Col span={6}>
-                                    <Form.Item {...restField} name={[name, 'language']} label="Language" labelCol={{ span: 24 }} rules={[{ required: true }]}>
+        <Divider >Certifications</Divider>
+        <Form.List name="certifications" initialValue={profileData.certifications}>
+            {(fields, { add, remove }) => (
+                <Space direction="vertical">
+                    {fields.map(({ key, name, ...restField }) => (
+                        <Row gutter={20} key={key}>
+                            <Col span={6}>
+                                <Form.Item {...restField} name={[name, 'institute']} label="Institute" labelCol={{ span: 24 }} rules={[{ required: true }]}>
+                                    <Input />
+                                </Form.Item>
+                            </Col>
+                            <Col span={6}>
+                                <Form.Item {...restField} name={[name, 'issuing_date']} label="Issuing Date" labelCol={{ span: 24 }} rules={[{ required: true }]}>
+                                    <DatePicker />
+                                </Form.Item>
+                            </Col>
+                            <Col span={6}>
+                                <Form.Item {...restField} name={[name, 'certification_upload']} label="&nbsp;" labelCol={{ span: 24 }} rules={[{ required: true }]} valuePropName='fileList'>
+                                    {/* <Input /> */}
+                                    <Upload>
+                                        <Button icon={<UploadOutlined />}>Upload</Button>
+                                    </Upload>
+                                </Form.Item>
+                            </Col>
+                            <Col span={6}>
+                                <MinusCircleOutlined onClick={() => remove(name)} />
+                            </Col>
+                        </Row>
+                    ))}
+                    <Form.Item>
+                        <PlusButton onClick={() => add()} />
+                    </Form.Item>
+                </Space>
+            )}
+        </Form.List>
+
+        <Divider >Languages</Divider>
+        <Form.List name="languages" initialValue={profileData.languages}>
+            {(fields, { add, remove }) => (
+                <Space direction="vertical">
+                    {fields.map(({ key, name, ...restField }) => (
+                        <Row gutter={20} key={key}>
+                            <Col span={6}>
+                                <Form.Item {...restField} name={[name, 'language']} label="Language" labelCol={{ span: 24 }} rules={[{ required: true }]}>
+                                    <Input />
+                                </Form.Item>
+                            </Col>
+                            <Col span={6}>
+                                <Form.Item {...restField} name={[name, 'level']} label="Level" labelCol={{ span: 24 }} rules={[{ required: true }]}>
+                                    <Select>
+                                        <Option value="beginner">Beginner</Option>
+                                        <Option value="intermediate">Intermediate</Option>
+                                        <Option value="advanced">Advanced</Option>
+                                        <Option value="native">Native</Option>
+                                    </Select>
+                                </Form.Item>
+                            </Col>
+                            <Col span={6}>
+                                <Form.Item {...restField} valuePropName='fileList' name={[name, 'lang_certif_upload']} label="&nbsp;" labelCol={{ span: 24 }} rules={[{ required: false }]}>
+                                    <Upload>
+                                        <Button icon={<UploadOutlined />}>Upload</Button>
+                                    </Upload>
+                                </Form.Item>
+                            </Col>
+                            <Col span={6}>
+                                <MinusCircleOutlined onClick={() => remove(name)} />
+                            </Col>
+                        </Row>
+                    ))}
+                    <Form.Item>
+                        <PlusButton onClick={() => add()} />
+                    </Form.Item>
+                </Space>
+            )}
+        </Form.List>
+    </TabbedForm>
+}
+
+function WorkForm({ countries, user, profileData }) {
+
+    return <TabbedForm
+        name="work"
+        autoComplete="off"
+        user={user}
+    >
+
+
+        <Divider >Jobs</Divider>
+        <Form.List name="jobs" initialValue={profileData.jobs}>
+            {(fields, { add, remove }) => (
+                <Space direction="vertical">
+                    {fields.map(({ key, name, ...restField }) => (
+                        <div key={key}>
+                            <Row gutter={20} >
+                                <Col span={8}>
+                                    <Form.Item {...restField} name={[name, 'employer']} label="Employer name / Company" labelCol={{ span: 24 }} rules={[{ required: true }]}>
                                         <Input />
                                     </Form.Item>
                                 </Col>
-                                <Col span={6}>
-                                    <Form.Item {...restField} name={[name, 'level']} label="Level" labelCol={{ span: 24 }} rules={[{ required: true }]}>
-                                        <Select>
-                                            <Option value="beginner">Beginner</Option>
-                                            <Option value="intermediate">Intermediate</Option>
-                                            <Option value="advanced">Advanced</Option>
-                                            <Option value="native">Native</Option>
-                                        </Select>
+                                <Col span={8}>
+                                    <PhoneInput {...restField} countries={countries} name="employer_phone" fieldName={name} label="Phone Number" labelCol={{ span: 24 }} rules={[{ required: true }]} />
+                                </Col>
+                                <Col span={8}>
+                                    <Form.Item {...restField} name={[name, 'title']} label="Your Job Title" labelCol={{ span: 24 }} rules={[{ required: true }]}>
+                                        <Input />
                                     </Form.Item>
                                 </Col>
-                                <Col span={6}>
-                                    <Form.Item {...restField} name={[name, 'lang_certif_upload']} label="&nbsp;" labelCol={{ span: 24 }} rules={[{ required: false }]}>
-                                        {/* <Input /> */}
-                                        <Upload>
-                                            <Button icon={<UploadOutlined />}>Upload</Button>
-                                        </Upload>
+                            </Row>
+                            <Row gutter={20} >
+                                <Col span={8}>
+                                    <Form.Item {...restField} name={[name, 'start_date']} label="Start Date" labelCol={{ span: 24 }} rules={[{ required: true, type: "date" }]}>
+                                        <DatePicker />
                                     </Form.Item>
                                 </Col>
-                                <Col span={6}>
+                                <Col span={8}>
+                                    <Form.Item {...restField} name={[name, 'end_date']} label="End Date" labelCol={{ span: 24 }} rules={[{ required: true, type: "date" }]}>
+                                        <DatePicker />
+                                    </Form.Item>
+                                </Col>
+
+                                <Col span={8}>
+                                    <Form.Item {...restField} name={[name, 'salary']} label="Salary" labelCol={{ span: 24 }} rules={[{ required: true, type: "number" }]}>
+                                        <InputNumber prefix="$" />
+                                    </Form.Item>
+                                </Col>
+
+
+                            </Row>
+                            <Row>
+                                <Col span={24}>
+                                    <Form.Item {...restField} name={[name, 'feedback']} label="Please talk about your responsibilities and experiences in this job" labelCol={{ span: 24 }} rules={[{ required: false }]}>
+                                        <Input.TextArea />
+                                    </Form.Item>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col span={24}>
                                     <MinusCircleOutlined onClick={() => remove(name)} />
                                 </Col>
                             </Row>
-                        ))}
-                        <Form.Item>
-                            <PlusButton onClick={() => add()} />
-                        </Form.Item>
-                    </Space>
-                )}
-            </Form.List>
-        </Form>
+
+                        </div>
+                    ))}
+                    <Form.Item>
+                        <PlusButton onClick={() => add()} />
+                    </Form.Item>
+                </Space>
+            )}
+        </Form.List>
     </TabbedForm>
 }
 
-function WorkForm({ countries }) {
+function ReferencesForm({ countries, user, profileData }) {
 
-    const onFinish = (values) => {
-        console.log('Success:', values);
-    };
-
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
-
-    return <TabbedForm>
-        <Form
-            name="work"
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-        >
+    return <TabbedForm
+        name="references"
+        autoComplete="off"
+        user={user}
+    >
 
 
-            <Divider >Jobs</Divider>
-            <Form.List name="jobs" initialValue={[
-                // TODO
-                {}
-            ]}>
-                {(fields, { add, remove }) => (
-                    <Space direction="vertical">
-                        {fields.map(({ key, name, ...restField }) => (
-                            <div key={key}>
-                                <Row gutter={20} >
-                                    <Col span={8}>
-                                        <Form.Item {...restField} name={[name, 'employer']} label="Employer name / Company" labelCol={{ span: 24 }} rules={[{ required: true }]}>
-                                            <Input />
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={8}>
-                                        <PhoneInput {...restField} countries={countries} name="employer_phone" fieldName={name} label="Phone Number" labelCol={{ span: 24 }} rules={[{ required: true }]} />
-                                    </Col>
-                                    <Col span={8}>
-                                        <Form.Item {...restField} name={[name, 'job_title']} label="Your Job Title" labelCol={{ span: 24 }} rules={[{ required: true }]}>
-                                            <Input />
-                                        </Form.Item>
-                                    </Col>
-                                </Row>
-                                <Row gutter={20} >
-                                    <Col span={8}>
-                                        <Form.Item {...restField} name={[name, 'job_start_date']} label="Start Date" labelCol={{ span: 24 }} rules={[{ required: true, type: "date" }]}>
-                                            <DatePicker />
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={8}>
-                                        <Form.Item {...restField} name={[name, 'job_end_date']} label="End Date" labelCol={{ span: 24 }} rules={[{ required: true, type: "date" }]}>
-                                            <DatePicker />
-                                        </Form.Item>
-                                    </Col>
+        <Divider >References</Divider>
+        <Form.List name="references" initialValue={profileData.references}>
+            {(fields, { add, remove }) => (
+                <Space direction="vertical">
+                    {fields.map(({ key, name, ...restField }) => (
+                        <div key={key}>
+                            <Row gutter={20} >
+                                <Col span={8}>
+                                    <Form.Item
+                                        {...restField}
+                                        label="First Name"
+                                        labelCol={{ span: 24 }}
+                                        name={[name, "first_name"]}
+                                        rules={[
+                                            {
+                                                required: true,
+                                            },
+                                        ]}
+                                    >
+                                        <Input />
+                                    </Form.Item>
+                                </Col>
 
-                                    <Col span={8}>
-                                        <Form.Item {...restField} name={[name, 'job_salary']} label="Salary" labelCol={{ span: 24 }} rules={[{ required: true, type: "number" }]}>
-                                            <InputNumber prefix="$" />
-                                        </Form.Item>
-                                    </Col>
+                                <Col span={8}>
+                                    <Form.Item
+                                        {...restField}
+                                        label="Middle Name"
+                                        labelCol={{ span: 24 }}
+                                        name={[name, "middle_name"]}
+                                        rules={[
+                                            {
+                                                required: false,
+                                            },
+                                        ]}
+                                    >
+                                        <Input />
+                                    </Form.Item>
+                                </Col>
+
+                                <Col span={8}>
+                                    <Form.Item
+                                        {...restField}
+                                        label="Last Name"
+                                        labelCol={{ span: 24 }}
+                                        name={[name, "last_name"]}
+                                        rules={[
+                                            {
+                                                required: true,
+                                            },
+                                        ]}
+                                    >
+                                        <Input />
+                                    </Form.Item>
+                                </Col>
+                            </Row>
+                            <Row gutter={20} >
+                                <Col span={8}>
+                                    <Form.Item {...restField} name={[name, 'reference_occupation']} label="Occupation" labelCol={{ span: 24 }} rules={[{ required: true }]}>
+                                        <Input />
+                                    </Form.Item>
+                                </Col>
+                                <Col span={8}>
+                                    <Form.Item {...restField} name={[name, 'reference_email']} label="Email" labelCol={{ span: 24 }} rules={[{ required: true, type: "email" }]}>
+                                        <Input />
+                                    </Form.Item>
+                                </Col>
+                                <Col span={8}>
+                                    <PhoneInput countries={countries} name="reference_phone" fieldName={name} />
+                                </Col>
 
 
-                                </Row>
-                                <Row>
-                                    <Col span={24}>
-                                        <Form.Item {...restField} name={[name, 'job_responsibilities']} label="Please talk about your responsibilities and experiences in this job" labelCol={{ span: 24 }} rules={[{ required: false }]}>
-                                            <Input.TextArea />
-                                        </Form.Item>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col span={24}>
-                                        <MinusCircleOutlined onClick={() => remove(name)} />
-                                    </Col>
-                                </Row>
-
-                            </div>
-                        ))}
-                        <Form.Item>
-                            <PlusButton onClick={() => add()} />
-                        </Form.Item>
-                    </Space>
-                )}
-            </Form.List>
-        </Form>
+                            </Row>
+                            <Row>
+                                <Col span={24}>
+                                    <MinusCircleOutlined onClick={() => remove(name)} />
+                                </Col>
+                            </Row>
+                        </div>
+                    ))}
+                    <Form.Item>
+                        <PlusButton onClick={() => add()} />
+                    </Form.Item>
+                </Space>
+            )}
+        </Form.List>
     </TabbedForm>
 }
 
-function ReferencesForm({ countries }) {
-
-    const onFinish = (values) => {
-        console.log('Success:', values);
-    };
-
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
-
-    return <TabbedForm>
-        <Form
-            name="references"
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-        >
+function CVForm({ user }) {
 
 
-            <Divider >References</Divider>
-            <Form.List name="references" initialValue={[
-                // TODO
-                {}
-            ]}>
-                {(fields, { add, remove }) => (
-                    <Space direction="vertical">
-                        {fields.map(({ key, name, ...restField }) => (
-                            <div key={key}>
-                                <Row gutter={20} >
-                                    <Col span={8}>
-                                        <Form.Item
-                                            {...restField}
-                                            label="First Name"
-                                            labelCol={{ span: 24 }}
-                                            name={[name, "first_name"]}
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                },
-                                            ]}
-                                        >
-                                            <Input />
-                                        </Form.Item>
-                                    </Col>
-
-                                    <Col span={8}>
-                                        <Form.Item
-                                            {...restField}
-                                            label="Middle Name"
-                                            labelCol={{ span: 24 }}
-                                            name={[name, "middle_name"]}
-                                            rules={[
-                                                {
-                                                    required: false,
-                                                },
-                                            ]}
-                                        >
-                                            <Input />
-                                        </Form.Item>
-                                    </Col>
-
-                                    <Col span={8}>
-                                        <Form.Item
-                                            {...restField}
-                                            label="Last Name"
-                                            labelCol={{ span: 24 }}
-                                            name={[name, "last_name"]}
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                },
-                                            ]}
-                                        >
-                                            <Input />
-                                        </Form.Item>
-                                    </Col>
-                                </Row>
-                                <Row gutter={20} >
-                                    <Col span={8}>
-                                        <Form.Item {...restField} name={[name, 'reference_occupation']} label="Occupation" labelCol={{ span: 24 }} rules={[{ required: true }]}>
-                                            <Input />
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={8}>
-                                        <Form.Item {...restField} name={[name, 'reference_email']} label="Email" labelCol={{ span: 24 }} rules={[{ required: true, type: "email" }]}>
-                                            <Input />
-                                        </Form.Item>
-                                    </Col>
-                                    <Col span={8}>
-                                        <PhoneInput countries={countries} name="reference_phone" fieldName={name} />
-                                    </Col>
+    return <TabbedForm
+        name="cv"
+        autoComplete="off"
+        user={user}
+    >
 
 
-                                </Row>
-                                <Row>
-                                    <Col span={24}>
-                                        <MinusCircleOutlined onClick={() => remove(name)} />
-                                    </Col>
-                                </Row>
-                            </div>
-                        ))}
-                        <Form.Item>
-                            <PlusButton onClick={() => add()} />
-                        </Form.Item>
-                    </Space>
-                )}
-            </Form.List>
-        </Form>
-    </TabbedForm>
-}
+        <Divider >CV</Divider>
+        <Space direction="vertical">
 
-function CVForm() {
+            <Row gutter={20} >
+                <Col span={24}>
+                    <Form.Item
+                        label="Upload your CV"
+                        labelCol={{ span: 24 }}
+                        name="cv"
+                        valuePropName='fileList'
+                        rules={[
+                            {
+                                required: true,
+                            },
+                        ]}
+                    >
+                        <CVUpload />
+                    </Form.Item>
+                </Col>
 
-    const onFinish = (values) => {
-        console.log('Success:', values);
-    };
-
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
-
-    return <TabbedForm>
-        <Form
-            name="cv"
-            onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
-            autoComplete="off"
-        >
-
-
-            <Divider >CV</Divider>
-            <Space direction="vertical">
-
-                <Row gutter={20} >
-                    <Col span={24}>
-                        <Form.Item
-                            label="Upload your CV"
-                            labelCol={{ span: 24 }}
-                            name="cv"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-                            ]}
-                        >
-                            <CVUpload />
-                        </Form.Item>
-                    </Col>
-
-                </Row>
-                {/* FIXME: cover letter should be uploaded when actually applying to a job */}
-                <Row gutter={20} >
-                    <Col span={24}>
-                        <Form.Item
-                            label="Cover Letter"
-                            labelCol={{ span: 24 }}
-                            name="cover_letter"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-                            ]}
-                        >
-                            <Input.TextArea />
-                        </Form.Item>
-                    </Col>
-                </Row>
-            </Space>
-
-        </Form>
+            </Row>
+            {/* FIXME: cover letter should be uploaded when actually applying to a job */}
+            {/* <Row gutter={20} >
+                <Col span={24}>
+                    <Form.Item
+                        label="Cover Letter"
+                        labelCol={{ span: 24 }}
+                        name="cover_letter"
+                        rules={[
+                            {
+                                required: true,
+                            },
+                        ]}
+                    >
+                        <Input.TextArea />
+                    </Form.Item>
+                </Col>
+            </Row> */}
+        </Space>
     </TabbedForm>
 }
 
@@ -708,6 +713,7 @@ function CVUpload(props) {
             showRemoveIcon: true,
             removeIcon: <MinusCircleOutlined onClick={(e) => console.log(e, 'custom removeIcon event')} />,
         }}
+        valuePropName='fileList'
         {...props}>
         <Button icon={
             <UploadOutlined />}> Upload
@@ -716,18 +722,59 @@ function CVUpload(props) {
 }
 
 
+function isObject(value) {
+    return !!(value && typeof value === "object" && !Array.isArray(value));
+};
+
+// Recursively convert date strings in profile object to Moment objects
+function transformDates(obj) {
+    for (const [key, value] of Object.entries(obj)) {
+        if (key.includes("date")) {
+            obj[key] = moment(value);
+        }
+        else if (isObject(value)) {
+            transformDates(value);
+        }
+        else if (Array.isArray(value)) {
+            value.forEach(v => transformDates(v));
+        }
+    }
+}
+
 
 export default function Profile({ countries }) {
     const { user } = useUser({
         redirectTo: '/login'
     });
+    const [profileData, setProfileData] = useState({});
     const [current, setCurrent] = useState(0);
     function onChange(value) {
         console.log('onChange:', current);
         setCurrent(value);
     };
 
-    if (!user || !user.loggedIn) {
+    useEffect(() => {
+        if (!user) return;
+        async function fetchProfile() {
+            const data = await (await fetch(`/api/profile?id=${user.id}`, {
+                method: "GET",
+                headers: { 'Content-Type': 'application/json' },
+            })).json();
+            transformDates(data);
+            setProfileData(data);
+        }
+        fetchProfile();
+    }, [user]);
+
+    if (!user) {
+        return (
+            <p>
+                Loading...
+            </p>
+        )
+    }
+
+    if (!user.loggedIn) {
         return (
             <p>
                 Redirecting...
@@ -735,6 +782,9 @@ export default function Profile({ countries }) {
         )
     }
 
+    // return (
+    //     <p>{JSON.stringify(profileData)}</p>
+    // )
     return (<>
         <Navbar dark={false} />
         <Banner title="Profile" id="banner" />
@@ -748,19 +798,19 @@ export default function Profile({ countries }) {
             </Steps>
             <Tabs defaultActiveKey={current} activeKey={current.toString()}>
                 <TabPane tab={"Tab 1"} key={0}>
-                    <BasicForm countries={countries} />
+                    <BasicForm countries={countries} user={user} profileData={profileData} />
                 </TabPane>
                 <TabPane tab={"Tab 2"} key={1}>
-                    <EducationForm />
+                    <EducationForm user={user} profileData={profileData} />
                 </TabPane>
                 <TabPane tab={"Tab 3"} key={2}>
-                    <WorkForm countries={countries} />
+                    <WorkForm countries={countries} user={user} profileData={profileData} />
                 </TabPane>
                 <TabPane tab={"Tab 4"} key={3}>
-                    <ReferencesForm countries={countries} />
+                    <ReferencesForm countries={countries} user={user} profileData={profileData} />
                 </TabPane>
                 <TabPane tab={"Tab 5"} key={4}>
-                    <CVForm />
+                    <CVForm user={user} profileData={profileData} />
                 </TabPane>
 
 

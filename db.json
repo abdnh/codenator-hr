@@ -1,7 +1,8 @@
 {
   "users": [
     {
-      "email": "test@email",
+      "id": 1,
+      "email": "test@email.com",
       "password": "123"
     }
   ],
@@ -9,7 +10,7 @@
     {
       "id": 1,
       "title": "System Engineer",
-      "text": "\u2022&nbsp;&nbsp; &nbsp;Bachelor's degree in Industrial, Aircraft, Space or Mechatronics Engineering from leading universities in Turkey or the world<br>\n\u2022&nbsp;&nbsp; &nbsp;Preferably with a Master's/PhD degree in industrial engineering or an MBA<br>\n\u2022&nbsp;&nbsp; &nbsp;Analytical aspect strong, with theoretical and practical knowledge and standards in the field<br>\n\u2022&nbsp;&nbsp; &nbsp;System analysis and design, planning &amp; Experienced in project management, operational feasibility, enterprise resource planning systems<br>\n\u2022&nbsp;&nbsp; &nbsp;With 3 to 6 years of full-time work experience in similar roles in defense, aerospace and systems/sub-system manufacturing companies<br>\n\u2022&nbsp;&nbsp; &nbsp;Very good command of English (good technical literacy and speaking proficiency)<br>\n\u2022&nbsp;&nbsp; &nbsp;Interested in aviation and defense industry, open to development<br>\n\u2022&nbsp;&nbsp; &nbsp;Communication aspect\u00f6 strong, planned and able to work as a team<br>\n\u2022&nbsp;&nbsp; &nbsp;For male candidates who are not related to military service<br>\n\u2022&nbsp;&nbsp; &nbsp;Able to adapt to busy and flexible working hours<br>\n\u2022&nbsp;&nbsp; &nbsp;We are looking for teammates who have no travel restrictions<br>\n&nbsp;<br>\n* The motivation of our candidates to apply to Codenator in their cover letters, undergraduate / graduate. They are expected to summarize their undergraduate thesis (problem, recommended approach and result) and work experience.&nbsp;<br>\n* Only eligible candidates will be contacted.\n"
+      "text": "•&nbsp;&nbsp; &nbsp;Bachelor's degree in Industrial, Aircraft, Space or Mechatronics Engineering from leading universities in Turkey or the world<br>\n•&nbsp;&nbsp; &nbsp;Preferably with a Master's/PhD degree in industrial engineering or an MBA<br>\n•&nbsp;&nbsp; &nbsp;Analytical aspect strong, with theoretical and practical knowledge and standards in the field<br>\n•&nbsp;&nbsp; &nbsp;System analysis and design, planning &amp; Experienced in project management, operational feasibility, enterprise resource planning systems<br>\n•&nbsp;&nbsp; &nbsp;With 3 to 6 years of full-time work experience in similar roles in defense, aerospace and systems/sub-system manufacturing companies<br>\n•&nbsp;&nbsp; &nbsp;Very good command of English (good technical literacy and speaking proficiency)<br>\n•&nbsp;&nbsp; &nbsp;Interested in aviation and defense industry, open to development<br>\n•&nbsp;&nbsp; &nbsp;Communication aspectö strong, planned and able to work as a team<br>\n•&nbsp;&nbsp; &nbsp;For male candidates who are not related to military service<br>\n•&nbsp;&nbsp; &nbsp;Able to adapt to busy and flexible working hours<br>\n•&nbsp;&nbsp; &nbsp;We are looking for teammates who have no travel restrictions<br>\n&nbsp;<br>\n* The motivation of our candidates to apply to Codenator in their cover letters, undergraduate / graduate. They are expected to summarize their undergraduate thesis (problem, recommended approach and result) and work experience.&nbsp;<br>\n* Only eligible candidates will be contacted.\n"
     },
     {
       "id": 2,
@@ -30,6 +31,75 @@
       "id": 5,
       "title": "Artifical Intelligence Researcher",
       "text": "<p>BAYKAR Artificial Intelligence Teams study on areas that are separated to three major classes as high level autonomy, situational awareness, enhanced safety. We aim to develop new technologies and smart systems on aerospace and defense industries with subjects like;</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Machine Learning and Rule Based Smart Systems</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Computer Vision and Image Processing</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Signal and Data Processing</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Deep Learning</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Reinforcement Learning</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Path Planning</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Probabilistic Approaches</p>\n<p>Our AI teams have quite hardworking, forward thinking and experienced members. Team members have a great opportunity to establish a network with like-minded peers who have years of experience, expertise and knowledge in related areas. Our team members work in a conducive and harmonious environment where they get the chance to be part of the product development cycle while leading innovative researches.</p>\n<p><strong>Key Requirements;</strong></p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;BS, M.S. or PhD in Computer Engineering, Electric and Electronics Engineering, Mechatronics or Aerospace Engineering or other related departments</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;3+ years of experience on autonomous vehicles</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Deeply knowledge and experience on Artificial Intelligence</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Hands on experience on C++ and Python</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Having knowledge of ML frameworks like PyTorch and Tensorflow</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Experience on aerospace and defence industry</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Ability to work with a dynamic, research focused team and excellent communication skills</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Experience on mentorship to young interns and engineers is a plus</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Having knowledge of Numpy, pandas and scikit</p>\n<p>&nbsp;</p>\n<p><strong>Description;</strong></p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Researching and designing trend technics and studies about UAV’s</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Working with other research and product development teams</p>\n<p style=\"margin-left:40px\">•&nbsp; &nbsp;&nbsp;Implementing systems developed to our products</p>\n<p>&nbsp;</p>\n<p>We are looking for “Artificial Intelligence Researcher” who will be a part of our development processes. Do you want to join our team and play a role for the advancement in field of AI?</p>\n"
+    }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "first_name": "test",
+      "middle_name": "test",
+      "last_name": "test",
+      "gender": "male",
+      "phone": "666666",
+      "birth_date": "2022-08-16T07:16:10.276Z",
+      "country": "Turkey",
+      "state": "Şanlıurfa Province",
+      "city": "Şanlıurfa",
+      "address": "666",
+      "zip_code": "666",
+      "citizenships": [
+        {
+          "country": "Turkey",
+          "citizenship_reason": "By application"
+        },
+        {
+          "country": "Syria",
+          "citizenship_reason": "By birth"
+        }
+      ],
+      "degrees": [
+        {
+          "university": "Harran",
+          "faculty": "Mühendislik",
+          "branch": "Bilgisayar",
+          "score": 100,
+          "enrollment_date": "2019-09-18T07:16:41.530Z",
+          "graduation_date": "2023-07-18T07:17:23.115Z"
+        }
+      ],
+      "languages": [
+        {
+          "language": "English",
+          "level": "advanced"
+        },
+        {
+          "language": "Turkish",
+          "level": "intermediate"
+        }
+      ],
+      "jobs": [
+        {
+          "employer": "PigmentSoft",
+          "employer_phone_prefix": "90",
+          "employer_phone": "6666666",
+          "title": "Developer",
+          "salary": 1000,
+          "start_date": "2022-08-16T10:15:54.169Z",
+          "end_date": "2022-08-25T10:15:56.718Z",
+          "feedback": "test test"
+        }
+      ],
+      "references": [
+        {
+          "first_name": "Foo",
+          "middle_name": "Bar",
+          "last_name": "Buzz",
+          "reference_occupation": "Teacher",
+          "reference_email": "foo@example.com",
+          "reference_phone_prefix": "90",
+          "reference_phone": "555555"
+        }
+      ]
     }
   ]
 }

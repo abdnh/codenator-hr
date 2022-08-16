@@ -1,19 +1,21 @@
 import { Form, Input, AutoComplete, } from 'antd';
 
-function PrefixSelector({ countries, fieldName }) {
+function PrefixSelector({ countries, name, fieldName, ...rest }) {
     const options = Object.values(countries).map((country) => {
         return { label: `${country.flag} ${country.phonecode}`, value: country.phonecode }
     });
     const prefixToCountryName = Object.fromEntries(Object.values(countries).map((country) => {
         return [country.phonecode, country.name]
     }));
+
     let nameList = [];
     if (fieldName !== undefined) {
         nameList.push(fieldName);
     }
-    nameList.push("prefix");
+    nameList.push(name ? name : "prefix");
 
-    return <Form.Item name={nameList} noStyle>
+
+    return <Form.Item name={nameList} noStyle {...rest}>
         <AutoComplete
             style={{ minWidth: 100 }}
             options={options}
@@ -35,7 +37,7 @@ export default function PhoneInput({ countries, name, fieldName, ...rest }) {
 
     return (
         <Form.Item name={nameList} label="Phone Number" labelCol={{ span: 24 }} rules={[{ required: true, type: "phone" }]} {...rest}>
-            <Input addonBefore={<PrefixSelector fieldName={fieldName} countries={countries} />} />
+            <Input addonBefore={<PrefixSelector name={`${name}_prefix`} fieldName={fieldName} countries={countries} />} />
         </Form.Item>
     )
 }
