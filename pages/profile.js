@@ -416,7 +416,7 @@ function EducationForm({ user, profileData }) {
                             <Row gutter={20}>
 
                                 <Col span={6}>
-                                    <Form.Item {...restField} name={[name, 'score']} label="Score" labelCol={{ span: 24 }} rules={[{ required: true, type: "number" }]}>
+                                    <Form.Item {...restField} name={[name, 'score']} label="GPA" labelCol={{ span: 24 }} rules={[{ required: true, type: "number" }]}>
                                         <InputNumber min={0} max={100} />
                                     </Form.Item>
                                 </Col>
