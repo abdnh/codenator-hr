@@ -27,6 +27,7 @@ import Navbar from "../components/home/Navbar";
 import { getAllCountries } from "../lib/country";
 import useUser from "../lib/useUser";
 import { postJSON } from "../lib/request";
+import { uploadDataToAntFile } from "../lib/profile";
 import DocumentUpload from "../components/ant/DocumentUpload";
 
 const REQUIRED_MESSAGE = "This field is required";
@@ -760,19 +761,7 @@ function preprocessSavedProfile(obj) {
         // Convert file upload objects to the structure expected by Ant Design
         if (key.includes("upload")) {
             if (!value) continue;
-            const data = window.atob(value.data);
-            const arr = new Uint8Array(data.length);
-            for (let i = 0; i < data.length; i++) {
-                arr[i] = data.charCodeAt(i);
-            }
-            const file = new File([arr.buffer], value.name, {
-                type: value.type,
-            });
-            const antFile = {
-                originFileObj: file,
-                name: value.name,
-                type: value.type,
-            }
+            const antFile = uploadDataToAntFile(value);
             obj[key] = [antFile];
         }
         else if (isObject(value)) {

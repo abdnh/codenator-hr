@@ -4,6 +4,8 @@ import { PlusOutlined } from '@ant-design/icons';
 import { Modal, Upload } from 'antd';
 import { useEffect, useState } from 'react';
 import { postJSON } from "../../lib/request";
+import { uploadDataToAntFile } from "../../lib/profile";
+
 
 const getBase64 = (file) =>
     new Promise((resolve, reject) => {
@@ -22,21 +24,9 @@ export default function ProfileImage({ user, profileData }) {
     const [fileList, setFileList] = useState([]);
 
     useEffect(() => {
-        if (!profileData.profile_image) return;
         const profileImage = profileData.profile_image;
-        const data = window.atob(profileImage.data);
-        const arr = new Uint8Array(data.length);
-        for (let i = 0; i < data.length; i++) {
-            arr[i] = data.charCodeAt(i);
-        }
-        const file = new File([arr.buffer], profileImage.name, {
-            type: profileImage.type,
-        });
-        const antFile = {
-            originFileObj: file,
-            name: profileImage.name,
-            type: profileImage.type,
-        }
+        if (!profileImage) return;
+        const antFile = uploadDataToAntFile(profileImage);
         setFileList([antFile]);
     }, [profileData]);
 
