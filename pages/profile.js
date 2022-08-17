@@ -2,7 +2,7 @@ import { default as React, useEffect, useState } from "react";
 
 import moment from 'moment';
 
-import { Upload, DatePicker, InputNumber, Button, Form, Input, Row, Col, Select, Space, Tabs, Steps, message } from 'antd';
+import { Upload, DatePicker, InputNumber, Button, Form, Input, Row, Col, Select, Space, Tabs, Steps, message, Result } from 'antd';
 import { UploadOutlined, MinusCircleOutlined } from '@ant-design/icons';
 const { TabPane } = Tabs;
 const { Option } = Select;
@@ -30,6 +30,7 @@ import { postJSON } from "../lib/request";
 import { uploadDataToAntFile } from "../lib/profile";
 import DocumentUpload from "../components/ant/DocumentUpload";
 import HobbySelector from "../components/profile/HobbySelector";
+import { useRouter } from "next/router";
 
 const REQUIRED_MESSAGE = "This field is required";
 
@@ -84,15 +85,21 @@ function TabbedForm({ children, tabIndex, user, profileData, countries, onSubmit
         // We store the email in the user object and only show it here for completeness
         delete values.email;
 
-        // TODO: handle file uploads
         values = await preprocessSubmission(values);
+
+        // If the most recently saved tab has a higher index than the currently saved one, do not update the stored tab index
+        // so that we correctly provide feedback when the user completes their profile non-linearly
+        if (profileData.tabIndex > values.tabIndex) {
+            values.tabIndex = profileData.tabIndex;
+        }
+
         console.log('onFinish', values);
 
         postJSON('/api/profile', { id: user.id, ...values }).then(
             (res) => {
                 if (res.ok) {
                     message.success("Successfully saved");
-                    onSubmit();
+                    onSubmit(values);
                 } else {
                     message.error("Failed to save");
                 }
@@ -771,6 +778,22 @@ function preprocessSavedProfile(obj) {
     }
 }
 
+function FinishedMessage({ onProfileClick }) {
+    const router = useRouter();
+
+    return (
+        <Result
+            status="success"
+            title="You've completed your profile!"
+            extra={[
+                <Button type="primary" key="jobs" onClick={() => router.push('/jobs')}>
+                    Browse Jobs
+                </Button>,
+                <Button key="profile" onClick={() => { onProfileClick(), router.push('/profile') }}>Continue working on your profile</Button>,
+            ]}
+        />
+    )
+}
 
 export default function Profile({ countries }) {
     const { user } = useUser({
@@ -778,17 +801,19 @@ export default function Profile({ countries }) {
     });
     const [profileData, setProfileData] = useState({});
     const [currentTab, setCurrentTab] = useState(0);
+    const [done, setDone] = useState(false);
 
     function onTabChange(value) {
         setCurrentTab(value);
     };
 
-    function onSubmit() {
+    function onSubmit(values) {
         if (currentTab < 4) {
             setCurrentTab(currentTab + 1);
         }
-        else {
-            // TODO: we're done - maybe redirect user to jobs page or something
+        else if (values.tabIndex == 4) {
+            // We're done
+            setDone(true);
         }
     }
 
@@ -819,6 +844,10 @@ export default function Profile({ countries }) {
                 Redirecting...
             </p>
         )
+    }
+
+    if (done) {
+        return <FinishedMessage onProfileClick={() => setDone(false)} />
     }
 
     return (<>
