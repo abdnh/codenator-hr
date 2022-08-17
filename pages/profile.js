@@ -29,6 +29,7 @@ import useUser from "../lib/useUser";
 import { postJSON } from "../lib/request";
 import { uploadDataToAntFile } from "../lib/profile";
 import DocumentUpload from "../components/ant/DocumentUpload";
+import HobbySelector from "../components/profile/HobbySelector";
 
 const REQUIRED_MESSAGE = "This field is required";
 
@@ -511,6 +512,9 @@ function EducationForm({ user, profileData }) {
                 </Space>
             )}
         </Form.List>
+
+        <Divider >Hobbies & Interests</Divider>
+        <HobbySelector />
     </TabbedForm>
 }
 

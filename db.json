@@ -110,7 +110,11 @@
         "type": "image/jpeg",
         "name": "profile.jpg"
       },
-      "marital_status": "married"
+      "marital_status": "married",
+      "hobbies": [
+        "Baton twirling",
+        "Amateur radio"
+      ]
     }
   ]
 }
