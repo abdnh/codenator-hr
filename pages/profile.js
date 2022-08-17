@@ -277,14 +277,29 @@ function BasicForm({ countries, user, profileData }) {
         </Row>
 
         <Row gutter={24}>
-            <Col span={24}>
+            <Col span={12}>
                 <Form.Item
                     name="birth_date"
                     label="Birth Date"
-                    labelCol={{ span: 6 }}
+                    labelCol={{ span: 24 }}
                     initialValue={profileData.birth_date}
                     rules={[{ required: true, type: "date" }]}>
                     <DatePicker />
+                </Form.Item>
+            </Col>
+            <Col span={8}>
+                <Form.Item
+                    name="marital_status"
+                    label="Marital Status"
+                    labelCol={{ span: 24 }}
+                    initialValue={profileData.marital_status}
+                    rules={[{ required: true }]}>
+                    <Select
+                    >
+                        <Select.Option value="married">Married</Select.Option>
+                        <Select.Option value="single">Single</Select.Option>
+                        <Select.Option value="other">other</Select.Option>
+                    </Select>
                 </Form.Item>
             </Col>
         </Row>
