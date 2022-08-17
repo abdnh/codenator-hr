@@ -27,6 +27,7 @@ import Navbar from "../components/home/Navbar";
 import { getAllCountries } from "../lib/country";
 import useUser from "../lib/useUser";
 import { postJSON } from "../lib/request";
+import DocumentUpload from "../components/ant/DocumentUpload";
 
 const REQUIRED_MESSAGE = "This field is required";
 
@@ -45,14 +46,45 @@ function TabbedForm({ children, user, profileData, ...rest }) {
     // Ensure initial field values are updated
     useEffect(() => form.resetFields(), [profileData, user]);
 
+
+    // Do some processing on submitted values before sending them to server
+    async function preprocessSubmission(values) {
+        for (const [key, value] of Object.entries(values)) {
+            if (!value) continue;
+            if (key.includes("upload")) {
+                // assume it's a file list and take the first one
+                const file = value[0];
+                if (!file) {
+                    // Do not store the upload key if the array is empty
+                    delete values[key];
+                    continue;
+                }
+                const fileObj = file.originFileObj;
+                const base64String = window.btoa(String.fromCharCode(...new Uint8Array(await fileObj.arrayBuffer())));
+                values[key] = {
+                    name: fileObj.name,
+                    type: fileObj.type,
+                    data: base64String,
+                };
+            }
+            else if (isObject(value)) {
+                values[key] = await preprocessSubmission(value);
+            }
+            else if (Array.isArray(value)) {
+                values[key] = await Promise.all(value.map(v => preprocessSubmission(v)));
+            }
+        }
+        return values;
+    }
+
     async function onFinish(values) {
 
         // We store the email in the user object and only show it here for completeness
         delete values.email;
 
         // TODO: handle file uploads
+        values = await preprocessSubmission(values);
 
-        console.log('onFinish:', values);
         postJSON('/api/profile', { id: user.id, ...values }).then(
             (res) => {
                 if (res.ok) {
@@ -342,8 +374,6 @@ function EducationForm({ user, profileData }) {
         autoComplete="off"
         user={user}
     >
-
-
         <Divider >Degrees</Divider>
         <Form.List name="degrees" initialValue={profileData.degrees}>
             {(fields, { add, remove }) => (
@@ -416,12 +446,7 @@ function EducationForm({ user, profileData }) {
                                 </Form.Item>
                             </Col>
                             <Col span={6}>
-                                <Form.Item {...restField} name={[name, 'certification_upload']} label="&nbsp;" labelCol={{ span: 24 }} rules={[{ required: true }]} valuePropName='fileList'>
-                                    {/* <Input /> */}
-                                    <Upload>
-                                        <Button icon={<UploadOutlined />}>Upload</Button>
-                                    </Upload>
-                                </Form.Item>
+                                <DocumentUpload fieldName={[name, 'certification_upload']} />
                             </Col>
                             <Col span={6}>
                                 <MinusCircleOutlined onClick={() => remove(name)} />
@@ -457,11 +482,7 @@ function EducationForm({ user, profileData }) {
                                 </Form.Item>
                             </Col>
                             <Col span={6}>
-                                <Form.Item {...restField} valuePropName='fileList' name={[name, 'lang_certif_upload']} label="&nbsp;" labelCol={{ span: 24 }} rules={[{ required: false }]}>
-                                    <Upload>
-                                        <Button icon={<UploadOutlined />}>Upload</Button>
-                                    </Upload>
-                                </Form.Item>
+                                <DocumentUpload fieldName={[name, 'lang_certif_upload']} />
                             </Col>
                             <Col span={6}>
                                 <MinusCircleOutlined onClick={() => remove(name)} />
@@ -729,17 +750,36 @@ function isObject(value) {
     return !!(value && typeof value === "object" && !Array.isArray(value));
 };
 
-// Recursively convert date strings in profile object to Moment objects
-function transformDates(obj) {
+
+function preprocessSavedProfile(obj) {
     for (const [key, value] of Object.entries(obj)) {
+        // Convert date strings in profile object to Moment objects
         if (key.includes("date")) {
             obj[key] = moment(value);
         }
+        // Convert file upload objects to the structure expected by Ant Design
+        if (key.includes("upload")) {
+            if (!value) continue;
+            const data = window.atob(value.data);
+            const arr = new Uint8Array(data.length);
+            for (let i = 0; i < data.length; i++) {
+                arr[i] = data.charCodeAt(i);
+            }
+            const file = new File([arr.buffer], value.name, {
+                type: value.type,
+            });
+            const antFile = {
+                originFileObj: file,
+                name: value.name,
+                type: value.type,
+            }
+            obj[key] = [antFile];
+        }
         else if (isObject(value)) {
-            transformDates(value);
+            preprocessSavedProfile(value);
         }
         else if (Array.isArray(value)) {
-            value.forEach(v => transformDates(v));
+            value.forEach(v => preprocessSavedProfile(v));
         }
     }
 }
@@ -752,7 +792,6 @@ export default function Profile({ countries }) {
     const [profileData, setProfileData] = useState({});
     const [current, setCurrent] = useState(0);
     function onChange(value) {
-        console.log('onChange:', current);
         setCurrent(value);
     };
 
@@ -763,7 +802,7 @@ export default function Profile({ countries }) {
                 method: "GET",
                 headers: { 'Content-Type': 'application/json' },
             })).json();
-            transformDates(data);
+            preprocessSavedProfile(data);
             setProfileData(data);
         }
         fetchProfile();
@@ -788,6 +827,7 @@ export default function Profile({ countries }) {
     return (<>
         <Navbar dark={false} />
         <Banner title="Profile" id="banner" user={user} profileData={profileData} />
+
         <ContainerLayout subtitle="Profile">
             <Steps current={current} onChange={onChange}>
                 <Step title="Biography" icon={<InfoCircle />} description="&nbsp;" />
