@@ -463,7 +463,7 @@ function EducationForm({ user, profileData }) {
                                 </Form.Item>
                             </Col>
                             <Col span={6}>
-                                <DocumentUpload fieldName={[name, 'certification_upload']} />
+                                <DocumentUpload name={[name, 'certification_upload']} />
                             </Col>
                             <Col span={6}>
                                 <MinusCircleOutlined onClick={() => remove(name)} />
@@ -499,7 +499,7 @@ function EducationForm({ user, profileData }) {
                                 </Form.Item>
                             </Col>
                             <Col span={6}>
-                                <DocumentUpload fieldName={[name, 'lang_certif_upload']} />
+                                <DocumentUpload name={[name, 'lang_certif_upload']} />
                             </Col>
                             <Col span={6}>
                                 <MinusCircleOutlined onClick={() => remove(name)} />
@@ -679,30 +679,14 @@ function ReferencesForm({ countries, user, profileData }) {
     </>
 }
 
-function CVForm({ user }) {
-
+function CVForm({ profileData }) {
 
     return <>
-
-
         <Divider >CV</Divider>
         <Space direction="vertical">
-
             <Row gutter={20} >
                 <Col span={24}>
-                    <Form.Item
-                        label="Upload your CV"
-                        labelCol={{ span: 24 }}
-                        name="cv"
-                        valuePropName='fileList'
-                        rules={[
-                            {
-                                required: true,
-                            },
-                        ]}
-                    >
-                        <CVUpload />
-                    </Form.Item>
+                    <DocumentUpload name="cv_upload" rules={[{ required: true }]} initialValue={profileData.cv_upload} label="Upload your CV"/>
                 </Col>
 
             </Row>
@@ -727,35 +711,9 @@ function CVForm({ user }) {
     </>
 }
 
-function CVUpload(props) {
-    // TODO: only accept certain formats like PDF and DOCX
-    function onChange({ file, fileList }) {
-        if (file.status !== 'uploading') {
-            console.log(file, fileList);
-        }
-    }
-
-    return <Upload action='/api/test'
-        onChange={onChange}
-        showUploadList={{
-            showDownloadIcon: true,
-            downloadIcon: 'Download',
-            showRemoveIcon: true,
-            removeIcon: <MinusCircleOutlined onClick={(e) => console.log(e, 'custom removeIcon event')} />,
-        }}
-        valuePropName='fileList'
-        {...props}>
-        <Button icon={
-            <UploadOutlined />}> Upload
-        </Button >
-    </Upload >
-}
-
-
 function isObject(value) {
     return !!(value && typeof value === "object" && !Array.isArray(value));
 };
-
 
 function preprocessSavedProfile(obj) {
     for (const [key, value] of Object.entries(obj)) {
