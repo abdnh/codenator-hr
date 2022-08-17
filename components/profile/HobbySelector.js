@@ -188,7 +188,7 @@ export default function HobbySelector({ initialValue }) {
     return (
         <TagSelector fieldProps={{ name: 'hobbies', initialValue: initialValue }} inputProps={{ placeholder: 'Type or select an item', onSelect: onSelect }}>
             {Array.from(options.values()).map(value => {
-                return <Option value={value}>{value}</Option>
+                return <Option value={value} key={value}>{value}</Option>
             })}
         </TagSelector>
     )

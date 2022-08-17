@@ -2,8 +2,8 @@ import { default as React, useEffect, useState } from "react";
 
 import moment from 'moment';
 
-import { Upload, DatePicker, InputNumber, Button, Form, Input, Row, Col, Select, Space, Tabs, Steps, message, Result } from 'antd';
-import { UploadOutlined, MinusCircleOutlined } from '@ant-design/icons';
+import { DatePicker, InputNumber, Button, Form, Input, Row, Col, Select, Space, Tabs, Steps, message, Result } from 'antd';
+import { MinusCircleOutlined } from '@ant-design/icons';
 const { TabPane } = Tabs;
 const { Option } = Select;
 const { Step } = Steps;
@@ -47,7 +47,7 @@ export function getStaticProps() {
 function TabbedForm({ children, tabIndex, user, profileData, countries, onSubmit, ...rest }) {
     const [form] = Form.useForm();
     // Ensure initial field values are updated
-    useEffect(() => form.resetFields(), [profileData, user]);
+    useEffect(() => form.resetFields(), [profileData, user, form]);
 
 
     // Do some processing on submitted values before sending them to server
@@ -686,7 +686,7 @@ function CVForm({ profileData }) {
         <Space direction="vertical">
             <Row gutter={20} >
                 <Col span={24}>
-                    <DocumentUpload name="cv_upload" rules={[{ required: true }]} initialValue={profileData.cv_upload} label="Upload your CV"/>
+                    <DocumentUpload name="cv_upload" rules={[{ required: true }]} initialValue={profileData.cv_upload} label="Upload your CV" />
                 </Col>
 
             </Row>
