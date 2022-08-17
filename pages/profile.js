@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { default as React, useEffect, useState } from "react";
 
 import moment from 'moment';
 
@@ -43,7 +43,7 @@ export function getStaticProps() {
     }
 }
 
-function TabbedForm({ children, user, profileData, ...rest }) {
+function TabbedForm({ children, tabIndex, user, profileData, countries, onSubmit, ...rest }) {
     const [form] = Form.useForm();
     // Ensure initial field values are updated
     useEffect(() => form.resetFields(), [profileData, user]);
@@ -86,11 +86,13 @@ function TabbedForm({ children, user, profileData, ...rest }) {
 
         // TODO: handle file uploads
         values = await preprocessSubmission(values);
+        console.log('onFinish', values);
 
         postJSON('/api/profile', { id: user.id, ...values }).then(
             (res) => {
                 if (res.ok) {
                     message.success("Successfully saved");
+                    onSubmit();
                 } else {
                     message.error("Failed to save");
                 }
@@ -108,7 +110,13 @@ function TabbedForm({ children, user, profileData, ...rest }) {
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
             {...rest}>
-            {children}
+            {React.Children.map(children, child => (
+                // Pass data to wrapped forms
+                React.cloneElement(child, { user, profileData })
+            ))}
+            <Form.Item name="tabIndex" hidden initialValue={tabIndex}>
+                <Input value={tabIndex} />
+            </Form.Item>
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                 <Button type="primary" htmlType="submit" style={{ float: 'right', marginBottom: 32 }}>Save</Button>
             </Form.Item>
@@ -166,18 +174,7 @@ function BasicForm({ countries, user, profileData }) {
         setSelectedCity(value);
     }
 
-    return <TabbedForm
-        name="basic"
-        // labelCol={{
-        //     span: 24,
-        // }}
-        // wrapperCol={{
-        //     span: 16,
-        // }}
-        autoComplete="off"
-        user={user}
-        profileData={profileData}
-    >
+    return <>
         {/* <Row gutter={24} className={"mb-4"}>
                 <Col span={24} offset={0}>
                     <ProfileImage />
@@ -380,17 +377,13 @@ function BasicForm({ countries, user, profileData }) {
                 </>
             )}
         </Form.List>
-    </TabbedForm>
+    </>
 }
 
 function EducationForm({ user, profileData }) {
 
 
-    return <TabbedForm
-        name="education"
-        autoComplete="off"
-        user={user}
-    >
+    return <>
         <Divider >Degrees</Divider>
         <Form.List name="degrees" initialValue={profileData.degrees}>
             {(fields, { add, remove }) => (
@@ -515,18 +508,12 @@ function EducationForm({ user, profileData }) {
 
         <Divider >Hobbies & Interests</Divider>
         <HobbySelector />
-    </TabbedForm>
+    </>
 }
 
 function WorkForm({ countries, user, profileData }) {
 
-    return <TabbedForm
-        name="work"
-        autoComplete="off"
-        user={user}
-    >
-
-
+    return <>
         <Divider >Jobs</Divider>
         <Form.List name="jobs" initialValue={profileData.jobs}>
             {(fields, { add, remove }) => (
@@ -589,16 +576,12 @@ function WorkForm({ countries, user, profileData }) {
                 </Space>
             )}
         </Form.List>
-    </TabbedForm>
+    </>
 }
 
 function ReferencesForm({ countries, user, profileData }) {
 
-    return <TabbedForm
-        name="references"
-        autoComplete="off"
-        user={user}
-    >
+    return <>
 
 
         <Divider >References</Divider>
@@ -686,17 +669,13 @@ function ReferencesForm({ countries, user, profileData }) {
                 </Space>
             )}
         </Form.List>
-    </TabbedForm>
+    </>
 }
 
 function CVForm({ user }) {
 
 
-    return <TabbedForm
-        name="cv"
-        autoComplete="off"
-        user={user}
-    >
+    return <>
 
 
         <Divider >CV</Divider>
@@ -738,7 +717,7 @@ function CVForm({ user }) {
                 </Col>
             </Row> */}
         </Space>
-    </TabbedForm>
+    </>
 }
 
 function CVUpload(props) {
@@ -798,10 +777,20 @@ export default function Profile({ countries }) {
         redirectTo: '/login'
     });
     const [profileData, setProfileData] = useState({});
-    const [current, setCurrent] = useState(0);
-    function onChange(value) {
-        setCurrent(value);
+    const [currentTab, setCurrentTab] = useState(0);
+
+    function onTabChange(value) {
+        setCurrentTab(value);
     };
+
+    function onSubmit() {
+        if (currentTab < 4) {
+            setCurrentTab(currentTab + 1);
+        }
+        else {
+            // TODO: we're done - maybe redirect user to jobs page or something
+        }
+    }
 
     useEffect(() => {
         if (!user) return;
@@ -837,30 +826,39 @@ export default function Profile({ countries }) {
         <Banner title="Profile" id="banner" user={user} profileData={profileData} />
 
         <ContainerLayout subtitle="Profile">
-            <Steps current={current} onChange={onChange}>
+            <Steps current={currentTab} onChange={onTabChange}>
                 <Step title="Biography" icon={<InfoCircle />} description="&nbsp;" />
                 <Step title="Education" icon={<Mortarboard />} description="&nbsp;" />
                 <Step title="Work Experience" icon={<Briefcase />} description="&nbsp;" />
                 <Step title="References" icon={<ReferenceIcon width={24} height={24} />} description="&nbsp;" />
                 <Step title="CV" icon={<ResumeIcon width={24} height={24} />} description="&nbsp;" />
             </Steps>
-            <Tabs defaultActiveKey={current} activeKey={current.toString()}>
+            <Tabs defaultActiveKey={currentTab} activeKey={currentTab.toString()}>
                 <TabPane tab={"Tab 1"} key={0}>
-                    <BasicForm countries={countries} user={user} profileData={profileData} />
+                    <TabbedForm name="basic" autoComplete="off" tabIndex={0} user={user} profileData={profileData} onSubmit={onSubmit}>
+                        <BasicForm countries={countries} />
+                    </TabbedForm>
                 </TabPane>
                 <TabPane tab={"Tab 2"} key={1}>
-                    <EducationForm user={user} profileData={profileData} />
+                    <TabbedForm name="education" autoComplete="off" tabIndex={1} user={user} profileData={profileData} onSubmit={onSubmit}>
+                        <EducationForm countries={countries} />
+                    </TabbedForm>
                 </TabPane>
                 <TabPane tab={"Tab 3"} key={2}>
-                    <WorkForm countries={countries} user={user} profileData={profileData} />
+                    <TabbedForm name="work" autoComplete="off" tabIndex={2} user={user} profileData={profileData} onSubmit={onSubmit}>
+                        <WorkForm countries={countries} />
+                    </TabbedForm>
                 </TabPane>
                 <TabPane tab={"Tab 4"} key={3}>
-                    <ReferencesForm countries={countries} user={user} profileData={profileData} />
+                    <TabbedForm name="references" autoComplete="off" tabIndex={3} user={user} profileData={profileData} onSubmit={onSubmit}>
+                        <ReferencesForm countries={countries} />
+                    </TabbedForm>
                 </TabPane>
                 <TabPane tab={"Tab 5"} key={4}>
-                    <CVForm user={user} profileData={profileData} />
+                    <TabbedForm name="cv" autoComplete="off" tabIndex={4} user={user} profileData={profileData} onSubmit={onSubmit}>
+                        <CVForm />
+                    </TabbedForm>
                 </TabPane>
-
 
             </Tabs>
             <style global jsx>
