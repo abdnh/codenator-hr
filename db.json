@@ -112,9 +112,10 @@
       },
       "marital_status": "married",
       "hobbies": [
-        "Baton twirling",
-        "Amateur radio"
-      ]
+        "Acting",
+        "Board games"
+      ],
+      "tabIndex": 1
     }
   ]
 }

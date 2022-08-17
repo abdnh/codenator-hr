@@ -176,7 +176,7 @@ const hobbies = [
     'Water sports'
 ];
 
-export default function HobbySelector() {
+export default function HobbySelector({ initialValue }) {
     const [options, setOptions] = useState(new Set(hobbies));
 
     function onSelect(value) {
@@ -185,10 +185,8 @@ export default function HobbySelector() {
         setOptions(newOptions);
     }
 
-    console.log(options);
-
     return (
-        <TagSelector fieldProps={{ name: 'hobbies' }} inputProps={{ placeholder: 'Type or select an item', onSelect: onSelect }}>
+        <TagSelector fieldProps={{ name: 'hobbies', initialValue: initialValue }} inputProps={{ placeholder: 'Type or select an item', onSelect: onSelect }}>
             {Array.from(options.values()).map(value => {
                 return <Option value={value}>{value}</Option>
             })}

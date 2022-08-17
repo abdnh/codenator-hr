@@ -507,7 +507,7 @@ function EducationForm({ user, profileData }) {
         </Form.List>
 
         <Divider >Hobbies & Interests</Divider>
-        <HobbySelector />
+        <HobbySelector initialValue={profileData.hobbies} />
     </>
 }
 
