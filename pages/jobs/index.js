@@ -12,6 +12,7 @@ import { Row, Col, Form, Input, Pagination } from "antd";
 import JobRow from "../../components/JobList/JobRow";
 import Banner from "../../components/JobList/Banner";
 import MainLayout from '../../layouts/MainLayout';
+import HomeLayout from '../../layouts/HomeLayout';
 
 import { getAllJobs } from "../../lib/job";
 
@@ -67,24 +68,25 @@ export default function JobList(props) {
     }
 
     return (<>
-        <Navbar dark={false} />
-        <Banner title="Open Positions" id="banner" />
 
-        <MainLayout subtitle="Open Positions">
-            <Container fluid="md" className="py-5" >
-                <SearchRow onChange={onSearch} />
+        <HomeLayout navbarProps={{ dark: false }}>
+            <Banner title="Open Positions" id="banner" />
 
-                <div id="results">
-                    {/* TODO: use pagination feature of json-server instead of fetching all jobs at once */}
-                    {jobs.slice((page - 1) * pageSize, page * pageSize).map((job) => (
-                        // TODO: get icon from job
-                        <JobRow key={job.id} job={job} icon={<FontAwesomeIcon icon={faDatabase} />} />
-                    ))}
+            <MainLayout subtitle="Open Positions">
+                <Container fluid="md" className="py-5" >
+                    <SearchRow onChange={onSearch} />
 
-                    <Pagination defaultCurrent={page} current={page} onChange={onPageChange} total={jobs.length} defaultPageSize={pageSize} className="text-center" />
-                </div>
+                    <div id="results">
+                        {/* TODO: use pagination feature of json-server instead of fetching all jobs at once */}
+                        {jobs.slice((page - 1) * pageSize, page * pageSize).map((job) => (
+                            // TODO: get icon from job
+                            <JobRow key={job.id} job={job} icon={<FontAwesomeIcon icon={faDatabase} />} />
+                        ))}
 
-                <style global jsx>{`
+                        <Pagination defaultCurrent={page} current={page} onChange={onPageChange} total={jobs.length} defaultPageSize={pageSize} className="text-center" />
+                    </div>
+
+                    <style global jsx>{`
                     #results {
                         {/* border: solid gray 1px; */}
                         {/* border-radius: 32px;
@@ -100,9 +102,10 @@ export default function JobList(props) {
                     }
                 }    
             `}</style>
-            </Container>
+                </Container>
 
-        </MainLayout>
+            </MainLayout>
+        </HomeLayout>
     </>
     )
 }

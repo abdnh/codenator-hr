@@ -1,10 +1,10 @@
 
 import { Row, Container, Col } from "react-bootstrap";
 
-import Navbar from '../../components/home/Navbar';
 import Item from "../../components/job/Item";
 import Banner from "../../components/job/Banner";
 import MainLayout from '../../layouts/MainLayout';
+import HomeLayout from '../../layouts/HomeLayout';
 import { getJob, getAllJobs } from "../../lib/job";
 
 
@@ -33,20 +33,20 @@ export async function getStaticPaths() {
 
 export default function JobView({ job }) {
 
-    return (<>
-        <Navbar dark={false} />
-        <Banner title={job.title} />
+    return (
+        <HomeLayout navbarProps={{ dark: false }}>
+            <Banner title={job.title} />
 
-        <MainLayout subtitle={job.title}>
-            <Container>
-                <Row>
-                    <Col>
-                        <Item title={job.title} text={job.text} iconSrc="/favicon.svg" />
-                    </Col>
-                </Row>
-            </Container>
+            <MainLayout subtitle={job.title}>
+                <Container>
+                    <Row>
+                        <Col>
+                            <Item title={job.title} text={job.text} iconSrc="/favicon.svg" />
+                        </Col>
+                    </Row>
+                </Container>
 
-        </MainLayout>
-    </>
+            </MainLayout>
+        </HomeLayout>
     )
 }

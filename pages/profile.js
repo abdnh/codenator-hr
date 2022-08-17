@@ -22,7 +22,8 @@ import CountrySelector from "../components/ant/CountrySelector";
 import StateSelector from "../components/ant/StateSelector";
 import CitySelector from "../components/ant/CitySelector";
 import Banner from "../components/profile/Banner";
-import Navbar from "../components/home/Navbar";
+import HomeLayout from "../layouts/HomeLayout";
+
 
 import { getAllCountries } from "../lib/country";
 import useUser from "../lib/useUser";
@@ -809,48 +810,49 @@ export default function Profile({ countries }) {
     }
 
     return (<>
-        <Navbar dark={false} />
-        <Banner title="Profile" id="banner" user={user} profileData={profileData} />
+        <HomeLayout navbarProps={{ dark: false }}>
 
-        <ContainerLayout subtitle="Profile">
-            <Steps current={currentTab} onChange={onTabChange}>
-                <Step title="Biography" icon={<InfoCircle />} description="&nbsp;" />
-                <Step title="Education" icon={<Mortarboard />} description="&nbsp;" />
-                <Step title="Work Experience" icon={<Briefcase />} description="&nbsp;" />
-                <Step title="References" icon={<ReferenceIcon width={24} height={24} />} description="&nbsp;" />
-                <Step title="CV" icon={<ResumeIcon width={24} height={24} />} description="&nbsp;" />
-            </Steps>
-            <Tabs defaultActiveKey={currentTab} activeKey={currentTab.toString()}>
-                <TabPane tab={"Tab 1"} key={0}>
-                    <TabbedForm name="basic" autoComplete="off" tabIndex={0} user={user} profileData={profileData} onSubmit={onSubmit}>
-                        <BasicForm countries={countries} />
-                    </TabbedForm>
-                </TabPane>
-                <TabPane tab={"Tab 2"} key={1}>
-                    <TabbedForm name="education" autoComplete="off" tabIndex={1} user={user} profileData={profileData} onSubmit={onSubmit}>
-                        <EducationForm countries={countries} />
-                    </TabbedForm>
-                </TabPane>
-                <TabPane tab={"Tab 3"} key={2}>
-                    <TabbedForm name="work" autoComplete="off" tabIndex={2} user={user} profileData={profileData} onSubmit={onSubmit}>
-                        <WorkForm countries={countries} />
-                    </TabbedForm>
-                </TabPane>
-                <TabPane tab={"Tab 4"} key={3}>
-                    <TabbedForm name="references" autoComplete="off" tabIndex={3} user={user} profileData={profileData} onSubmit={onSubmit}>
-                        <ReferencesForm countries={countries} />
-                    </TabbedForm>
-                </TabPane>
-                <TabPane tab={"Tab 5"} key={4}>
-                    <TabbedForm name="cv" autoComplete="off" tabIndex={4} user={user} profileData={profileData} onSubmit={onSubmit}>
-                        <CVForm />
-                    </TabbedForm>
-                </TabPane>
+            <Banner title="Profile" id="banner" user={user} profileData={profileData} />
 
-            </Tabs>
-            <style global jsx>
-                {
-                    `
+            <ContainerLayout subtitle="Profile">
+                <Steps current={currentTab} onChange={onTabChange}>
+                    <Step title="Biography" icon={<InfoCircle />} description="&nbsp;" />
+                    <Step title="Education" icon={<Mortarboard />} description="&nbsp;" />
+                    <Step title="Work Experience" icon={<Briefcase />} description="&nbsp;" />
+                    <Step title="References" icon={<ReferenceIcon width={24} height={24} />} description="&nbsp;" />
+                    <Step title="CV" icon={<ResumeIcon width={24} height={24} />} description="&nbsp;" />
+                </Steps>
+                <Tabs defaultActiveKey={currentTab} activeKey={currentTab.toString()}>
+                    <TabPane tab={"Tab 1"} key={0}>
+                        <TabbedForm name="basic" autoComplete="off" tabIndex={0} user={user} profileData={profileData} onSubmit={onSubmit}>
+                            <BasicForm countries={countries} />
+                        </TabbedForm>
+                    </TabPane>
+                    <TabPane tab={"Tab 2"} key={1}>
+                        <TabbedForm name="education" autoComplete="off" tabIndex={1} user={user} profileData={profileData} onSubmit={onSubmit}>
+                            <EducationForm countries={countries} />
+                        </TabbedForm>
+                    </TabPane>
+                    <TabPane tab={"Tab 3"} key={2}>
+                        <TabbedForm name="work" autoComplete="off" tabIndex={2} user={user} profileData={profileData} onSubmit={onSubmit}>
+                            <WorkForm countries={countries} />
+                        </TabbedForm>
+                    </TabPane>
+                    <TabPane tab={"Tab 4"} key={3}>
+                        <TabbedForm name="references" autoComplete="off" tabIndex={3} user={user} profileData={profileData} onSubmit={onSubmit}>
+                            <ReferencesForm countries={countries} />
+                        </TabbedForm>
+                    </TabPane>
+                    <TabPane tab={"Tab 5"} key={4}>
+                        <TabbedForm name="cv" autoComplete="off" tabIndex={4} user={user} profileData={profileData} onSubmit={onSubmit}>
+                            <CVForm />
+                        </TabbedForm>
+                    </TabPane>
+
+                </Tabs>
+                <style global jsx>
+                    {
+                        `
                 .container {
                     margin-top: 64px;
                 }
@@ -868,10 +870,11 @@ export default function Profile({ countries }) {
                     text-align: center !important;
                 }
                 `
-                }
-            </style>
+                    }
+                </style>
 
-        </ContainerLayout>
+            </ContainerLayout>
+        </HomeLayout>
     </>
     )
 

@@ -1,14 +1,11 @@
 import Head from "next/head";
 import Script from "next/script";
 import Image from "next/image";
-
-import classNames from "classnames";
-import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationDot, faPhone, faEnvelopeOpen, faBars, faCheck, faArrowsToEye, faBugSlash, faDatabase, faCoins, faHeadset, faAnglesRight, faUserTie, faSearch, faUsers, faBuilding, } from '@fortawesome/free-solid-svg-icons';
-import { faFacebookF, faTwitter, faLinkedinIn, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faCheck, faArrowsToEye, faBugSlash, faDatabase, faCoins, faHeadset, faAnglesRight, faUserTie, faUsers, faBuilding } from '@fortawesome/free-solid-svg-icons';
+import { faFacebookF, faTwitter, faLinkedinIn, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faUser, faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
-import { ArrowRight, ArrowUp, BracesAsterisk, Briefcase, EnvelopeOpen, GeoAlt, Search, Telephone } from 'react-bootstrap-icons';
+import { ArrowRight, ArrowUp, EnvelopeOpen, GeoAlt, Telephone, Briefcase } from 'react-bootstrap-icons';
 
 import BannerImage from "../assets/img/carousel-1.gif";
 import AboutImage from "../assets/img/about.gif";
@@ -21,45 +18,8 @@ import PermissionsImage from "../assets/icons//permissions.svg";
 import ScaleImage from "../assets/icons//scale.svg";
 import SponsorsImage from "../assets/icons//sponsors.svg";
 
+import HomeLayout from "../layouts/HomeLayout";
 
-import Navbar from "../components/home/Navbar";
-
-function Spinner() {
-  const [shown, setShown] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setShown(false);
-    }, 1);
-  }, [shown]);
-
-  return <div id="spinner" className={classNames({ show: shown }, 'bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center')}>
-    <div className="spinner"></div>
-  </div>
-}
-
-function Topbar() {
-  return <div className="container-fluid bg-dark px-5 d-none d-lg-block">
-    <div className="row gx-0">
-      <div className="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
-        <div className="d-inline-flex align-items-center" style={{ 'height': '45px' }}>
-          <small className="me-3 text-light"><i className="me-2"><FontAwesomeIcon icon={faLocationDot} /></i>123 Street, Istanbul, Turkey</small>
-          <small className="me-3 text-light"><i className="me-2"><FontAwesomeIcon icon={faPhone} /></i>+012 345 6789</small>
-          <small className="text-light"><i className="me-2"><FontAwesomeIcon icon={faEnvelopeOpen} /></i>info@codenator.com</small>
-        </div>
-      </div>
-      <div className="col-lg-4 text-center text-lg-end">
-        <div className="d-inline-flex align-items-center" style={{ 'height': '45px' }}>
-          <a className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i><FontAwesomeIcon icon={faTwitter} /></i></a>
-          <a className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i><FontAwesomeIcon icon={faFacebookF} /></i></a>
-          <a className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i><FontAwesomeIcon icon={faLinkedinIn} /></i></a>
-          <a className="btn btn-sm btn-outline-light btn-sm-square rounded-circle me-2" href=""><i><FontAwesomeIcon icon={faInstagram} /></i></a>
-          <a className="btn btn-sm btn-outline-light btn-sm-square rounded-circle" href=""><i><FontAwesomeIcon icon={faYoutube} /></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-}
 
 function CTA() {
   return <div id="header-carousel" className="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -752,22 +712,18 @@ export default function Home() {
       </Head>
 
       <div id="homepage">
-        <Spinner />
-        <Topbar />
-        <div className="container-fluid position-relative p-0">
-          <Navbar />
-          <CTA />
-        </div>
-        <Stats />
-        <About />
-        <Benefits />
-        <Jobs />
-        <FAQs />
-        <Testimonials />
-        <Employees />
-        <Blog />
-        <Clients />
-        <Footer />
+        <HomeLayout subcontainerAddon={<CTA />}>
+          <Stats />
+          <About />
+          <Benefits />
+          <Jobs />
+          <FAQs />
+          <Testimonials />
+          <Employees />
+          <Blog />
+          <Clients />
+          <Footer />
+        </HomeLayout>
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" defer></script>
         {/* TODO: remove this once we convert the code full to react-bootstrap */}

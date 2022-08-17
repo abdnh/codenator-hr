@@ -5,16 +5,6 @@
   --light: #eef9ff;
   --dark: #091e3e;
 
-  /*** Spinner ***/
-  .spinner {
-    width: 40px;
-    height: 40px;
-    background: var(--primary);
-    margin: 100px auto;
-    -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
-    animation: sk-rotateplane 1.2s infinite ease-in-out;
-  }
-
   @-webkit-keyframes sk-rotateplane {
     0% {
       -webkit-transform: perspective(120px);
@@ -44,19 +34,6 @@
       transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
       -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     }
-  }
-
-  #spinner {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease-out, visibility 0s linear 0.5s;
-    z-index: 99999;
-  }
-
-  #spinner.show {
-    transition: opacity 0.5s ease-out, visibility 0s linear 0s;
-    visibility: visible;
-    opacity: 1;
   }
 
   /*** Heading ***/
