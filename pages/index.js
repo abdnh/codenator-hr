@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Script from "next/script";
 import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faArrowsToEye, faBugSlash, faDatabase, faCoins, faHeadset, faAnglesRight, faUserTie, faUsers, faBuilding } from '@fortawesome/free-solid-svg-icons';
@@ -735,7 +734,7 @@ export default function Home() {
         <script src="lib/counterup/counterup.min.js" defer></script>
         <script src="lib/owlcarousel/owl.carousel.min.js" defer></script>
 
-        <Script src="js/main.js" defer></Script>
+        <script src="js/main.js" defer></script>
 
       </div>
     </>
