@@ -1,131 +1,142 @@
-.light{
+.light {
    .admin_Header {
-      height: 65px;
+      height: 55px;
       background: white;
-      color:#152931;
-      border-bottom: 1px solid #f3f3f9;
-   
-      
+      color: #152931;
+      border-bottom: 1px solid #F9F5EB;
       .header-content {
          display: flex;
          justify-content: space-between;
          padding: 0 28px;
+         align-items: center; 
+
+        
+        
+
          .left {
-            margin-top: 2%;
             height: 100%;
+
             .icon {
-               
-               font-size: 35px;
-               color:#525253;
+               align-items: center;
+               font-size: 25px;
             }
          }
-      
+
          .right {
             display: flex;
             height: 100%;
             align-items: center;
             flex-direction: row;
-            h4{
-               display: inline;
-            }
-         
-            p {
+
+            h4 {
                font-size: 15px;
+               display: inline;
                margin-left: 15px;
             }
-            ul{
+
+            ul {
                margin-top: 5%;
                display: flex;
                flex-direction: row;
                list-style: none;
-               margin-right: 20px;
-               li{
-                  margin-right: 30px;
+               margin-right: 10px;
+
+               li {
+                  margin-right: 10px;
                }
             }
-         
+
             .icon {
-               font-size:25px;
-               color:#525253;
-               //justify-items: center;
+               font-size: 20px;
+               color: #525253;
             }
          }
+
          button {
             background: none;
             border: none;
          }
       }
-   
 
-      
-      &.p-l-240{
-         padding-left: 240px!important;
+
+
+      &.p-l-240 {
+         padding-left: 240px !important;
       }
-   
-      &.p-l-40{
-         padding-left: 40px!important;
+
+      &.p-l-40 {
+         padding-left: 40px !important;
       }
    }
 }
-.dark{
+
+.dark {
    .admin_Header {
-      height: 65px;
+      height: 55px;
       background: black;
-      color:white;
-      border-bottom: 1px solid #f3f3f9;
-   
+      color: white;
+      border-bottom: 1px solid #020202;
+
       .header-content {
          display: flex;
          justify-content: space-between;
          padding: 0 28px;
-      }
-   
-      .left {
-         margin-top: 20px;
-         .icon {
-            font-size: 35px;
-            color:white;
-         }
-      }
-   
-      .right {
-         display: flex;
-         flex-direction: row;
-         margin-top: 20px;
-         h4{
-            display: inline;
-         }
-      
-         p {
-            font-size: 15px;
-            margin-left: 15px;
-         }
-         ul{
-            display: flex;
-            flex-direction: row;
-            list-style: none;
-            margin-right: 20px;
-            li{
-               margin-right: 30px;
+         align-items: center;
+
+         .left {
+            height: 100%;
+
+            .icon {
+               align-items: center;
+               font-size: 25px;
             }
          }
-      
-         .icon {
-            font-size:25px;
-            color:white;
+
+         .right {
+            display: flex;
+            height: 100%;
+            align-items: center;
+            flex-direction: row;
+            color: white;
+
+            h4 {
+               font-size: 15px;
+               display: inline;
+               color: white !important;
+               margin-left: 15px;
+            }
+
+            ul {
+               margin-top: 5%;
+               display: flex;
+               flex-direction: row;
+               list-style: none;
+               margin-right: 10px;
+
+               li {
+                  margin-right: 10px;
+               }
+            }
+
+            .icon {
+               font-size: 20px;
+            }
+         }
+
+         button {
+            background: none;
+            border: none;
          }
       }
-      button {
-         background: none;
-         border: none;
+
+
+
+      &.p-l-240 {
+         padding-left: 240px !important;
       }
-      
-      &.p-l-240{
-         padding-left: 240px!important;
-      }
-   
-      &.p-l-40{
-         padding-left: 40px!important;
+
+      &.p-l-40 {
+         padding-left: 40px !important;
       }
    }
 }

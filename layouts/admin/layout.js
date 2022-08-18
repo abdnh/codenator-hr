@@ -11,11 +11,9 @@ export default function Layout({children}) {
     <div className="layout">
         <Sidebarl setCollpase={setCollpase} collpase={collpase} setMoon={setMoon} moon={moon} full={full} setFull={setFull}/>
         <Headerl setCollpase={setCollpase} collpase={collpase} setMoon={setMoon} moon={moon} full={full} setFull={setFull}/>
-        <br/>
-        <Body collpase={collpase}>
+        <Body collpase={collpase} moon={moon}>
           {children }
         </Body>
-        <br/>
     </div>
   )
 }

@@ -141,5 +141,48 @@
       "coverLetter": "hello world",
       "id": 1
     }
+  ],
+  "icerik":[
+    {
+      "id":1,
+      "Fotoğraf":"/img/testimonial-1.jpg",
+      "Başlık":"wwwwww",
+      "Katrgori":"profile",
+      "tarih":"2021/09/02"
+    },
+    {
+      "id":2,
+      "Fotoğraf":"/img/testimonial-2.jpg",
+      "Başlık":"gffsd",
+      "Katrgori":"profile",
+      "tarih":"2022/01/02"
+    }
+  ],
+  "kullanici":[
+    {
+      "id":1,
+      "name":"sasasas dsded",
+      "Fotograf":"/img/testimonial-2.jpg",
+      "E-posta":"ssssssssssssssssss@gmail.com",
+      "tarih":"2019/21/04"
+    },
+    {
+      "id":2,
+      "name":"sasasas 2222",
+      "Fotograf":"/img/testimonial-2.jpg",
+      "E-posta":"s22222s@gmail.com",
+      "tarih":"2019/21/04"
+    }
+  ],
+  "login-kayit":[
+    {
+      "id":1,
+      "tarih":1,
+      "Modul":2,
+      "Eylem":3,
+      "Adress":4,
+      "Kullanici-Adi":5,
+      "ip":6
+    }
   ]
 }

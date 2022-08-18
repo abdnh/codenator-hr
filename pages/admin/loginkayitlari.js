@@ -1,18 +1,23 @@
 import React from 'react';
-import Layout from '../../layouts/admin/layout/layout';
-import Link from 'next/Link';
-import { FaHome } from 'react-icons/fa';
-export default function loginkayitlari() {
+import Log_kayitler from '../../components/admin/log_kayitler';
+import Layout from '../../layouts/admin/layout';
+import Breadcrumb1 from './breadcrumb';
+import CardCustum from '../../components/ant/Card';
+
+const data = [
+  {
+    text: 'Login kayitlari',
+    link: '/admin/login kayitlari',
+  }
+]
+export default function Admin_Loginkayitlari() {
   return (
     <Layout>
-      <div className="left">
-        <p>Login Kayıtları</p>
-      </div>
-      <div className="right">
-        <FaHome />
-        <Link href="/Kontrol Panel">Kontrol Panel </Link>
-        <span> / </span>
-        <p>Login Kayıtları</p>
+      <Breadcrumb1 data={data} />
+      <div className='content-body'>
+        <CardCustum>
+          <Log_kayitler />
+        </CardCustum>
       </div>
     </Layout>
   )

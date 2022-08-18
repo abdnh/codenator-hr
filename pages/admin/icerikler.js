@@ -1,18 +1,23 @@
 import React from 'react';
-import Layout from '../../layouts/admin/layout/layout';
-import Link from 'next/Link';
-import { FaHome } from 'react-icons/fa';
-export default function Icerikler() {
+import Icerik from '../../components/admin/icerik';
+import Layout from '../../layouts/admin/layout';
+import Breadcrumb1 from './breadcrumb';
+import CardCustum from '../../components/ant/Card';
+const data = [
+  {
+    text: 'Icerikler',
+    link: '/admin/icerikler',
+  },
+];
+export default function Admin_Icerikler() {
   return (
     <Layout>
-      <div className="left">
-        <p>içerik</p>
-      </div>
-      <div className="right">
-        <FaHome />
-        <Link href="/Kontrol Panel">Kontrol Panel </Link>
-        <span> / </span>
-        <p>içerik</p>
+      <Breadcrumb1 data={data} />
+      <div className='content-body'>
+        <CardCustum>
+          <Icerik />
+        </CardCustum>
+
       </div>
     </Layout>
   )

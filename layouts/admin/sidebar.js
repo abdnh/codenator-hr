@@ -23,9 +23,6 @@ export default function Sidebarl({ collpase,moon,full }) {
               <li><BiCommand style={{ width: "20px", cursor: "pointer" }}/>
                 <Link href="/admin/kategoriler"> Kategoriler</Link>
               </li>
-              <li><FontAwesomeIcon icon={faUser} style={{ width: "20px", cursor: "pointer" }} />
-                <Link href="/admin/mansetler"> Manşetler</Link>
-              </li>
               <li><IoIosApps style={{ width: "20px", cursor: "pointer" }} />
                 <Link href="/admin/icerikler"> içerikler</Link>
               </li>
@@ -36,7 +33,7 @@ export default function Sidebarl({ collpase,moon,full }) {
                 <Link href="/admin/ayarlar"> Ayarlar</Link>
               </li>
               <li><IoIosContacts style={{ width: "20px", cursor: "pointer" }} />
-                <Link href="/admin/kisiler"> Kişiler</Link>
+                <Link href="/admin/basvurulan"> Başvurulan Kişiler</Link>
               </li>
               <li><IoIosCopy style={{ width: "20px", cursor: "pointer" }} />
                 <Link href="/admin/loginkayitlari">Login Kayıtları</Link>

@@ -1,19 +1,24 @@
 import React from 'react';
-import Layout from '../../layouts/admin/layout/layout';
-import Link from 'next/Link';
-import { FaHome } from 'react-icons/fa';
-export default function Ayarlar() {
+import Layout from '../../layouts/admin/layout';
+import Ayarlar from '../../components/admin/ayarlar';
+import Breadcrumb1 from './breadcrumb';
+import CardCustum from '../../components/ant/Card';
+
+const data = [
+  {
+    text: 'Ayarlar',
+    link: '/admin/ayarlar',
+  },
+];
+export default function Admin_Ayarlar() {
 
   return (
     <Layout>
-      <div className="left">
-        <p>ayarlar</p>
-      </div>
-      <div className="right">
-        <FaHome />
-        <Link href="/Kontrol Panel">Kontrol Panel </Link>
-        <span> / </span>
-        <p>ayarlar</p>
+      <Breadcrumb1 data={data} />
+      <div className='content-body'>
+        <CardCustum>
+          <Ayarlar />
+        </CardCustum>
       </div>
     </Layout>
   )

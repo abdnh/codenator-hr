@@ -9,13 +9,18 @@
 @import "./admin/admin_register.scss";
 @import "./admin/admin_login.scss";
 @import "./admin/body.scss";
+@import "./admin/admin_kontrol.scss";
 @import "./navbar.scss";
-
 
 html {
   scroll-behavior: smooth;
 }
 
+.dt-action{
+  svg{
+    padding: 0 10px;
+  }
+}
 
 html,
 body {
@@ -25,6 +30,17 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-input:focus{
+.form-control:focus{
   box-shadow: 0 0 0 0;
 }
+.card-header{
+  background:white;
+}
+a{
+  color:#112a45;
+  text-decoration:none;
+  &:hover{
+    color:#112a45;
+  }
+}
+
