@@ -46,9 +46,9 @@ export default function Navbar({ dark = true }) {
                     <Nav className="ms-auto py-0">
                         <Navlink href="/" active>Home</Navlink>
                         <Navlink href="/profile">Profile</Navlink>
-                        <Navlink href="/jobs">Jobs</Navlink>
+                        <Navlink href="/jobs?types=0">Jobs</Navlink>
                         {/* TODO: add a url query param to only show internships in jobs page */}
-                        <Navlink href="/jobs">Internships</Navlink>
+                        <Navlink href="/jobs?types=1">Internships</Navlink>
                         <Navlink href="#blog">Blog</Navlink>
                         <Navlink href="#about">About</Navlink>
                     </Nav>

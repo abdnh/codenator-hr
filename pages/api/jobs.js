@@ -1,15 +1,11 @@
-import { getJob, getAllJobs, searchJobs } from "../../lib/job";
+import { getJob, getAllJobs } from "../../lib/job";
 
 export default async function handler(req, res) {
-    const { id, q } = req.query;
+    const { id } = req.query;
     let result;
     if (id) {
         // Search by ID
         result = await getJob(id);
-    }
-    else if (q) {
-        // Full-text search
-        result = await searchJobs(q);
     }
     else {
         result = await getAllJobs();
