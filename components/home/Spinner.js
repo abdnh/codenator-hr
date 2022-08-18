@@ -5,10 +5,8 @@ export default function Spinner() {
     const [shown, setShown] = useState(true);
 
     useEffect(() => {
-        console.log(shown)
         setTimeout(() => {
             setShown(false);
-            console.log(shown)
         }, 1);
     }, [shown]);
 

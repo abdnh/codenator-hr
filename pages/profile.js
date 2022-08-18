@@ -691,23 +691,6 @@ function CVForm({ profileData }) {
                 </Col>
 
             </Row>
-            {/* FIXME: cover letter should be uploaded when actually applying to a job */}
-            {/* <Row gutter={20} >
-                <Col span={24}>
-                    <Form.Item
-                        label="Cover Letter"
-                        labelCol={{ span: 24 }}
-                        name="cover_letter"
-                        rules={[
-                            {
-                                required: true,
-                            },
-                        ]}
-                    >
-                        <Input.TextArea />
-                    </Form.Item>
-                </Col>
-            </Row> */}
         </Space>
     </>
 }

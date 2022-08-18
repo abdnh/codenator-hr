@@ -15,3 +15,8 @@
 .applyButton {
   height: 48px;
 }
+
+.applyButton > a {
+  color: white;
+  text-decoration: none;
+}
