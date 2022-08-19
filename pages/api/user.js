@@ -6,7 +6,7 @@ import { sessionOptions } from "../../lib/session"
 export default withIronSessionApiRoute(userRoute, sessionOptions);
 
 async function userRoute(req, res) {
-    if (req.session.user) {
+    if (req.session.user.loggedIn) {
         res.status(200).json({...req.session.user, loggedIn: true})
     } else {
         res.status(200).json({loggedIn: false})

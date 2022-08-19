@@ -31,7 +31,7 @@ export default function Login() {
         if (!response.ok) {
             setErrorMessage(response.statusText);
         }
-        if (!user) {
+        if (!user.loggedIn) {
             setErrorMessage("Hatalı giriş");
         }
     }
