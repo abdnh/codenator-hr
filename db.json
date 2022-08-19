@@ -3,7 +3,8 @@
     {
       "id": 1,
       "email": "test@email.com",
-      "password": "123"
+      "password": "123",
+      "admin": false
     }
   ],
   "jobs": [
@@ -158,20 +159,15 @@
       "tarih":"2022/01/02"
     }
   ],
-  "kullanici":[
+  "admins": [
     {
-      "id":1,
-      "name":"sasasas dsded",
-      "Fotograf":"/img/testimonial-2.jpg",
-      "E-posta":"ssssssssssssssssss@gmail.com",
-      "tarih":"2019/21/04"
-    },
-    {
-      "id":2,
-      "name":"sasasas 2222",
-      "Fotograf":"/img/testimonial-2.jpg",
-      "E-posta":"s22222s@gmail.com",
-      "tarih":"2019/21/04"
+      "id": 1,
+      "name": "sasasas dsded",
+      "image": "/img/testimonial-2.jpg",
+      "email": "ssssssssssssssssss@gmail.com",
+      "pasword": "123",
+      "signup_date": "2019/21/04",
+      "admin": true
     }
   ],
   "login-kayit":[

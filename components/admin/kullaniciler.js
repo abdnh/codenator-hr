@@ -65,7 +65,7 @@ export default function Kullaniciler() {
   ];
 
   useEffect(() => {
-     fetch("http://localhost:3001/kullanici").then(res => res.json())
+     fetch("http://localhost:3001/admins").then(res => res.json())
       .then(data => {
         setData(data);
       });

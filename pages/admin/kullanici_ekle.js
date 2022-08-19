@@ -70,7 +70,7 @@ export default function Kullanici_ekle() {
     useEffect(() => {
         var id=router.query.id;
         console.info("kullam:" ,id);
-            fetch(id?"http://localhost:3001/kullanici?id="+id :"http://localhost:3001/kullanici").then(res => res.json())
+            fetch(id?"http://localhost:3001/admins?id="+id :"http://localhost:3001/admins").then(res => res.json())
          .then(datas => {
            setDatas(datas);
          });
