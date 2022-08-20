@@ -12,7 +12,7 @@ export default function Item({ job, iconSrc }) {
             <h2 className="h2">{job.title}</h2>
             <div className={styles.itemBody} dangerouslySetInnerHTML={{ __html: job.text }}>
             </div>
-            <Button className={classNames("mt-5 w-75", styles.applyButton)}><Link href={`/jobs/apply/${job.id}`}>Apply</Link></Button>
+            <Link href={`/jobs/apply/${job.id}`}><Button className={classNames("mt-5 w-75", styles.applyButton)}>Apply</Button></Link>
         </div>
 
     )
