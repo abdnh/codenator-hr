@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import Head from "next/head";
 import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -697,6 +699,14 @@ function Footer() {
 
 export default function Home() {
 
+  useEffect(() => {
+    async function initWOW() {
+      const WOW = (await import('wowjs')).WOW;
+      new WOW().init();
+    }
+    initWOW();
+  }, []);
+
   return (
     <>
       <Head>
@@ -734,7 +744,6 @@ export default function Home() {
         {/* TODO: remove this once we convert the code full to react-bootstrap */}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" defer></script>
         {/* TODO: use <Script> components once we solve jQuery issues */}
-        <script src="lib/wow/wow.min.js" defer></script>
         <script src="lib/easing/easing.min.js" defer></script>
         <script src="lib/owlcarousel/owl.carousel.min.js" defer></script>
 
