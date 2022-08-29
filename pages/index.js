@@ -6,6 +6,8 @@ import { faFacebookF, faTwitter, faLinkedinIn, faInstagram } from "@fortawesome/
 import { faUser, faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
 import { ArrowRight, ArrowUp, EnvelopeOpen, GeoAlt, Telephone, Briefcase } from 'react-bootstrap-icons';
 
+import CountUp from 'react-countup';
+
 import BannerImage from "../assets/img/carousel-1.gif";
 import AboutImage from "../assets/img/about.gif";
 import CelebrationImage from "../assets/icons//celebration.svg";
@@ -38,6 +40,10 @@ function CTA() {
   </div>
 }
 
+function Counter(props) {
+  return <CountUp start={0} delay={0.1} duration={2} enableScrollSpy={true} scrollSpyOnce={true} {...props}></CountUp>
+}
+
 function Stats() {
   return <div className="container-fluid facts py-5 pt-lg-0">
     <div className="container py-5 pt-lg-0">
@@ -49,7 +55,7 @@ function Stats() {
             </div>
             <div className="ps-4">
               <h5 className="text-white mb-0">Happy Users</h5>
-              <h1 className="text-white mb-0" data-toggle="counter-up">4500000</h1>
+              <h1 className="text-white mb-0"><Counter end={4500000}></Counter></h1>
             </div>
           </div>
         </div>
@@ -60,7 +66,7 @@ function Stats() {
             </div>
             <div className="ps-4">
               <h5 className="text-primary mb-0">Employees</h5>
-              <h1 className="mb-0" data-toggle="counter-up">2500</h1>
+              <h1 className="mb-0"><Counter end={2500}></Counter></h1>
             </div>
           </div>
         </div>
@@ -71,7 +77,7 @@ function Stats() {
             </div>
             <div className="ps-4">
               <h5 className="text-white mb-0">Headquarters</h5>
-              <h1 className="text-white mb-0" data-toggle="counter-up">16</h1>
+              <h1 className="text-white mb-0"><Counter end={16}></Counter></h1>
             </div>
           </div>
         </div>
@@ -730,8 +736,6 @@ export default function Home() {
         {/* TODO: use <Script> components once we solve jQuery issues */}
         <script src="lib/wow/wow.min.js" defer></script>
         <script src="lib/easing/easing.min.js" defer></script>
-        <script src="lib/waypoints/waypoints.min.js" defer></script>
-        <script src="lib/counterup/counterup.min.js" defer></script>
         <script src="lib/owlcarousel/owl.carousel.min.js" defer></script>
 
         <script src="js/main.js" defer></script>
