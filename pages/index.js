@@ -744,7 +744,6 @@ export default function Home() {
         {/* TODO: remove this once we convert the code full to react-bootstrap */}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" defer></script>
         {/* TODO: use <Script> components once we solve jQuery issues */}
-        <script src="lib/easing/easing.min.js" defer></script>
         <script src="lib/owlcarousel/owl.carousel.min.js" defer></script>
 
         <script src="js/main.js" defer></script>
