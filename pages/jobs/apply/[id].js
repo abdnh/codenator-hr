@@ -60,7 +60,7 @@ export default function Apply({ job }) {
             message.warning("You've not completed your profile yet");
             router.push('/profile');
         }
-    }, [profileData]);
+    }, [profileData, router]);
 
     useEffect(() => {
         if (application && application.userID) {

@@ -61,7 +61,7 @@ export default function JobList(props) {
         let filteredJobs = props.jobs.slice();
         filteredJobs = filteredJobs.filter(job => enabledTypes.has(job.type) && (!search || (search && (job.title.toUpperCase().includes(search) || job.text.toUpperCase().includes(search)))));
         setJobs(filteredJobs);
-    }, [enabledTypes, search]);
+    }, [enabledTypes, search, props.jobs]);
 
     useEffect(() => {
         let types = router.query.types?.split(',').map(t => Number.parseInt(t));
