@@ -9,6 +9,8 @@ import { faFacebookF, faTwitter, faLinkedinIn, faInstagram, faAmazon, faApple, f
 import { faUser, faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
 import { ArrowRight, ArrowUp, EnvelopeOpen, GeoAlt, Telephone, Briefcase } from 'react-bootstrap-icons';
 
+import $ from "jquery";
+
 import CountUp from 'react-countup';
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -735,6 +737,49 @@ export default function Home() {
       new WOW().init();
     }
     initWOW();
+
+    import("jquery.easing");
+
+    // Dropdown on mouse hover
+    const $dropdown = $(".dropdown");
+    const $dropdownToggle = $(".dropdown-toggle");
+    const $dropdownMenu = $(".dropdown-menu");
+    const showClass = "show";
+
+    $(window).on("load resize", function () {
+      if (this.matchMedia("(min-width: 992px)").matches) {
+        $dropdown.hover(
+          function () {
+            const $this = $(this);
+            $this.addClass(showClass);
+            $this.find($dropdownToggle).attr("aria-expanded", "true");
+            $this.find($dropdownMenu).addClass(showClass);
+          },
+          function () {
+            const $this = $(this);
+            $this.removeClass(showClass);
+            $this.find($dropdownToggle).attr("aria-expanded", "false");
+            $this.find($dropdownMenu).removeClass(showClass);
+          }
+        );
+      } else {
+        $dropdown.off("mouseenter mouseleave");
+      }
+    });
+
+    // Back to top button
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 100) {
+        $('.back-to-top').fadeIn('slow');
+      } else {
+        $('.back-to-top').fadeOut('slow');
+      }
+    });
+    $('.back-to-top').click(function () {
+      $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
+      return false;
+    });
+
   }, []);
 
   return (
@@ -767,11 +812,8 @@ export default function Home() {
           <Footer />
         </HomeLayout>
 
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" defer></script>
         {/* TODO: remove this once we convert the code fully to react-bootstrap */}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" defer></script>
-        {/* TODO: Re-implement inside this file in vanilla JS */}
-        <script src="js/main.js" defer></script>
 
       </div>
     </>
