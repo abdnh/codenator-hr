@@ -1,14 +1,18 @@
 import { useEffect } from "react";
+import dynamic from 'next/dynamic'
 
 import Head from "next/head";
 import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faArrowsToEye, faBugSlash, faDatabase, faCoins, faHeadset, faAnglesRight, faUserTie, faUsers, faBuilding } from '@fortawesome/free-solid-svg-icons';
-import { faFacebookF, faTwitter, faLinkedinIn, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faFacebookF, faTwitter, faLinkedinIn, faInstagram, faAmazon, faApple, faCloudflare, faFigma } from "@fortawesome/free-brands-svg-icons";
 import { faUser, faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
 import { ArrowRight, ArrowUp, EnvelopeOpen, GeoAlt, Telephone, Briefcase } from 'react-bootstrap-icons';
 
 import CountUp from 'react-countup';
+import "owl.carousel/dist/assets/owl.carousel.css";
+import "owl.carousel/dist/assets/owl.theme.default.css";
+const OwlCarousel = dynamic(import("react-owl-carousel"), { ssr: false });
 
 import BannerImage from "../assets/img/carousel-1.gif";
 import AboutImage from "../assets/img/about.gif";
@@ -410,8 +414,21 @@ function Testimonials() {
         <h5 className="fw-bold text-primary text-uppercase">Testimonial</h5>
         <h1 className="mb-0">How Our Employees Feel About Our Company, Honestly</h1>
       </div>
-      <div className="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.6s">
-        <div className="testimonial-item bg-light my-4">
+      <OwlCarousel className='owl-theme testimonial-carousel wow fadeInUp' autoplay loop dots smartSpeed={1500} center responsive={{
+        0: {
+          items: 1
+        },
+        576: {
+          items: 1
+        },
+        768: {
+          items: 2
+        },
+        992: {
+          items: 3
+        }
+      }} data-wow-delay="0.6s">
+        <div class='item' className="testimonial-item bg-light my-4">
           <div className="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
             <Image className="img-fluid rounded" src="/img/testimonial-1.jpg" width={60} height={60} alt="" />
             <div className="ps-4">
@@ -423,7 +440,7 @@ function Testimonials() {
             Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
           </div>
         </div>
-        <div className="testimonial-item bg-light my-4">
+        <div class='item' className="testimonial-item bg-light my-4">
           <div className="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
             <Image className="img-fluid rounded" src="/img/testimonial-2.jpg" width={60} height={60} alt="" />
             <div className="ps-4">
@@ -435,7 +452,7 @@ function Testimonials() {
             Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
           </div>
         </div>
-        <div className="testimonial-item bg-light my-4">
+        <div class='item' className="testimonial-item bg-light my-4">
           <div className="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
             <Image className="img-fluid rounded" src="/img/testimonial-3.jpg" width={60} height={60} alt="" />
             <div className="ps-4">
@@ -447,7 +464,7 @@ function Testimonials() {
             Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
           </div>
         </div>
-        <div className="testimonial-item bg-light my-4">
+        <div class='item' className="testimonial-item bg-light my-4">
           <div className="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
             <Image className="img-fluid rounded" src="/img/testimonial-4.jpg" width={60} height={60} alt="" />
             <div className="ps-4">
@@ -459,7 +476,7 @@ function Testimonials() {
             Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam
           </div>
         </div>
-      </div>
+      </OwlCarousel>
     </div>
   </div>
 }
@@ -600,20 +617,33 @@ function Clients() {
         <h1 className="mb-0">Some Of The Companies That Use Our Products</h1>
       </div>
       <div className="bg-white">
-        <div className="owl-carousel vendor-carousel">
-          <Image src="/img/vendor-1.jpg" alt="" layout="responsive" width={150} height={50} />
-          <Image src="/img/vendor-2.jpg" alt="" layout="responsive" width={150} height={50} />
-          <Image src="/img/vendor-3.jpg" alt="" layout="responsive" width={150} height={50} />
-          <Image src="/img/vendor-4.jpg" alt="" layout="responsive" width={150} height={50} />
-          <Image src="/img/vendor-5.jpg" alt="" layout="responsive" width={150} height={50} />
-          <Image src="/img/vendor-6.jpg" alt="" layout="responsive" width={150} height={50} />
-          <Image src="/img/vendor-7.jpg" alt="" layout="responsive" width={150} height={50} />
-          <Image src="/img/vendor-8.jpg" alt="" layout="responsive" width={150} height={50} />
-          <Image src="/img/vendor-9.jpg" alt="" layout="responsive" width={150} height={50} />
-        </div>
+        <OwlCarousel className='owl-theme vendor-carousel' autoplay loop dots margin={45} smartSpeed={1000} responsive={{
+          0: {
+            items: 2
+          },
+          576: {
+            items: 4
+          },
+          768: {
+            items: 6
+          },
+          992: {
+            items: 8
+          }
+        }}>
+          <Image class='item' src="/img/vendor-1.jpg" alt="" layout="responsive" width={150} height={50} />
+          <Image class='item' src="/img/vendor-2.jpg" alt="" layout="responsive" width={150} height={50} />
+          <Image class='item' src="/img/vendor-3.jpg" alt="" layout="responsive" width={150} height={50} />
+          <Image class='item' src="/img/vendor-4.jpg" alt="" layout="responsive" width={150} height={50} />
+          <Image class='item' src="/img/vendor-5.jpg" alt="" layout="responsive" width={150} height={50} />
+          <Image class='item' src="/img/vendor-6.jpg" alt="" layout="responsive" width={150} height={50} />
+          <Image class='item' src="/img/vendor-7.jpg" alt="" layout="responsive" width={150} height={50} />
+          <Image class='item' src="/img/vendor-8.jpg" alt="" layout="responsive" width={150} height={50} />
+          <Image class='item' src="/img/vendor-9.jpg" alt="" layout="responsive" width={150} height={50} />
+        </OwlCarousel>
       </div>
     </div>
-  </div>
+  </div >
 }
 
 function Footer() {
@@ -721,9 +751,6 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
-        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
-        <link href="lib/animate/animate.min.css" rel="stylesheet" />
-
       </Head>
 
       <div id="homepage">
@@ -741,11 +768,9 @@ export default function Home() {
         </HomeLayout>
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" defer></script>
-        {/* TODO: remove this once we convert the code full to react-bootstrap */}
+        {/* TODO: remove this once we convert the code fully to react-bootstrap */}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" defer></script>
-        {/* TODO: use <Script> components once we solve jQuery issues */}
-        <script src="lib/owlcarousel/owl.carousel.min.js" defer></script>
-
+        {/* TODO: Re-implement inside this file in vanilla JS */}
         <script src="js/main.js" defer></script>
 
       </div>
