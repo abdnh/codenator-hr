@@ -1,12 +1,13 @@
 import { useEffect } from "react";
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
 import Link from "next/link";
+import { useRouter } from 'next/router';
 
 import Head from "next/head";
 import Image from "next/image";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faArrowsToEye, faBugSlash, faDatabase, faCoins, faHeadset, faAnglesRight, faUserTie, faUsers, faBuilding } from '@fortawesome/free-solid-svg-icons';
-import { faFacebookF, faTwitter, faLinkedinIn, faInstagram, faAmazon, faApple, faCloudflare, faFigma } from "@fortawesome/free-brands-svg-icons";
+import { faCheck, faDatabase, faAnglesRight, faUserTie, faUsers, faBuilding } from '@fortawesome/free-solid-svg-icons';
+import { faFacebookF, faTwitter, faLinkedinIn, faInstagram, } from "@fortawesome/free-brands-svg-icons";
 import { faUser, faCalendarAlt } from "@fortawesome/free-regular-svg-icons";
 import { ArrowRight, ArrowUp, EnvelopeOpen, GeoAlt, Telephone, Briefcase } from 'react-bootstrap-icons';
 
@@ -16,6 +17,7 @@ import CountUp from 'react-countup';
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 const OwlCarousel = dynamic(import("react-owl-carousel"), { ssr: false });
+import { stripHtml } from "string-strip-html";
 
 import BannerImage from "../assets/img/carousel-1.gif";
 import AboutImage from "../assets/img/about.gif";
@@ -29,6 +31,8 @@ import ScaleImage from "../assets/icons//scale.svg";
 import SponsorsImage from "../assets/icons//sponsors.svg";
 
 import HomeLayout from "../layouts/HomeLayout";
+
+import { getRandomJobs } from "../lib/job";
 
 
 function CTA() {
@@ -245,7 +249,9 @@ function Benefits() {
 
 }
 
-function Jobs() {
+function Jobs({ jobs }) {
+  const router = useRouter();
+
   return <div className="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div className="container py-5">
       <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ maxWidth: '600px' }}>
@@ -253,77 +259,35 @@ function Jobs() {
         <h1 className="mb-0">Catch open opportunities to join our company</h1>
       </div>
       <div className="row g-5">
-        <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-          <div className="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-            <div className="service-icon">
-              <i className="text-white"><FontAwesomeIcon icon={faArrowsToEye} /></i>
+        {jobs.map((job) => (
+          <div key={job.id} className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
+            <div className="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+              <div className="service-icon">
+                {/* TODO: show job image */}
+                <i className="text-white"><FontAwesomeIcon icon={faDatabase} /></i>
+              </div>
+              <h4 className="mb-3">{job.title}</h4>
+              <p className="m-0">{(() => {
+                return stripHtml(job.text).result.slice(0, 80) + '...';
+              })()}</p>
+              <a className="btn btn-lg btn-primary rounded" onClick={() => {
+                router.push(`/jobs/${job.id}`);
+              }}>
+                <ArrowRight />
+              </a>
             </div>
-            <h4 className="mb-3">Quality Control Engineer</h4>
-            <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
-            <a className="btn btn-lg btn-primary rounded" href="">
-              <ArrowRight />
-            </a>
           </div>
-        </div>
-        <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-          <div className="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-            <div className="service-icon">
-              <i className="text-white"><FontAwesomeIcon icon={faBugSlash} /></i>
-            </div>
-            <h4 className="mb-3">Test engineer</h4>
-            <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
-            <a className="btn btn-lg btn-primary rounded" href="">
-              <ArrowRight />
-            </a>
-          </div>
-        </div>
+        ))
+        }
         <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
-          <div className="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-            <div className="service-icon">
-              <i className="text-white"><FontAwesomeIcon icon={faDatabase} /></i>
-            </div>
-            <h4 className="mb-3">Database engineer</h4>
-            <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
-            <a className="btn btn-lg btn-primary rounded" href="">
-              <ArrowRight />
-            </a>
-          </div>
-        </div>
-        <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.3s">
-          <div className="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-            <div className="service-icon">
-              <i className="text-white"><FontAwesomeIcon icon={faCoins} /></i>
-            </div>
-            <h4 className="mb-3">Senior Financial Analyst</h4>
-            <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
-            <a className="btn btn-lg btn-primary rounded" href="">
-              <ArrowRight />
-            </a>
-          </div>
-        </div>
-        <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-          <div className="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-            <div className="service-icon">
-              <i className="text-white"><FontAwesomeIcon icon={faHeadset} /></i>
-            </div>
-            <h4 className="mb-3">Technical Support Engineer</h4>
-            <p className="m-0">Amet justo dolor lorem kasd amet magna sea stet eos vero lorem ipsum dolore sed</p>
-            <a className="btn btn-lg btn-primary rounded" href="">
-              <ArrowRight />
-            </a>
-          </div>
-        </div>
-        <div className="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
-          <a href="#">
-
+          <Link href="/jobs">
             <div className="position-relative bg-primary rounded h-100 d-flex flex-column align-items-center justify-content-center text-center p-5">
               <h3 className="text-white mb-3">And more</h3>
               <div className="service-icon">
                 <i className="text-white"><FontAwesomeIcon icon={faAnglesRight} /></i>
               </div>
-
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -730,7 +694,17 @@ function Footer() {
 }
 
 
-export default function Home() {
+export async function getStaticProps() {
+  const jobs = await getRandomJobs(5);
+  console.log('jobs', jobs)
+  return {
+    props: {
+      jobs,
+    },
+  };
+}
+
+export default function Home({ jobs }) {
 
   useEffect(() => {
     async function initWOW() {
@@ -799,7 +773,7 @@ export default function Home() {
           <Stats />
           <About />
           <Benefits />
-          <Jobs />
+          <Jobs jobs={jobs} />
           <FAQs />
           <Testimonials />
           <Employees />
