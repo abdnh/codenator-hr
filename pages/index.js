@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import dynamic from 'next/dynamic'
+import Link from "next/link";
 
 import Head from "next/head";
 import Image from "next/image";
