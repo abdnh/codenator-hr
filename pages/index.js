@@ -791,11 +791,6 @@ export default function Home() {
         <meta content="Free HTML Templates" name="description" />
         <title>Codenator HR - Embark on the endgame of editor wars with Codenator</title>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-
-        {/* TODO: move fonts to _document.js */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </Head>
 
       <div id="homepage">
