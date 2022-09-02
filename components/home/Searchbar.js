@@ -12,7 +12,7 @@ export default function Searchbar({ shown, onHide }) {
             </Modal.Header>
             <Modal.Body >
                 <Form>
-                    <InputGroup style={{ 'max-width': '600px' }}>
+                    <InputGroup style={{ maxWidth: '600px' }}>
                         <Form.Control type="text" className="border-primary p-3" placeholder="Type search keyword" />
                         <Button className="px-4"><Search /></Button>
                     </InputGroup>

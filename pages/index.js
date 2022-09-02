@@ -36,7 +36,7 @@ function CTA() {
       <div className="carousel-item active">
         <Image src={BannerImage} layout="responsive" alt="Image" />
         <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
-          <div className="p-3" style={{ 'max-width': '900px' }}>
+          <div className="p-3" style={{ maxWidth: '900px' }}>
             <h5 className="text-white text-uppercase mb-3 animated slideInDown">Codenator HR</h5>
             <h1 className="display-5 text-white mb-md-4 animated zoomIn">Embark on the endgame of editor wars with Codenator</h1>
             <a href="quote.html" className="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Join Us</a>
@@ -130,7 +130,7 @@ function About() {
 function Benefits() {
   return <div className="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div className="container py-5">
-      <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ 'max-width': '600px' }}>
+      <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ maxWidth: '600px' }}>
         <h5 className="fw-bold text-primary text-uppercase">Why work with us</h5>
       </div>
       <div className="d-sm-flex flex-wrap gutter-md-spacious mt-md-6 mb-5">
@@ -247,7 +247,7 @@ function Benefits() {
 function Jobs() {
   return <div className="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div className="container py-5">
-      <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ 'max-width': '600px' }}>
+      <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ maxWidth: '600px' }}>
         <h5 className="fw-bold text-primary text-uppercase">Open Positions</h5>
         <h1 className="mb-0">Catch open opportunities to join our company</h1>
       </div>
@@ -412,7 +412,7 @@ function FAQs() {
 function Testimonials() {
   return <div className="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div className="container py-5">
-      <div className="section-title text-center position-relative pb-3 mb-4 mx-auto" style={{ 'max-width': '600px' }}>
+      <div className="section-title text-center position-relative pb-3 mb-4 mx-auto" style={{ maxWidth: '600px' }}>
         <h5 className="fw-bold text-primary text-uppercase">Testimonial</h5>
         <h1 className="mb-0">How Our Employees Feel About Our Company, Honestly</h1>
       </div>
@@ -486,7 +486,7 @@ function Testimonials() {
 function Employees() {
   return <div className="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div className="container py-5">
-      <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ 'max-width': '600px' }}>
+      <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ maxWidth: '600px' }}>
         <h5 className="fw-bold text-primary text-uppercase">Our Employees</h5>
         <h1 className="mb-0">Get to know some of the people you will be working with</h1>
       </div>
@@ -550,7 +550,7 @@ function Employees() {
 function Blog() {
   return <div className="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div className="container py-5">
-      <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ 'max-width': '600px' }}>
+      <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ maxWidth: '600px' }}>
         <h5 className="fw-bold text-primary text-uppercase">Latest Blog</h5>
         <h1 className="mb-0">Read The Latest Articles from Our Blog Post</h1>
       </div>
@@ -614,7 +614,7 @@ function Blog() {
 function Clients() {
   return <div className="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div className="container py-5 mb-5">
-      <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ 'max-width': '600px' }}>
+      <div className="section-title text-center position-relative pb-3 mb-5 mx-auto" style={{ maxWidth: '600px' }}>
         <h5 className="fw-bold text-primary text-uppercase">Our Clients</h5>
         <h1 className="mb-0">Some Of The Companies That Use Our Products</h1>
       </div>
