@@ -381,6 +381,7 @@ function Testimonials() {
         <h5 className="fw-bold text-primary text-uppercase">Testimonial</h5>
         <h1 className="mb-0">How Our Employees Feel About Our Company, Honestly</h1>
       </div>
+      {/* eslint-disable react/no-unknown-property */}
       <OwlCarousel className='owl-theme testimonial-carousel wow fadeInUp' autoplay loop dots smartSpeed={1500} center responsive={{
         0: {
           items: 1
