@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import Image from "next/image";
 
 import { Row, Col, Button } from "antd";
 import { ArrowRight } from "react-bootstrap-icons";
@@ -6,9 +7,11 @@ import classNames from "classnames";
 
 import styles from "./JobRow.module.scss";
 
-function IconCol({ children }) {
+function IconCol({ src }) {
     return (
-        <Col className={classNames("text-uppercase fw-bold", styles.iconCol)}>{children}</Col>
+        <Col className={classNames("text-uppercase fw-bold", styles.iconCol)}>
+            {src && <Image src={src} alt="" layout={"fill"} />}
+        </Col>
     )
 }
 
@@ -29,10 +32,10 @@ function ApplyButtonCol({ job }) {
     )
 }
 
-export default function JobRow({ job, icon }) {
+export default function JobRow({ job }) {
     return (
         <Row className={styles.jobRow}>
-            <IconCol>{icon}</IconCol>
+            <IconCol src={job.image} />
             <TitleCol>{job.title}</TitleCol>
             <ApplyButtonCol job={job} />
         </Row>

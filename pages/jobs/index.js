@@ -16,7 +16,7 @@ import { useRouter } from 'next/router';
 
 
 export async function getStaticProps() {
-    const jobs = await getAllJobs();
+    const jobs = await getAllJobs();    
     return {
         props: {
             jobs,
@@ -111,8 +111,7 @@ export default function JobList(props) {
                             <div id="results" className="flex-5">
                                 {/* TODO: use pagination feature of json-server instead of fetching all jobs at once */}
                                 {jobs.slice((page - 1) * pageSize, page * pageSize).map((job) => (
-                                    // TODO: get icon from job
-                                    <JobRow key={job.id} job={job} icon={<FontAwesomeIcon icon={faDatabase} />} />
+                                    <JobRow key={job.id} job={job}/>
                                 ))}
                             </div>
                         </Col>

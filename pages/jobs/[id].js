@@ -41,7 +41,7 @@ export default function JobView({ job }) {
                 <Container>
                     <Row>
                         <Col>
-                            <Item job={job} iconSrc="/favicon.svg" />
+                            <Item job={job} iconSrc={job.image} />
                         </Col>
                     </Row>
                 </Container>
