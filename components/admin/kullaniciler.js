@@ -29,7 +29,7 @@ export default function Kullaniciler() {
       key:'Fotograf',
       title: 'Fotograf',
       dataIndex: 'Fotograf',
-      render: (text) => <Image src={text} width={50} height={50}/>,
+      render: (text) => <Image src={text} width={50} height={50} alt=""/>,
     },
     {
       key:'E-posta',

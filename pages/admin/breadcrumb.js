@@ -16,7 +16,7 @@ export default function Breadcrumb1(props) {
             <Link href="/admin">Kontrol Panel </Link>
           </Breadcrumb.Item>
           {props.data.map((item) => (
-            <Breadcrumb.Item>
+            <Breadcrumb.Item key={item.link}>
               <Link href={item.link}>{item.text}</Link>
             </Breadcrumb.Item>
           ))}

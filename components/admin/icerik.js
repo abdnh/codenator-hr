@@ -31,7 +31,7 @@ export default function Icerik() {
       key:'Fotoğraf',
       title: 'Fotoğraf',
       dataIndex: 'Fotoğraf',
-      render: (text) => <Image src={text} width={50} height={50}/>,
+      render: (text) => <Image src={text} width={50} height={50} alt=""/>,
     },
     {
       key:'Yayın Durumu',

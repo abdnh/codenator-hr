@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faEnvelope} from '@fortawesome/free-solid-svg-icons';
 export default function Register() {
@@ -21,7 +22,7 @@ export default function Register() {
                          <input type="password" className="form-control" placeholder='Şifre' id="exampleInputPassword1" required />
                      </div>
                      <button className="bttn">Giriş Yap</button>
-                     <a href="/admin/login">Hesabınız varmı?Giriş Yap</a>
+                     <Link href="/admin/login">Hesabınız varmı?Giriş Yap</Link>
                  </form>
              </div>
              <div className="screen__background">
