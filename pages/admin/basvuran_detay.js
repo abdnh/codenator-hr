@@ -11,6 +11,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
+
 const Body = styled.div`
 
 .body{
@@ -89,6 +90,7 @@ export default function Basvuran_detay() {
   return (
     <Layout>
       <Breadcrumb1 data={data} />
+      
       <Body>
         <div className='body'>
           {
@@ -191,6 +193,8 @@ export default function Basvuran_detay() {
                 
               </>
             ))}
+
+
         </div>
       </Body>
 

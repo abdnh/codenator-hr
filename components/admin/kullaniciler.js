@@ -3,7 +3,7 @@ import {Image, Switch } from 'antd';
 import Card from 'react-bootstrap/Card';
 import Com_breadcrumb from './com_breadcrumb';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faPenToSquare, faTrash ,faUserGroup} from '@fortawesome/free-solid-svg-icons';
+import { faPenToSquare, faTrash ,faUserGroup} from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -12,6 +12,13 @@ import { useRouter } from 'next/router';
 export default function Kullaniciler() {
   const [data, setData] = useState([]);
   const router = useRouter();
+
+  const silProduct = (e, id) => {
+    fetch("http://localhost:3001/admins/" + id , {
+      method : "DELETE"
+    })
+  }
+
   const columns = [
     {
       kay:'Ad Soyad',
@@ -46,18 +53,19 @@ export default function Kullaniciler() {
       dataIndex: 'tarih',
     },
     {
-      key:'işemler',
       title: 'işemler',
-      dataIndex: 'işemler',
-      render: (text, record, index) => {
+      dataIndex: 'id',
+      render: (data, full, index) => {
         return (
-          <div className='dt-action' style={{"justify-content": "space-between"}}>
-           <Link href='/admin/kullanici_ekle'>
-              <FontAwesomeIcon icon={faPenToSquare} 
-              onClick={() => router.push(`/admin/kullanici_ekle?id=${data[index].id}`)}
+          <div className='dt-action' style={{ display: "flex", justifyContent: "space-around" }}>
+            <a onClick={(e) => { editProducts(e, data) }}>
+              <FontAwesomeIcon icon={faPenToSquare}  style={{color:"rgb(97, 96, 96)"}}
               />
-           </Link>
-            <FontAwesomeIcon icon={faTrash} />
+            </a>
+            <a onClick={(e) => { silProduct(e, data) }}>
+              <FontAwesomeIcon icon={faTrash} style={{color:"rgb(97, 96, 96)"}}/>
+            </a>
+           
           </div>
         );
       },

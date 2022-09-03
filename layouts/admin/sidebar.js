@@ -35,9 +35,6 @@ export default function Sidebarl({ collpase,moon,full }) {
               <li><IoIosContacts style={{ width: "20px", cursor: "pointer" }} />
                 <Link href="/admin/basvurulan"> Başvurulan Kişiler</Link>
               </li>
-              <li><IoIosCopy style={{ width: "20px", cursor: "pointer" }} />
-                <Link href="/admin/loginkayitlari">Login Kayıtları</Link>
-              </li>
               <li><FontAwesomeIcon icon={faArrowRightFromBracket} style={{ width: "20px", cursor: "pointer" }} />
                 <Link href="/admin/login">Çıkış</Link>
               </li>

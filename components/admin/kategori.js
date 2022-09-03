@@ -15,9 +15,6 @@ export default function Kategori() {
               <FontAwesomeIcon style={{ paddingRight: "10px" }} icon={faMap} />
               kategori
             </div>
-            <div className='right'>
-              <button style={{ color: "#29577e", background: "white", width: "200px", height: "30px" }}>Yeni Manşet Ekle</button>
-            </div>
           </div>
         </div>
       </Card.Header>

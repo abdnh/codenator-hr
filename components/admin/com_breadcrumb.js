@@ -6,7 +6,7 @@ export default function Com_breadcrumb(props) {
     return (
         <div className='card-body'>
             <Breadcrumb>
-                <Table style={{width : "100%"}} dataSource={props.data} columns={props.columns}/>
+                <Table style={{width : "100%"}} dataSource={props.data}  rowKey="id" columns={props.columns}/>
             </Breadcrumb>
         </div>
     )

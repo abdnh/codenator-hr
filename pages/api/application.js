@@ -10,7 +10,7 @@ async function applicationRoute(req, res) {
     if (req.method === "GET") {
         application = req.query;
     }
-    else if (["POST", "PATCH"].includes(req.method)) {
+    else if (["POST", "PUT"].includes(req.method)) {
         application = await req.body;
     }
     else {
@@ -23,7 +23,7 @@ async function applicationRoute(req, res) {
         return;
     }
 
-    if (["POST", "PATCH"].includes(req.method)) {
+    if (["POST", "PUT"].includes(req.method)) {
         try {
             if (req.method === "POST") {
                 await postApplication(application);

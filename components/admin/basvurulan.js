@@ -3,9 +3,15 @@ import { useRouter } from 'next/router';
 import Card from 'react-bootstrap/Card';
 import Com_breadcrumb from './com_breadcrumb';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faUserGear, faFileCircleInfo } from '@fortawesome/free-solid-svg-icons';
-import { BsInfoCircle } from "react-icons/bs";
-import Link from 'next/Link';
+import { faTrash, faUserGear } from '@fortawesome/free-solid-svg-icons';
+
+const silProduct = (e, id) => {
+  fetch("http://localhost:3001/profiles/" + id , {
+    method : "DELETE"
+  })
+}
+
+
 const columns = [
   {
     key: "first_name",
@@ -29,14 +35,14 @@ const columns = [
   },
   {
     title: 'işemler',
-    dataIndex: 'işemler',
-    render: () => {
+    dataIndex: 'id',
+    render: (data, full, index) => {
       return (
-        <div className='dt-action'>
-          <Link href="/admin/basvuran_detay">
-            <BsInfoCircle style={{ fontSize: "35px" }} />
-          </Link>
-          <FontAwesomeIcon icon={faTrash} />
+        <div className='dt-action' style={{ display: "flex", justifyContent: "space-around" }}>
+          <a onClick={(e) => { silProduct(e, data) }}>
+            <FontAwesomeIcon icon={faTrash} style={{color:"rgb(97, 96, 96)"}}/>
+          </a>
+         
         </div>
       );
     },

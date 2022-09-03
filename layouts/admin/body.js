@@ -4,8 +4,10 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     .body{
-        height: 100vh;
+       
         .light{
+            height: 100vh;
+            background: #fff;
             .content-header{
                 padding: 15px;
                 color:#152931;
@@ -50,6 +52,7 @@ const Container = styled.div`
                 .head{
                     height:50px;
                     .nav{
+                        display:flex;
                         background: #112a45;
                         height:48px;
                         border-radius: 5px;
@@ -107,12 +110,10 @@ const Container = styled.div`
                 }
             }
         }
-    }
-    .body{
-        height: 100vh;
-        background: #000;
+        
         .dark{
-           
+            height: 100vh;
+            background: #000;
             .content-header{
                 padding: 15px;
                 color:#fff;

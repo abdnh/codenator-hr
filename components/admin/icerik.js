@@ -7,11 +7,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faTrash, faFiles,faPaste} from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/Link';
 import { useRouter } from 'next/router';
-
+import {postJSON} from "../../lib/request";
 
 export default function Icerik() {
   const [data, setData] = useState([]);
+  const [forcedUpdate, setForcedUpdate] = useState(false);
+
   const router = useRouter();
+
+  const silProduct = (e, id) => {
+    fetch("http://localhost:3001/icerik/" + id , {
+      method : "DELETE"
+    })
+  }
+
   const columns = [
     {
       key:'Başlık',
@@ -64,18 +73,18 @@ export default function Icerik() {
     },
     {
       title: 'işemler',
-      dataIndex: 'işemler',
-      render: (text, record, index) => {
+      dataIndex: 'id',
+      render: (data, full, index) => {
         return (
-          <div className='dt-action' style={{"justify-content": "space-between"}}>
-            <Link href='/admin/icerik_ekle'>
-              <FontAwesomeIcon icon={faPenToSquare} 
-                
-              onClick={() => router.push(`/admin/icerik_ekle?id=${data[index].id}`)}
+          <div className='dt-action' style={{ display: "flex", justifyContent: "space-around" }}>
+            <a onClick={(e) => { editProducts(e, data) }}>
+              <FontAwesomeIcon icon={faPenToSquare}  style={{color:"rgb(97, 96, 96)"}}
               />
-            </Link>
-            <FontAwesomeIcon icon={faTrash}
-            />
+            </a>
+            <a onClick={(e) => { silProduct(e, data) }}>
+              <FontAwesomeIcon icon={faTrash} style={{color:"rgb(97, 96, 96)"}}/>
+            </a>
+           
           </div>
         );
       },
@@ -87,7 +96,7 @@ export default function Icerik() {
       .then(data => {
         setData(data);
       });
-  }, []);
+  }, [forcedUpdate]);
   return(
     <Card >
     <Card.Header>
@@ -108,7 +117,7 @@ export default function Icerik() {
       </div>
     </Card.Header>
     <Card.Body>
-    <Com_breadcrumb columns={columns} data={data}/>
+    <Com_breadcrumb columns={columns}  data={data}/>
     </Card.Body>
   </Card>
   )

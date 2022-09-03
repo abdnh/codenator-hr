@@ -59,22 +59,29 @@ height:100vh;
 `;
 const d = [
     {
-        text: 'Mansetler',
-        link: '/admin/manset/Detay',
+        text: 'Kullanıcı',
+        link: '/admin/Kullanıcı/Ekle',
     },
 ];
 
 export default function Kullanici_ekle() {
     const [datas, setDatas] = useState([]);
     const router = useRouter();
+    const [ad,setAd]=useState('');
     useEffect(() => {
         var id=router.query.id;
-        console.info("kullam:" ,id);
             fetch(id?"http://localhost:3001/admins?id="+id :"http://localhost:3001/admins").then(res => res.json())
          .then(datas => {
            setDatas(datas);
          });
      }, [router.query.id]);
+
+     const handleSubmit = (e) =>{
+        e.preventDefault();
+        const body={
+            ad:ad,
+        }
+     }
     return (
         <Layout>
             <Breadcrumb1 data={d} />
@@ -94,6 +101,7 @@ export default function Kullanici_ekle() {
                             </div>
                     </Card.Header>
                     <Card.Body>
+                        <form onSubmit={handleSubmit}>
                             <div className='kullanici'>
                                 <div className='kullanici-durum'style={{padding:"0 0 20px 10px" }}>
                                 Kullanıcı Durumu
@@ -109,7 +117,7 @@ export default function Kullanici_ekle() {
                                     <span style={{padding:"20px"}}>
                                         :
                                     </span>
-                                    <input placeholder="Ad Soyad Giriniz" style={{width:"40vh"}} value= {datas.name}/>
+                                    <input placeholder="Ad Soyad Giriniz" style={{width:"40vh"}}  onChange={(e) => { setAd(e.target.value) }}/>
                                 </div>
                                 <div className='kullanici-email' style={{padding:"20px 0 0 89px"}}>
                                     E-mail
@@ -141,6 +149,8 @@ export default function Kullanici_ekle() {
                                 </div>
                                 
                             </div>
+                            
+                        </form>
                     </Card.Body>
                 </Card>
                 </CardCustum>
