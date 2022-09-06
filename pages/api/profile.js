@@ -19,7 +19,7 @@ async function profileRoute(req, res) {
     }
 
     if (profile.id != req.session.user.id) {
-        res.status(403).json(null);;
+        res.status(403).json(null);
         return;
     }
 

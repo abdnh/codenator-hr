@@ -7,10 +7,22 @@ import classNames from "classnames";
 
 import styles from "./JobRow.module.scss";
 
-function IconCol({ src }) {
+import { uploadHandleToObjectUrl } from "../../lib/upload";
+import { useEffect, useState } from 'react';
+
+function IconCol({ handle }) {
+    const [imageSrc, setImageSrc] = useState();
+
+    useEffect(() => {
+        if (!handle) return;
+        (async () => {
+            setImageSrc(await uploadHandleToObjectUrl(handle));
+        })();
+    }, [handle]);
+
     return (
         <Col className={classNames("text-uppercase fw-bold", styles.iconCol)}>
-            {src && <Image src={src} alt="" layout={"fill"} />}
+            {imageSrc && <Image src={imageSrc} alt="" layout={"fill"} />}
         </Col>
     )
 }
@@ -35,7 +47,7 @@ function ApplyButtonCol({ job }) {
 export default function JobRow({ job }) {
     return (
         <Row className={styles.jobRow}>
-            <IconCol src={job.image} />
+            <IconCol handle={job.image} />
             <TitleCol>{job.title}</TitleCol>
             <ApplyButtonCol job={job} />
         </Row>

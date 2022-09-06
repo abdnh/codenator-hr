@@ -27,8 +27,8 @@ import HomeLayout from "../layouts/HomeLayout";
 
 import { getAllCountries } from "../lib/country";
 import useUser from "../lib/useUser";
-import { postJSON } from "../lib/request";
-import { uploadDataToAntFile } from "../lib/profile";
+import { postJSON, postFile } from "../lib/request";
+import { uploadHandleToAntFile } from "../lib/upload";
 import DocumentUpload from "../components/ant/DocumentUpload";
 import HobbySelector from "../components/profile/HobbySelector";
 import { useRouter } from "next/router";
@@ -50,7 +50,6 @@ function TabbedForm({ children, tabIndex, user, profileData, countries, onSubmit
     // Ensure initial field values are updated
     useEffect(() => form.resetFields(), [profileData, user, form]);
 
-
     // Do some processing on submitted values before sending them to server
     async function preprocessSubmission(values) {
         for (const [key, value] of Object.entries(values)) {
@@ -63,13 +62,12 @@ function TabbedForm({ children, tabIndex, user, profileData, countries, onSubmit
                     delete values[key];
                     continue;
                 }
-                const fileObj = file.originFileObj;
-                const base64String = window.btoa(String.fromCharCode(...new Uint8Array(await fileObj.arrayBuffer())));
-                values[key] = {
-                    name: fileObj.name,
-                    type: fileObj.type,
-                    data: base64String,
-                };
+                if (!file.handle) {
+                    // File is new; upload
+                    const upload = await (await postFile('/api/upload_file', file.originFileObj)).json();
+                    file.handle = upload.handle;
+                }
+                values[key] = file.handle;
             }
             else if (isObject(value)) {
                 values[key] = await preprocessSubmission(value);
@@ -694,7 +692,7 @@ function isObject(value) {
     return !!(value && typeof value === "object" && !Array.isArray(value));
 };
 
-function preprocessSavedProfile(obj) {
+async function preprocessSavedProfile(obj) {
     for (const [key, value] of Object.entries(obj)) {
         // Convert date strings in profile object to Moment objects
         if (key.includes("date")) {
@@ -702,15 +700,18 @@ function preprocessSavedProfile(obj) {
         }
         // Convert file upload objects to the structure expected by Ant Design
         if (key.includes("upload")) {
-            if (!value) continue;
-            const antFile = uploadDataToAntFile(value);
+            if (!value) {
+                obj[key] = [];
+                continue;
+            }
+            const antFile = await uploadHandleToAntFile(value);
             obj[key] = [antFile];
         }
         else if (isObject(value)) {
-            preprocessSavedProfile(value);
+            await preprocessSavedProfile(value);
         }
         else if (Array.isArray(value)) {
-            value.forEach(v => preprocessSavedProfile(v));
+            value.forEach(async (v) => await preprocessSavedProfile(v));
         }
     }
 }
@@ -761,7 +762,7 @@ export default function Profile({ countries }) {
                 method: "GET",
                 headers: { 'Content-Type': 'application/json' },
             })).json();
-            preprocessSavedProfile(data);
+            await preprocessSavedProfile(data);
             setProfileData(data);
         }
         fetchProfile();

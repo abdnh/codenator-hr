@@ -7,7 +7,6 @@ import MainLayout from '../../layouts/MainLayout';
 import HomeLayout from '../../layouts/HomeLayout';
 import { getJob, getAllJobs } from "../../lib/job";
 
-
 export async function getStaticProps({ params }) {
     const job = await getJob(params.id);
     return {

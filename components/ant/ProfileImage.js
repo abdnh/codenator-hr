@@ -3,9 +3,9 @@ import Image from "next/image";
 import { PlusOutlined } from '@ant-design/icons';
 import { Modal, Upload } from 'antd';
 import { useEffect, useState } from 'react';
-import { postJSON } from "../../lib/request";
-import { uploadDataToAntFile } from "../../lib/profile";
 
+import { postJSON, postFile } from "../../lib/request";
+import { uploadHandleToAntFile } from "../../lib/upload";
 
 const getBase64 = (file) =>
     new Promise((resolve, reject) => {
@@ -24,10 +24,14 @@ export default function ProfileImage({ user, profileData }) {
     const [fileList, setFileList] = useState([]);
 
     useEffect(() => {
-        const profileImage = profileData.profile_image;
-        if (!profileImage) return;
-        const antFile = uploadDataToAntFile(profileImage);
-        setFileList([antFile]);
+        async function setImage() {
+            const profileImage = profileData.profile_image;
+            if (!profileImage) return;
+            const antFile = await uploadHandleToAntFile(profileImage);
+            setFileList([antFile]);
+        }
+        setImage();
+
     }, [profileData]);
 
     const handleCancel = () => setPreviewVisible(false);
@@ -48,14 +52,10 @@ export default function ProfileImage({ user, profileData }) {
 
     async function handleRequest(info) {
         const file = info.file;
-        const base64String = window.btoa(String.fromCharCode(...new Uint8Array(await file.arrayBuffer())));
+        const upload = await (await postFile('/api/upload_file', file)).json();
         const data = {
             id: user.id,
-            profile_image: {
-                data: base64String,
-                type: file.type,
-                name: file.name,
-            }
+            profile_image: upload.handle,
         }
         postJSON('/api/profile', data).then(res => info.onSuccess(res.body)).catch(err => {
             info.onError(err, null);

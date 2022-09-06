@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function Item({ job, iconSrc }) {
     return (
         <div className={styles.item}>
-            <Icon src={iconSrc} />
+            <Icon handle={iconSrc} />
             <h2 className="h2">{job.title}</h2>
             <div className={styles.itemBody} dangerouslySetInnerHTML={{ __html: job.text }}>
             </div>
