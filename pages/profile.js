@@ -183,11 +183,6 @@ function BasicForm({ countries, user, profileData }) {
     }
 
     return <>
-        {/* <Row gutter={24} className={"mb-4"}>
-                <Col span={24} offset={0}>
-                    <ProfileImage />
-                </Col>
-            </Row> */}
         <Divider>Basic</Divider>
         <Row gutter={24}>
             <Col span={8}>
@@ -795,7 +790,7 @@ export default function Profile({ countries }) {
     return (<>
         <HomeLayout navbarProps={{ dark: false }}>
 
-            <Banner title="Profile" id="banner" user={user} profileData={profileData} />
+            <Banner title={`${profileData.first_name} ${profileData.last_name}`} id="banner" user={user} profileData={profileData} />
 
             <ContainerLayout subtitle="Profile">
                 <Steps current={currentTab} onChange={onTabChange}>
