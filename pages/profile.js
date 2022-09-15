@@ -791,7 +791,7 @@ export default function Profile({ countries }) {
     return (<>
         <HomeLayout navbarProps={{ dark: false }}>
 
-            <Banner title={`${profileData.first_name} ${profileData.last_name}`} id="banner" user={user} profileData={profileData} />
+            <Banner id="banner" user={user} profileData={profileData} />
 
             <ContainerLayout subtitle="Profile">
                 <Steps current={currentTab} onChange={onTabChange}>
